@@ -33,31 +33,20 @@
         </li>
       </ul>
     </div>
-
-    <audio class="audio" controls src="../assets/audio/FallenDown.mp3">
-      Your browser does not support the
-    </audio>
   </div>
 </template>
 
 <script>
-import "../js/Acceuil.js";
-
 export default {
   name: "Acceuil",
   props: {},
-  method: {},
-  data() {
-    return {};
-  },
-  computed: {},
 };
 </script>
 
 <script src="../js/Acceuil.js"></script>
 
 <style lang="css">
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400&display=swap");
 
 *,
 ::before,
@@ -154,6 +143,8 @@ h2 span {
   width: 80px;
   height: 80px;
   cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
 }
 .medias {
   list-style-type: none;
@@ -183,12 +174,5 @@ h2 span {
 .logo-medias {
   width: 40px;
   height: 40px;
-}
-
-.audio {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 15%;
 }
 </style>

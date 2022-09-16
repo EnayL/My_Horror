@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <Acceuil />
   </div>
 </template>
 
 <script>
+import Acceuil from "./components/Acceuil.vue";
 export default {
   name: "app",
-  components: {},
+  components: { Acceuil },
 };
 </script>
