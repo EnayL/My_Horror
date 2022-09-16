@@ -5,6 +5,6 @@
 </template>
 
 <script>
-export default { name: "Register" };
+export default { name: "RegisterPage" };
 </script>
 <style></style>

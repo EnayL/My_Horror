@@ -38,12 +38,10 @@
 
 <script>
 export default {
-  name: "Acceuil",
+  name: "AcceuilPage",
   props: {},
 };
 </script>
-
-<script src="../js/Acceuil.js"></script>
 
 <style lang="css">
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400&display=swap");
