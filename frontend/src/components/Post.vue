@@ -6,7 +6,7 @@
       <div class="containeradd">
         <div class="addcontent">
           <div class="pdp">
-            <img src="../assets/icon/logo.png" />
+            <img src="../assets/icon/logo.webp" />
           </div>
           <!-- ajout du contenue-->
           <div class="content">
@@ -39,7 +39,7 @@
         <div class="containercontent">
           <div class="pdp">
             <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
+            <img src="../assets/icon/logo.webp" />
           </div>
           <div class="content">
             <!--Pseudo -->
@@ -62,7 +62,7 @@
         <!-- footer du contenue -->
         <div class="containerview">
           <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
+          <img class="pdp2" src="../assets/icon/logo.webp" />
           <!-- redirige vers la page post/id-->
           <a href="">Voir le thread</a>
           <!-- action que l'utilisateur peux faire -->
@@ -82,7 +82,7 @@
         <div class="containercontent">
           <div class="pdp">
             <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
+            <img src="../assets/icon/logo.webp" />
           </div>
           <div class="content">
             <!--Pseudo -->
@@ -105,7 +105,7 @@
         <!-- footer du contenue -->
         <div class="containerview">
           <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
+          <img class="pdp2" src="../assets/icon/logo.webp" />
           <!-- redirige vers la page post/id-->
           <a href="">Voir le thread</a>
           <!-- action que l'utilisateur peux faire -->
@@ -125,7 +125,7 @@
         <div class="containercontent">
           <div class="pdp">
             <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
+            <img src="../assets/icon/logo.webp" />
           </div>
           <div class="content">
             <!--Pseudo -->
@@ -149,7 +149,7 @@
         <!-- footer du contenue -->
         <div class="containerview">
           <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
+          <img class="pdp2" src="../assets/icon/logo.webp" />
           <!-- redirige vers la page post/id-->
           <a href="">Voir le thread</a>
           <!-- action que l'utilisateur peux faire -->
@@ -169,7 +169,7 @@
         <div class="containercontent">
           <div class="pdp">
             <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
+            <img src="../assets/icon/logo.webp" />
           </div>
           <div class="content">
             <!--Pseudo -->
@@ -193,7 +193,7 @@
         <!-- footer du contenue -->
         <div class="containerview">
           <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
+          <img class="pdp2" src="../assets/icon/logo.webp" />
           <!-- redirige vers la page post/id-->
           <a href="">Voir le thread</a>
           <!-- action que l'utilisateur peux faire -->
