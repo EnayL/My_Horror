@@ -1,5 +1,5 @@
 <template>
-  <div src="../assets/img_wallpaper/Acceuil.gif">
+  <div class="bodyacceuil">
     <div class="my-div">
       <div class="lignes">
         <div class="l1"></div>
@@ -54,7 +54,7 @@ export default {
   padding: 0;
 }
 
-body {
+.bodyacceuil {
   background: #333;
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;

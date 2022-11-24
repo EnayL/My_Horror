@@ -2,13 +2,15 @@ import { createWebHistory, createRouter } from "vue-router";
 import Acceuil from "./components/Acceuil.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
-import Post from "./components/Post.vue";
+import Home from "../src/components/Home.vue";
+import PostId from "../src/components/PostId.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
   { path: "/login", component: Login, name: "Login" },
   { path: "/register", component: Register, name: "Register" },
-  { path: "/post", component: Post, name: "PostPage" },
+  { path: "/home", component: Home, name: "HomePage" },
+  { path: "/post", component: PostId, name: "PostIdPage" },
 ];
 
 export const router = createRouter({
