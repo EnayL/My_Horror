@@ -1,8 +1,8 @@
 <template>
-  <div class="globalcontainer">
+  <div class="globalcontainer" style="flex-direction: row">
     <div class="rightcontainer">
       <div class="rightcontent">
-        <img class="image" src="../assets/icon/logo.png" style="" />
+        <img class="image" src="../assets/icon/logo.webp" />
         <h1 class="welcom">Rentrez dans notre Royaume !</h1>
 
         <form class="formlogin">
@@ -48,7 +48,7 @@
     </div>
     <div class="leftcontainer">
       <div class="image">
-        <img src="../assets/img_wallpaper/login2.jpg" />
+        <img src="../assets/img_wallpaper/register.jpg" />
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ export default { name: "RegisterPage" };
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100.5vh;
 }
 
 .tease {
@@ -104,7 +104,7 @@ export default { name: "RegisterPage" };
 .rightcontainer {
   background-color: #64110b;
   width: 30%;
-  height: 100vh;
+  height: 101vh;
 }
 
 .rightcontainer img {

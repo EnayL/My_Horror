@@ -1,17 +1,17 @@
 <template>
-  <div class="globalcontainer">
+  <div class="globalcontainer" style="flex-direction: row">
     <div class="leftcontainer">
       <div class="image">
         <div class="tease">
           <h1>Hello,</h1>
           <h1>Welcome to our nightmare..</h1>
         </div>
-        <img src="../assets/img_wallpaper/login1.jpg" />
+        <img src="../assets/img_wallpaper/login.jpg" />
       </div>
     </div>
     <div class="rightcontainer">
       <div class="rightcontent">
-        <img class="image" src="../assets/icon/logo.png" />
+        <img class="image" src="../assets/icon/logo.webp" />
         <h1 class="welcom">Bienvenue dans H-Realm !</h1>
 
         <form class="formlogin">
@@ -78,7 +78,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100.5vh;
 }
 
 .tease {

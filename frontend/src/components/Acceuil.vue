@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bodyacceuil">
     <div class="my-div">
       <div class="lignes">
         <div class="l1"></div>
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <a><img src="../assets/icon/logo.png" class="logo" /></a>
+      <a><img src="../assets/icon/logo.webp" class="logo" /></a>
 
       <ul class="medias">
         <li class="bulle">
@@ -54,7 +54,7 @@ export default {
   padding: 0;
 }
 
-body {
+.bodyacceuil {
   background: #333;
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
