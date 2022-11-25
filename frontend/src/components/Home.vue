@@ -6,6 +6,7 @@
       </div>
       <div class="main-line"></div>
       <post></post>
+      <post></post>
     </main>
   </div>
 </template>

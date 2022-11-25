@@ -13,12 +13,14 @@
         </h1>
         <h2><span>Rejoignez </span><span>nous !</span></h2>
         <div class="container-btns">
-          <button class="btn-first b1">Register</button>
-          <button class="btn-first b2">Login</button>
+          <button class="btn-first b1" @click="goToRegister()">Register</button>
+          <button class="btn-first b2" @click="goToLogin()">Login</button>
         </div>
       </div>
 
-      <a><img src="../assets/icon/logo.webp" class="logo" /></a>
+      <a @click="goToHome()"
+        ><img src="../assets/icon/logo.webp" class="logo"
+      /></a>
 
       <ul class="medias">
         <li class="bulle">
@@ -40,6 +42,17 @@
 export default {
   name: "AcceuilPage",
   props: {},
+  methods: {
+    goToRegister() {
+      this.$router.push("/register");
+    },
+    goToLogin() {
+      this.$router.push("/login");
+    },
+    goToHome() {
+      this.$router.push("/home");
+    },
+  },
 };
 </script>
 
