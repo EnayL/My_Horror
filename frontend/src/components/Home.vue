@@ -1,6 +1,6 @@
 <template>
   <div class="bodyhome">
-    <main class="main">
+    <main class="main" id="main">
       <div class="main-form">
         <create-post></create-post>
       </div>
@@ -16,14 +16,50 @@
 
 import CreatePost from "../components/LayoutCreatePost.vue";
 import Post from "../components/LayoutPost.vue";
+import axios from 'axios';
 
 export default {
+    methods: {
+      async getData() {
+        const res = await fetch("http://localhost:3000/posts");
+        const finalRes = await res.json("titre");
+        console.log(finalRes);
+      },
+
+      async getPosts(){ //récupération des données
+      const res = await axios.get('http://localhost:3000/posts');
+      const json = JSON.stringify(res);
+      const jsonData = JSON.parse(json);
+      var mainContainer = document.getElementById("main");
+
+        for (let i = 0; i < jsonData.data.length; i++) {
+            const publi = jsonData.data[i];
+            const titre = publi.titre;
+            const contenu = publi.contenu;
+            const owner = publi.owner;
+            var div = document.createElement("h1");
+            div.class="titre";
+            div.innerHTML =  titre ;
+            var div2 = document.createElement("p");
+            div.class="contenu";
+            div2.innerHTML =  contenu ;
+            mainContainer.appendChild(div);
+            mainContainer.appendChild(div2);
+        }
+          
+      }
+    },
+    mounted() {
+      this.getPosts();
+    },
+    
   name: "Home",
   components: {
     CreatePost,
     Post,
   },
 };
+
 </script>
 
 <style scoped>
