@@ -1,222 +1,52 @@
 <template>
   <div class="body">
     <!-- contenair qui contient tout -->
-    <div class="globalcontainer">
-      <!-- contenair pour ajouter un post -->
-      <div class="containeradd">
-        <div class="addcontent">
-          <div class="pdp">
-            <img src="../assets/icon/logo.png" />
-          </div>
-          <!-- ajout du contenue-->
-          <div class="content">
-            <div class="post">
-              <input
-                class="text"
-                type="text"
-                required
-                placeholder="Quoi de neuf ?"
-              />
-              <div class="footeradd">
-                <!-- pour ajouter une image-->
-                <div class="image-upload">
-                  <label for="file-input">
-                    <img src="../assets/icon/image-solid.svg" />
-                  </label>
-                  <input id="file-input" type="file" />
-                </div>
-                <!-- Pour poster le poste-->
-                <div class="btnpost">
-                  <button type="submit" class="click">POST</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- affichage du poste en gloabal-->
       <div class="containerpost">
-        <div class="containercontent">
-          <div class="pdp">
-            <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
-          </div>
-          <div class="content">
-            <!--Pseudo -->
-            <div class="name">
-              <h1>EnayL</h1>
-              <!-- parametre -->
-              <Button>
-                <img class="option" src="../assets/icon/ellipsis-solid.svg" />
-              </Button>
-            </div>
-            <!-- contenue écris du poste -->
-            <div class="post">
-              Bonjour voici le premier poste de la page POSTE des différents
-              élèments que l'on peux retrouver ici. Merci de limiter les postes
-              d'articles etc.. à environ 900 caratères
-            </div>
-            <!-- mettre ici une img pour afficher l'image -->
-          </div>
-        </div>
-        <!-- footer du contenue -->
-        <div class="containerview">
-          <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
-          <!-- redirige vers la page post/id-->
-          <a href="">Voir le thread</a>
-          <!-- action que l'utilisateur peux faire -->
-          <div class="useraction">
-            <!-- ajouter un like-->
-            <Button>
-              <img class="btne" src="../assets/icon/comment-regular.svg" />
-            </Button>
-            <!-- redirige vers la page post/id-->
-            <Button onclick="Toggle1()" id="btnh1">
-              <img class="btn" src="../assets/icon/heart-regular.svg" />
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div class="containerpost">
-        <div class="containercontent">
-          <div class="pdp">
-            <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
-          </div>
-          <div class="content">
-            <!--Pseudo -->
-            <div class="name">
-              <h1>EnayL</h1>
-              <!-- parametre -->
-              <Button>
-                <img class="option" src="../assets/icon/ellipsis-solid.svg" />
-              </Button>
-            </div>
-            <!-- contenue écris du poste -->
-            <div class="post">
-              Bonjour voici le premier poste de la page POSTE des différents
-              élèments que l'on peux retrouver ici. Merci de limiter les postes
-              d'articles etc.. à environ 900 caratères
-            </div>
-            <!-- mettre ici une img pour afficher l'image -->
-          </div>
-        </div>
-        <!-- footer du contenue -->
-        <div class="containerview">
-          <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
-          <!-- redirige vers la page post/id-->
-          <a href="">Voir le thread</a>
-          <!-- action que l'utilisateur peux faire -->
-          <div class="useraction">
-            <!-- ajouter un like-->
-            <Button>
-              <img class="btne" src="../assets/icon/comment-regular.svg" />
-            </Button>
-            <!-- redirige vers la page post/id-->
-            <Button onclick="Toggle1()" id="btnh1">
-              <img class="btn" src="../assets/icon/heart-regular.svg" />
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div class="containerpost">
-        <div class="containercontent">
-          <div class="pdp">
-            <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
-          </div>
-          <div class="content">
-            <!--Pseudo -->
-            <div class="name">
-              <h1>EnayL</h1>
-              <!-- parametre -->
-              <Button>
-                <img class="option" src="../assets/icon/ellipsis-solid.svg" />
-              </Button>
-            </div>
-            <!-- contenue écris du poste -->
-            <div class="post">
-              Bonjour voici le premier poste de la page POSTE des différents
-              élèments que l'on peux retrouver ici. Merci de limiter les postes
-              d'articles etc.. à environ 900 caratères
-            </div>
-            <!-- mettre ici une img pour afficher l'image -->
-            <img class="pdp" src="../assets/img_wallpaper/login2.jpg" />
-          </div>
-        </div>
-        <!-- footer du contenue -->
-        <div class="containerview">
-          <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
-          <!-- redirige vers la page post/id-->
-          <a href="">Voir le thread</a>
-          <!-- action que l'utilisateur peux faire -->
-          <div class="useraction">
-            <!-- ajouter un like-->
-            <Button>
-              <img class="btne" src="../assets/icon/comment-regular.svg" />
-            </Button>
-            <!-- redirige vers la page post/id-->
-            <Button onclick="Toggle1()" id="btnh1">
-              <img class="btn" src="../assets/icon/heart-regular.svg" />
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div class="containerpost">
-        <div class="containercontent">
-          <div class="pdp">
-            <!-- photo de profile-->
-            <img src="../assets/icon/logo.png" />
-          </div>
-          <div class="content">
-            <!--Pseudo -->
-            <div class="name">
-              <h1>EnayL</h1>
-              <!-- parametre -->
-              <Button>
-                <img class="option" src="../assets/icon/ellipsis-solid.svg" />
-              </Button>
-            </div>
-            <!-- contenue écris du poste -->
-            <div class="post">
-              Bonjour voici le premier poste de la page POSTE des différents
-              élèments que l'on peux retrouver ici. Merci de limiter les postes
-              d'articles etc.. à environ 900 caratères
-            </div>
-            <!-- mettre ici une img pour afficher l'image -->
-            <img class="pdp" src="../assets/img_wallpaper/login2.jpg" />
-          </div>
-        </div>
-        <!-- footer du contenue -->
-        <div class="containerview">
-          <!-- photo de profile-->
-          <img class="pdp2" src="../assets/icon/logo.png" />
-          <!-- redirige vers la page post/id-->
-          <a href="">Voir le thread</a>
-          <!-- action que l'utilisateur peux faire -->
-          <div class="useraction">
-            <!-- ajouter un like-->
-            <Button>
-              <img class="btne" src="../assets/icon/comment-regular.svg" />
-            </Button>
-            <!-- redirige vers la page post/id-->
-            <Button onclick="Toggle1()" id="btnh1">
-              <img class="btn" src="../assets/icon/heart-regular.svg" />
-            </Button>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: "PostPage",
-  props: {},
+    methods: {
+      async getData() {
+        const res = await fetch("http://localhost:3000/posts");
+        const finalRes = await res.json("titre");
+        console.log(finalRes);
+      },
+
+      async getPosts(){ //récupération des données
+      const res = await axios.get('http://localhost:3000/posts');
+      const json = JSON.stringify(res);
+      const jsonData = JSON.parse(json);
+      var mainContainer = document.getElementById("containerpost");
+
+        for (let i = 0; i < jsonData.data.length; i++) {
+            const publi = jsonData.data[i];
+            const titre = publi.titre;
+            const contenu = publi.contenu;
+            const owner = publi.owner;
+            var div = document.createElement("h1");
+            div.class="titre";
+            div.innerHTML =  titre ;
+            var div2 = document.createElement("p");
+            div.class="contenu";
+            div2.innerHTML =  contenu ;
+            mainContainer.appendChild(div);
+            mainContainer.appendChild(div2);
+        }
+          
+      }
+    },
+    mounted() {
+      this.getPosts();
+    },
+    name: "PostPage",
+    props: {},
 };
 </script>
 <style lang="css">
