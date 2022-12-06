@@ -114,7 +114,7 @@ export default {
 }
 .post-main__img {
   width: 100%;
-  height: 100%;
+
   border: 1px solid rgb(255, 255, 255);
   border-radius: 16px;
   margin-top: 1%;
