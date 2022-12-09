@@ -1,5 +1,10 @@
 <template>
-  <form>
+  <!-- multiple select -->
+  <p>
+    <input type="string" v-model="Post.genre" placeholder="Genre du post" />
+  </p>
+
+  <form id="demo">
     <div class="create-post">
       <div class="create-post__main">
         <div class="create-post__avatar">
@@ -11,13 +16,24 @@
         </div>
         <div
           class="create-post__text ml-3"
-          style="color: white"
-          contenteditable
-          ref="inputField"
-          @input="addTextToData"
-          @keydown.once="clearPlaceholder"
+          style="color: white; display: flex; flex-direction: column"
         >
-          Quoi de neuf ?
+          <!-- text -->
+          <p class="p1">
+            <input
+              type="string"
+              v-model="Post.titre"
+              placeholder="Saisissez le titre de votre Publication"
+            />
+          </p>
+
+          <p class="p2">
+            <input
+              type="string"
+              v-model="Post.contenu"
+              placeholder="Racontez nous votre histoire"
+            />
+          </p>
         </div>
       </div>
       <div class="create-post__action">
@@ -35,7 +51,8 @@
         <button
           class="create-post__create"
           style="cursor: pointer"
-          @click="createNewPost"
+          type="submit"
+          @click="addToAPI"
         >
           Poster !
         </button>
@@ -45,19 +62,32 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CreatePostPage",
-  props: {},
-  data: () => ({
-    post: {
-      text: "",
-      image: null,
-    },
-  }),
-
+  data() {
+    return {
+      Post: { titre: "", contenu: "", genre: "" },
+    };
+  },
   methods: {
-    clearPlaceholder() {
-      this.$refs.inputField.textContent = " ";
+    addToAPI() {
+      let newPost = {
+        titre: this.Post.titre,
+        contenu: this.Post.contenu,
+        genre: this.Post.genre,
+      };
+      let jsonData = JSON.stringify(newPost);
+
+      console.log(jsonData);
+      axios
+        .post("http://localhost:3000/posts/add", newPost)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
@@ -131,5 +161,12 @@ export default {
 }
 .create-post__create:hover {
   background-color: rgb(82, 0, 0);
+}
+
+.p1 {
+  width: 100%;
+  background-color: aqua;
+  height: 100px;
+  border: none;
 }
 </style>
