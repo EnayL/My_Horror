@@ -78,7 +78,6 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100.5vh;
 }
 
 .tease {
@@ -95,7 +94,6 @@ export default {
 .rightcontainer {
   background-color: #64110b;
   width: 30%;
-  height: 100vh;
 }
 
 .rightcontainer img {
