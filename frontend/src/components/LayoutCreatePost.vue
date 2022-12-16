@@ -1,21 +1,4 @@
 <template>
-<<<<<<< HEAD
-<form id="demo">
-  <!-- text -->
-  <p>
-    <input type="string" v-model="Post.titre" placeholder="Saisissez le titre de votre Publication">
-  </p>
-
-  <p>
-    <input type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire">
-  </p>
-  <!-- multiple select -->
-  <p>
-    <input type="string" v-model="Post.genre" placeholder="Genre du post">
-  </p>
-</form>
-<button type="submit" @click="addToAPI">Add</button>
-=======
   <!-- multiple select -->
   <form id="demo">
     <div class="create-post">
@@ -80,7 +63,6 @@
       </div>
     </div>
   </form>
->>>>>>> 4c2a320e4eb77c9194ea6beff39e1c0f6a802f7e
 </template>
 
 <script>
@@ -110,13 +92,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-<<<<<<< HEAD
-    }
-  }
-=======
     },
   },
->>>>>>> 4c2a320e4eb77c9194ea6beff39e1c0f6a802f7e
 };
 </script>
 
