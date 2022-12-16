@@ -8,42 +8,50 @@
         <form class="formlogin">
           <div class="formlabel">
             <label for="email">Nom</label>
-            <div class="forminput">
-              <input class="input" type="text" id="nom" required />
-            </div>
+            <p class="forminput">
+              <input class="input" v-model="User.nom" type="string" id="nom" placeholder="." />
+            </p>
           </div>
 
           <div class="formlabel">
             <label for="prenom">Prénom </label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <p class="forminput">
+              <input class="input" type="string" id="email" v-model="User.prenom" placeholder="." />
+            </p>
+          </div>
+
+          <div class="formlabel">
+            <label for="username">Pseudo</label>
+            <p class="forminput">
+              <input class="input" v-model="User.username" type="string" id="email" placeholder="." />
+            </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Adresse email</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <p class="forminput">
+              <input class="input" v-model="User.email" type="string" id="email" placeholder="." />
+            </p>
           </div>
 
           <div class="formlabel">
             <label for="password">Mot de passe</label>
-            <div class="forminput">
-              <input class="input" type="text" id="password" required />
-            </div>
+            <p class="forminput">
+              <input class="input" v-model="User.password" type="string" id="password" placeholder="." />
+            </p>
           </div>
           <div class="formlabel">
             <label for="password">Mot de passe</label>
-            <div class="forminput">
-              <input class="input" type="text" id="password" required />
-            </div>
+            <p class="forminput">
+              <input class="input" type="string" id="password" placeholder="." />
+            </p>
             <a href="" class="forgot">Déjà un compte?</a>
           </div>
-          <div class="btn">
-            <button type="submit" class="click">Register</button>
-          </div>
+          
         </form>
+        <div class="btn">
+            <button id="button" type="submit" @click="addToDb" >Register</button>
+          </div>
       </div>
     </div>
     <div class="leftcontainer">
@@ -55,7 +63,37 @@
 </template>
 
 <script>
-export default { name: "RegisterPage" };
+import axios from 'axios';
+
+export default {
+   name: "RegisterPage",
+   data() {
+    return{
+      User : { nom:"", prenom:"", username:"", email:"", password:""}
+    }
+  }, methods: {
+    addToDb(){      
+      let newUser = {
+        nom: this.User.nom,
+        prenom: this.User.prenom,
+        username: this.User.username,
+        email: this.User.email,
+        password: this.User.password
+      }
+      
+      let jsonData = JSON.stringify(newUser);
+
+      console.log(jsonData);
+      axios.post('http://localhost:3000/user/signup', newUser)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+  }
+};
 </script>
 
 <style lang="css">
