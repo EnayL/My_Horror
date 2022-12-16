@@ -4,35 +4,55 @@
       <div class="post__avatar">
         <img src="../assets/icon/logo.webp" alt="" class="post-avatar__img" />
       </div>
-      <div class="post__main post-main">
-        <div class="post-main__user mb-3">
-          <span class="post-main__username mr-3">Username</span>
-          <span class="post-main__nickname mr-3">@nickName</span>
-          <span class="post-main__date mr-3">28.01.2021</span>
-          <img class="post-delete" src="../assets/icon/x-solid.svg" />
-        </div>
-        <div class="post-main__text mb-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id placeat
-          obcaecati nisi accusamus, vitae esse!
-        </div>
-        <div class="post-main__image mb-2">
-          <img
-            src="../assets/img_wallpaper/login.jpg"
-            alt=""
-            class="post-main__img"
-          />
-        </div>
+    
+        <div id="containerpost"></div>
+
         <div class="post-main__bottom">
           <img class="post-main__like" src="../assets/icon/heart-regular.svg" />
           <span class="post-main__like-count ml-2">0</span>
         </div>
       </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  methods: {
+    async getData() {
+      const res = await fetch("http://localhost:3000/posts");
+      const finalRes = await res.json("titre");
+      console.log(finalRes);
+    },
+
+    async getPosts() {
+      //récupération des données
+      const res = await axios.get("http://localhost:3000/posts/");
+      const json = JSON.stringify(res);
+      const jsonData = JSON.parse(json);
+      var mainContainer = document.getElementById("containerpost");
+
+      for (let i = 0; i < jsonData.data.length; i++) {
+        const publi = jsonData.data[i];
+        const titre = publi.titre;
+        const contenu = publi.contenu;
+        const owner = publi.owner;
+        var div = document.createElement("h1");
+        div.class = "titre";
+        div.innerHTML = titre;
+        var div2 = document.createElement("p");
+        div.class = "contenu";
+        div2.innerHTML = contenu;
+        mainContainer.appendChild(div);
+        mainContainer.appendChild(div2);
+      }
+    },
+  },
+  mounted() {
+    this.getPosts();
+  },
   name: "PostPage",
   props: {},
 };
