@@ -1,9 +1,5 @@
 <template>
   <!-- multiple select -->
-  <p>
-    <input type="string" v-model="Post.genre" placeholder="Genre du post" />
-  </p>
-
   <form id="demo">
     <div class="create-post">
       <div class="create-post__main">
@@ -19,20 +15,28 @@
           style="color: white; display: flex; flex-direction: column"
         >
           <!-- text -->
-          <p class="p1">
-            <input
-              type="string"
-              v-model="Post.titre"
-              placeholder="Saisissez le titre de votre Publication"
-            />
-          </p>
-
+          <div style="display: flex">
+            <p class="p1">
+              <input
+                type="string"
+                v-model="Post.titre"
+                placeholder="Saisissez le titre de votre Publication"
+              />
+            </p>
+            <p class="p3">
+              <input
+                type="string"
+                v-model="Post.genre"
+                placeholder="Genre du post"
+              />
+            </p>
+          </div>
           <p class="p2">
-            <input
+            <textarea
               type="string"
               v-model="Post.contenu"
               placeholder="Racontez nous votre histoire"
-            />
+            ></textarea>
           </p>
         </div>
       </div>
@@ -164,9 +168,76 @@ export default {
 }
 
 .p1 {
-  width: 100%;
-  background-color: aqua;
-  height: 100px;
+  margin-top: 1%;
+  width: 60%;
+  height: 50px;
   border: none;
+}
+
+.p1 input {
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding-bottom: 3%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p2 {
+  margin-top: 1%;
+  width: 75%;
+  height: 50px;
+  border: none;
+}
+
+.p2 textarea {
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 100%;
+  color: white;
+  padding-bottom: 5%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p2 textarea::placeholder {
+  padding: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.p1 input::placeholder {
+  padding-top: 2%;
+  padding-left: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.p3 {
+  margin-top: 1%;
+  width: 75%;
+  height: 50px;
+  border: none;
+}
+
+.p3 input {
+  margin-left: 5%;
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 30%;
+  height: 40px;
+  color: white;
+  padding-bottom: 3%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p3 input::placeholder {
+  padding-top: 5%;
+  padding-left: 5%;
+  top: 0;
+  color: white;
+  font-size: 15px;
 }
 </style>
