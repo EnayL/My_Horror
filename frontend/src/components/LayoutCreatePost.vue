@@ -1,21 +1,4 @@
 <template>
-<<<<<<< HEAD
-<form id="demo">
-  <!-- text -->
-  <p>
-    <input type="string" v-model="Post.titre" placeholder="Saisissez le titre de votre Publication">
-  </p>
-
-  <p>
-    <input type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire">
-  </p>
-  <!-- multiple select -->
-  <p>
-    <input type="string" v-model="Post.genre" placeholder="Genre du post">
-  </p>
-</form>
-<button type="submit" @click="addToAPI">Add</button>
-=======
   <form>
     <div class="create-post">
       <div class="create-post__main">
@@ -59,38 +42,12 @@
       </div>
     </div>
   </form>
->>>>>>> 4aed97b7b3fdaa0b437a2d34947d905741ce7bd2
 </template>
 
 <script>
 import axios from 'axios';
 export default {
   name: "CreatePostPage",
-<<<<<<< HEAD
-  data() {
-    return{
-      Post : { titre:"", contenu:"", genre:"" }
-    }
-  }, methods: {
-    addToAPI(){
-      let newPost = {
-        titre: this.Post.titre,
-        contenu: this.Post.contenu,
-        genre: this.Post.genre
-      }
-      let jsonData = JSON.stringify(newPost);
-
-      console.log(jsonData);
-      axios.post('http://localhost:3000/posts/add', newPost)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }
-=======
   props: {},
   data: () => ({
     post: {
@@ -104,7 +61,6 @@ export default {
       this.$refs.inputField.textContent = " ";
     },
   },
->>>>>>> 4aed97b7b3fdaa0b437a2d34947d905741ce7bd2
 };
 </script>
 
