@@ -30,7 +30,9 @@
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
           <div class="btn">
-            <button type="submit" @click="login" class="click">Login</button>
+            <button type="submit" @click="login, goToHome()" class="click">
+              Login
+            </button>
           </div>
         </form>
       </div>
@@ -39,33 +41,38 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-   name: "LoginPage",
-   data() {
-    return{
-      User : { email:"", password:""}
-    }
-  }, methods: {
-    login(){      
+  name: "LoginPage",
+  data() {
+    return {
+      User: { email: "", password: "" },
+    };
+  },
+  methods: {
+    login() {
       let connect = {
         email: this.User.email,
-        password: this.User.password
-      }
-      
+        password: this.User.password,
+      };
+
       let jsonData = JSON.stringify(connect);
 
       console.log(jsonData);
-      axios.post('http://localhost:3000/user/login', connect)
+      axios
+        .post("http://localhost:3000/user/login", connect)
         .then((response) => {
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
-      }
-  }
+    },
+  },
+  goToHome() {
+    this.$router.push("/home");
+  },
 };
 </script>
 
