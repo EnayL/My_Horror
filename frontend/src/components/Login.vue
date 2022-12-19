@@ -17,22 +17,22 @@
         <form class="formlogin">
           <div class="formlabel">
             <label for="email">Adresse email</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <p class="forminput">
+              <input class="input" type="text" id="email" v-model="User.email" />
+            </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Mot de passe</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <p class="forminput">
+              <input class="input" type="text" id="email" v-model="User.password" />
+            </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
-          </div>
-          <div class="btn">
-            <button type="submit" @click="login" class="click">Login</button>
-          </div>
+          </div>          
         </form>
+        <div class="btn">
+          <button type="submit" @click="login" class="click">Login</button>
+        </div>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@ export default {
     }
   }, methods: {
     login(){      
+      console.log("pouet");
       let connect = {
         email: this.User.email,
         password: this.User.password
@@ -60,10 +61,16 @@ export default {
       axios.post('http://localhost:3000/user/login', connect)
         .then((response) => {
           console.log(response);
+          localStorage.setItem("token",response.data)
+
         })
         .catch((error) => {
           console.log(error);
         });
+      },
+      test(){
+        console.log("pouet");
+
       }
   }
 };

@@ -29,7 +29,13 @@ export default {
 
     async getPosts() {
       //récupération des données
-      const res = await axios.get("http://localhost:3000/posts/");
+      const token = localStorage.getItem("token")
+      const res = await axios.get("http://localhost:3000/posts/",{
+        
+        headers:{
+           "Authorization":`Bearer ${token}`
+        }
+      });
       const json = JSON.stringify(res);
       const jsonData = JSON.parse(json);
       var mainContainer = document.getElementById("containerpost");

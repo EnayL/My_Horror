@@ -33,11 +33,18 @@ export default {
         genre: this.Post.genre,
       };
       let jsonData = JSON.stringify(newPost);
+      const token = localStorage.getItem("token")
 
+     
       console.log(jsonData);
       axios
-        .post("http://localhost:3000/posts/add", newPost)
+        .post("http://localhost:3000/posts/add", newPost,{
+          headers:{
+           "Authorization":`Bearer ${token}`
+          }
+        })
         .then((response) => {
+          
           console.log(response);
         })
         .catch((error) => {

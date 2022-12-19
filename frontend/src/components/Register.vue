@@ -43,10 +43,11 @@
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input class="input" type="string" id="password" placeholder="." />
+              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="." />
             </p>
             <a href="" class="forgot">Déjà un compte?</a>
           </div>
+          <p id="error"></p>
           
         </form>
         <div class="btn">
@@ -80,18 +81,26 @@ export default {
         email: this.User.email,
         password: this.User.password
       }
+      let confirm = this.User.confirm;
+      let password = this.User.password;
+
       
       let jsonData = JSON.stringify(newUser);
 
       console.log(jsonData);
-      axios.post('http://localhost:3000/user/signup', newUser)
+      if(confirm == password){
+        axios.post('http://localhost:3000/user/signup', newUser)
         .then((response) => {
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
+      }else{
+        const message = "les mots de passe ne correspondent pas t'es nul frr concentre toi et ecrit mieux stp";
+        document.getElementById("error").innerHTML = message;
       }
+    }      
   }
 };
 </script>
