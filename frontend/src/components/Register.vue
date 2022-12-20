@@ -30,7 +30,13 @@
           <div class="formlabel">
             <label for="email">Adresse email</label>
             <p class="forminput">
-              <input class="input" v-model="User.email" type="string" id="email" placeholder="." />
+              <input
+                class="input"
+                v-model="User.email"
+                type="string"
+                id="email"
+                placeholder="."
+              />
             </p>
           </div>
 
@@ -67,10 +73,10 @@
 import axios from 'axios';
 
 export default {
-   name: "RegisterPage",
+  name: "RegisterPage",
    data() {
     return{
-      User : { nom:"", prenom:"", username:"", email:"", password:""}
+      User : { nom:"", prenom:"", username:"", email:"", password:"", confirm:""}
     }
   }, methods: {
     addToDb(){      
@@ -96,9 +102,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      }else{
+      } else {
         const message = "les mots de passe ne correspondent pas t'es nul frr concentre toi et ecrit mieux stp";
-        document.getElementById("error").innerHTML = message;
+        const pop = document.getElementById("error");
+        if(pop != undefined){
+          pop.innerHTML = message;
+        }
       }
     }      
   }

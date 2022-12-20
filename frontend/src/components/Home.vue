@@ -43,10 +43,15 @@ export default {
         div.class = "titre";
         div.innerHTML = titre;
         var div2 = document.createElement("p");
-        div.class = "contenu";
+        div2.class = "contenu";
         div2.innerHTML = contenu;
+        var div3 = document.createElement("h3");
+        div3.class = "owner";
+        div3.innerHTML = owner;
         mainContainer.appendChild(div);
         mainContainer.appendChild(div2);
+        mainContainer.appendChild(div3);
+
       }
     },
   },

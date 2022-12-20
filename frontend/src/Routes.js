@@ -5,6 +5,7 @@ import Register from "./components/Register.vue";
 import Home from "../src/components/Home.vue";
 import PostId from "../src/components/PostId.vue";
 import Header from "../src/components/LayoutHeader.vue";
+import Search from "../src/components/Search.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
@@ -13,6 +14,7 @@ const routes = [
   { path: "/home", component: Home, name: "HomePage" },
   { path: "/post", component: PostId, name: "PostIdPage" },
   { path: "/header", component: Header, name: "HeaderPage" },
+  { path: "/search", component: Search, name: "SearchBar" },
 ];
 
 export const router = createRouter({

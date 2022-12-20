@@ -16,9 +16,9 @@
 
         <form class="formlogin">
           <div class="formlabel">
-            <label for="email">Adresse email</label>
+            <label for="email">Username</label>
             <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.email" />
+              <input class="input" type="text" id="email" v-model="User.username" />
             </p>
           </div>
 
@@ -28,50 +28,53 @@
               <input class="input" type="text" id="email" v-model="User.password" />
             </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
-          </div>          
+          </div>
+          <div class="btn">
+            <button type="submit" @click="login, goToHome()" class="click">
+              Login
+            </button>
+          </div>
         </form>
-        <div class="btn">
-          <button type="submit" @click="login" class="click">Login</button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-   name: "LoginPage",
-   data() {
-    return{
-      User : { email:"", password:""}
-    }
-  }, methods: {
-    login(){      
-      console.log("pouet");
+  name: "LoginPage",
+  // goToHome() {
+  //   this.$router.push("/home");
+  // },
+  data() {
+    return {
+      User: { username: "", password: "" },
+    };
+  },
+  methods: {
+    
+    login() {
       let connect = {
-        email: this.User.email,
-        password: this.User.password
-      }
-      
+        username: this.User.username,
+        password: this.User.password,
+      };
+
       let jsonData = JSON.stringify(connect);
 
       console.log(jsonData);
-      axios.post('http://localhost:3000/user/login', connect)
+      axios
+        .post("http://localhost:3000/user/login", connect)
         .then((response) => {
-          console.log(response);
-          localStorage.setItem("token",response.data)
-
+          localStorage.setItem("token",response.data.token);
+          localStorage.setItem("user",response.data.username);
+          goToHome();
         })
         .catch((error) => {
           console.log(error);
         });
-      },
-      test(){
-        console.log("pouet");
-
-      }
+    },
   }
 };
 </script>
