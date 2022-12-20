@@ -29,12 +29,13 @@
             </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          <div class="btn">
-            <button type="submit" @click="login, goToHome()" class="click">
+          
+        </form>
+        <div class="btn">
+            <button type="submit" @click="login" class="click">
               Login
             </button>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -69,7 +70,7 @@ export default {
         .then((response) => {
           localStorage.setItem("token",response.data.token);
           localStorage.setItem("user",response.data.username);
-          goToHome();
+         
         })
         .catch((error) => {
           console.log(error);
