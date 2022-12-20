@@ -1,8 +1,7 @@
 <template>
   <div class="bodypost">
     <div class="post" style="cursor: pointer">
-      <div class="post__avatar">
-        <img src="../assets/icon/logo.webp" alt="" class="post-avatar__img" />
+      <div class="">
       </div>
     
         <div id="containerpost"></div>
@@ -26,6 +25,8 @@ export default {
       console.log(finalRes);
     },
 
+    
+
     async getPosts() {
       //récupération des données
       const token = localStorage.getItem("token")
@@ -44,18 +45,59 @@ export default {
         const titre = publi.titre;
         const contenu = publi.contenu;
         const owner = publi.owner;
-        var div = document.createElement("h1");
-        div.class = "titre";
-        div.innerHTML = titre;
-        var div2 = document.createElement("p");
-        div.class = "contenu";
+
+        var pp = document.createElement("img"); // pp
+        pp.src = "../assets/icon/heart-regular.svg";
+        pp.class = "post-avatar__img"
+
+        var div = document.createElement("div"); // div de la pp
+        div.class = "post__avatar"
+
+        div.appendChild(pp);
+
+
+        var h1 = document.createElement("h1"); // creation element titre
+        h1.class = "titre";
+        h1.innerHTML = titre;
+        var div2 = document.createElement("p"); // creation element contenu
+        div2.class = "contenu";
         div2.innerHTML = contenu;
-        var div3 = document.createElement("h3");
+        var div3 = document.createElement("h3"); //creation element owner
         div3.class = "owner";
         div3.innerHTML = owner;
-        mainContainer.appendChild(div3);
+
         mainContainer.appendChild(div);
+        mainContainer.appendChild(div3);
+        mainContainer.appendChild(h1);
         mainContainer.appendChild(div2);
+
+        var supp = document.createElement("button"); // creation boutton supprimer
+        supp.id = "supprimer";
+        supp.innerHTML = "X";
+        const token = localStorage.getItem("token")
+        const user = localStorage.getItem("user")
+        supp.addEventListener('click', function handleClick() {
+          if (owner != user){
+            alert("Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous.")
+          }
+          else {
+            alert("vous avez supprimé une publication")
+          axios.delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
+            headers:{
+              "Authorization":`Bearer ${token}`
+            }
+          })
+          .then(res => {
+            console.log(titre);
+          })
+          .catch(err => {
+              console.log(err);
+          });
+          }
+
+          
+        });
+        mainContainer.appendChild(supp);
       }
     },
   },
