@@ -1,5 +1,6 @@
 <template>
-  <form>
+  <!-- multiple select -->
+  <form id="demo">
     <div class="create-post">
       <div class="create-post__main">
         <div class="create-post__avatar">
@@ -11,13 +12,32 @@
         </div>
         <div
           class="create-post__text ml-3"
-          style="color: white"
-          contenteditable
-          ref="inputField"
-          @input="addTextToData"
-          @keydown.once="clearPlaceholder"
+          style="color: white; display: flex; flex-direction: column"
         >
-          Quoi de neuf ?
+          <!-- text -->
+          <div style="display: flex">
+            <p class="p1">
+              <input
+                type="string"
+                v-model="Post.titre"
+                placeholder="Saisissez le titre de votre Publication"
+              />
+            </p>
+            <p class="p3">
+              <input
+                type="string"
+                v-model="Post.genre"
+                placeholder="Genre du post"
+              />
+            </p>
+          </div>
+          <p class="p2">
+            <textarea
+              type="string"
+              v-model="Post.contenu"
+              placeholder="Racontez nous votre histoire"
+            ></textarea>
+          </p>
         </div>
       </div>
       <div class="create-post__action">
@@ -35,7 +55,8 @@
         <button
           class="create-post__create"
           style="cursor: pointer"
-          @click="createNewPost"
+          type="submit"
+          @click="addToAPI"
         >
           Poster !
         </button>
@@ -45,20 +66,32 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "CreatePostPage",
-  props: {},
-  data: () => ({
-    post: {
-      text: "",
-      image: null,
-    },
-  }),
-
+  data() {
+    return {
+      Post: { titre: "", contenu: "", genre: "" },
+    };
+  },
   methods: {
-    clearPlaceholder() {
-      this.$refs.inputField.textContent = " ";
+    addToAPI() {
+      let newPost = {
+        titre: this.Post.titre,
+        contenu: this.Post.contenu,
+        genre: this.Post.genre,
+      };
+      let jsonData = JSON.stringify(newPost);
+
+      console.log(jsonData);
+      axios
+        .post("http://localhost:3000/posts/add", newPost)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
@@ -132,5 +165,79 @@ export default {
 }
 .create-post__create:hover {
   background-color: rgb(82, 0, 0);
+}
+
+.p1 {
+  margin-top: 1%;
+  width: 60%;
+  height: 50px;
+  border: none;
+}
+
+.p1 input {
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding-bottom: 3%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p2 {
+  margin-top: 1%;
+  width: 75%;
+  height: 50px;
+  border: none;
+}
+
+.p2 textarea {
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 100%;
+  color: white;
+  padding-bottom: 5%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p2 textarea::placeholder {
+  padding: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.p1 input::placeholder {
+  padding-top: 2%;
+  padding-left: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.p3 {
+  margin-top: 1%;
+  width: 75%;
+  height: 50px;
+  border: none;
+}
+
+.p3 input {
+  margin-left: 5%;
+  border: none;
+  background-color: rgba(82, 0, 0, 0.51);
+  width: 30%;
+  height: 40px;
+  color: white;
+  padding-bottom: 3%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p3 input::placeholder {
+  padding-top: 5%;
+  padding-left: 5%;
+  top: 0;
+  color: white;
+  font-size: 15px;
 }
 </style>

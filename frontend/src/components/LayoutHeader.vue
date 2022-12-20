@@ -1,159 +1,240 @@
 <template>
-  <header class="header" style="background-color: #5c0000">
-    <nav class="header__nav nav">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <img class="nav__link-img" src="../assets/icon/house-solid.svg" />
-          <span class="nav__link-title">Home</span>
-        </li>
-        <li class="nav__item">
-          <img class="nav__link-img" src="../assets/icon/user-solid.svg" />
-          <span class="nav__link-title">Mon Profil</span>
-        </li>
-        <li class="nav__item">
-          <img class="nav__link-img" src="../assets/icon/heart-regular.svg" />
-          <span class="nav__link-title">Like</span>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <input type="checkbox" id="ham-menu" />
+  <label for="ham-menu">
+    <div class="hide-des">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+  </label>
+  <div class="full-page-green"></div>
+  <div class="ham-menu">
+    <ul class="centre-text bold-text">
+      <li @click="goToHome()">Home</li>
+      <li @click="goToProfil()">Profile</li>
+      <li @click="goToLike()">Like</li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: "HeaderPage",
   props: {},
+  methods: {
+    goToLike() {
+      this.$router.push("/like");
+    },
+    goToProfil() {
+      this.$router.push("/profil");
+    },
+    goToHome() {
+      this.$router.push("/home");
+    },
+  },
 };
 </script>
 
-<style scoped>
-.header {
-  width: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+<style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+body,
+html {
+  width: 100%;
+  font-size: 10px;
+  color: white;
+  font-weight: normal;
+  font-family: sans-serif;
+  background-color: #5c0000;
+}
+
+#ham-menu {
+  display: none;
+}
+label[for="ham-menu"] {
+  display: block;
   position: fixed;
+  top: 5px;
+  left: 5px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background-color: #5c0000;
+  border-radius: 15px;
+  border: 2px solid rgb(0, 0, 0);
+  cursor: pointer;
 }
-.nav__link-img {
+
+.ham-menu {
+  width: 50vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  transform: translate(-110%);
+  z-index: 998;
+  background-color: #5c0000;
+  transition: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ham-menu > ul {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  padding: 20px;
+  height: 50%;
+}
+.ham-menu > ul > li {
+  font-size: 5rem;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}
+
+#ham-menu:checked + label {
+  background-color: transparent;
+  border-color: rgb(0, 0, 0);
+}
+#ham-menu:checked ~ div.ham-menu {
+  transform: translate(0px);
+  visibility: visible;
+}
+.full-page-green {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.475);
+  z-index: 997;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  transition: 500ms;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#ham-menu:checked ~ div.full-page-green {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+[for="ham-menu"] > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  align-items: center;
+}
+.menu-line {
+  display: block;
+  width: 17px;
+  height: 2px;
+  margin: 10px 0 5px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  background-color: rgb(0, 0, 0);
+  transition: 500ms;
+  transform-origin: right center;
+}
+[for="ham-menu"] > div > span:nth-child(4),
+[for="ham-menu"] > div > span:nth-child(5),
+[for="ham-menu"] > div > span:nth-child(6) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  transform-origin: left center;
+}
+#ham-menu:checked + label span {
+  background-color: rgb(0, 0, 0);
+}
+#ham-menu:checked + label span:nth-child(2),
+#ham-menu:checked + label span:nth-child(5) {
+  transform: scale(0);
+}
+#ham-menu:checked + label span:nth-child(1) {
+  transform: translateY(17px) rotate(45deg);
+}
+#ham-menu:checked + label span:nth-child(4) {
+  transform: translateY(17px) rotate(-45deg);
+}
+#ham-menu:checked + label span:nth-child(3) {
+  transform: translateY(-17px) rotate(-45deg);
+}
+#ham-menu:checked + label span:nth-child(6) {
+  transform: translateY(-17px) rotate(45deg);
+}
+p {
+  display: inline;
+  font-size: 1.8rem;
+  line-height: 1.5em;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  font-family: "OpenSansCondensed-Light";
+}
+a {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  font-family: "OpenSansCondensed-Light";
+  display: inline;
+  font-weight: bold;
+  padding: 7px;
+  color: rgb(0, 0, 0);
+}
+a::after {
+  content: "\e806";
   display: inline-block;
-  width: 30px;
+  font-family: fontello;
+  padding: 5px;
+  font-size: 1.6rem;
+  transform: rotate(-90deg);
 }
-.nav__item {
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-  height: 50px;
-  border-radius: 9999px;
-  transition: 0.2s ease;
-  cursor: pointer;
-}
-
-.nav__item:hover {
-  background-color: rgba(29, 161, 242, 0.1);
+.text {
+  font-size: 2.5rem;
+  line-height: 1.5em;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
-.nav__item:hover .nav__link-title {
-  color: #4c0000;
-}
-.nav__link-title {
-  margin-right: 15px;
-  margin-left: 20px;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.3125;
-  overflow-wrap: break-word;
-  cursor: pointer;
-}
-.nav__button {
-  background-color: #4c0000;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
-  outline-style: none;
-  min-height: 49px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border-radius: 9999px;
-  width: 90%;
-  color: rgb(255, 255, 255);
-  font-weight: 700;
-  font-size: 15px;
-  border-color: rgba(0, 0, 0, 0);
-  transition: 0.2s ease-in-out;
-  margin-top: 15px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.nav__button:hover {
-  background-color: #4c0000;
-}
-.user {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.title {
+  font-size: 3rem;
+  line-height: 1.5em;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+  color: rgb(0, 0, 0);
   padding: 10px;
-  transition: 0.2s ease-in-out;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-.user:hover {
-  background-color: rgba(29, 161, 242, 0.1);
-  padding: 10px;
-  border-radius: 9999px;
-  cursor: pointer;
-}
-.user__img {
-  border-radius: 9999px;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.04);
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-}
-.user__username {
-  overflow-wrap: break-word;
-  color: rgb(15, 20, 25);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.3125;
-}
-.user__nickname {
-  color: rgb(91, 112, 131);
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.3125;
 }
 
-@media screen and (max-width: 1430px) {
-  .header {
-    width: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    position: fixed;
-  }
-  .nav__link-title {
-    display: none;
-  }
+li:hover {
+  transform: translateY(-20px);
 }
-
-@media screen and (max-width: 1109px) {
-  .profil {
-    width: 100%;
-    height: 10vh;
-    background-color: #4c0000;
-  }
-  .header {
-    display: none;
-  }
-  .nav__link-img {
-    display: none;
-  }
-  .nav__link-title {
-    display: none;
-  }
+.heading {
+  font-size: 6rem;
+  line-height: 1.5em;
+  word-spacing: 0.5em;
+  letter-spacing: 0.1em;
+  font-family: "Patua One";
+}
+.centre-text {
+  text-align: center;
+}
+.bold-text {
+  font-weight: bold;
 }
 </style>
