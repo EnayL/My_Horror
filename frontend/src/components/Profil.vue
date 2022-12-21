@@ -1,43 +1,30 @@
 <template>
     <div class="globalcontainer" style="flex-direction: row">
-      <div class="rightcontainer">
-        <div class="rightcontent">
-          <img class="image" src=" ../src/assets/img_wallpaper/anonymous.jpg" />
-          <h1 class="welcom">Profil effrayant...</h1>
-  
-          <form class="formlogin">
-            <div class="formlabel">
-              <label for="prenom">Kilian Sicot</label>
-              <h2> Fan de Slasher</h2>
-            </div>
-  
-            <div class="formlabel">
-              <label for="prenom">Informations</label>
-              <h2>Informations personnelles </h2>
-              
-            </div>
-
-            <div class="formlabel">
-            <label for="email">Adresse email</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+      <div class="container">
+        <div class="profile-box">
+          <img src="\src\assets\img_wallpaper\menuIC.png" class="menu-icon">
+          <img src="\src\assets\img_wallpaper\setting.png" class="setting-icon">
+          <img src="\src\assets\img_wallpaper\plusIcon.png" class="plus-icon">
+          <img src="\src\assets\img_wallpaper\anonymous.jpg" class="profile-pic">
+          <h3>NAME</h3>
+          <p>Description</p>
+          <div class="social-media">
+            <img src="\src\assets\img_wallpaper\twitter.png">
+            <img src="\src\assets\img_wallpaper\instagram.png">
+            <img src="\src\assets\img_wallpaper\tiktok.png">
           </div>
-  
-            
-          </form>
+          <button type="button">Mes livres</button>
+          <div class="profile-bottom">
+            <p>Description</p>
+          </div>
         </div>
-      </div>
-      <div class="leftcontainer">
-        <div class="image">
-          <img src="../assets/img_wallpaper/profil.jpg" />
-        </div>
+
       </div>
     </div>
   </template>
   
   <script>
-  export default { name: "RegisterPage" };
+  export default { name: "ProfilPage" };
   </script>
   
   <style lang="css">
@@ -55,127 +42,142 @@
     display: flex;
     flex-direction: row;
   }
-  
-  .leftcontainer {
-    width: 70%;
-    background-color: #000000d2;
-  }
-  
-  .image img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
+
+  .container {
+    width: 100%; 
+    height: 100vh;
+    background-image: url(../src/assets/img_wallpaper/login2.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100.5vh;
-  }
-  
-  .tease {
-    position: right;
-    width: 70%;
-    top: 40%;
-    font-family: "Titillium Web", sans-serif;
-    font-weight: bold;
-    text-align: center;
-  }
-  .tease h1 {
-    color: #a8a3a4;
-  }
-  
-  .rightcontainer {
-    background-color: #64110b;
-    width: 30%;
-    height: 101vh;
-  }
-  
-  .rightcontainer img {
-    position: relative;
-    margin-top: 10%;
-    border-radius: 50%;
-    width: 25%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: hsla(0, 0%, 0%, 0.87);
-  }
-  
-  .rightcontent {
     display: flex;
-    flex-direction: column;
-  
-    margin: 3%;
-    padding-bottom: 5%;
+    align-items: center;
+    justify-content: center;
+
   }
-  .welcom {
-    max-width: 70%;
-    margin-top: 5%;
-    font-size: 200%;
-    margin-left: auto;
-    margin-right: auto;
+
+  .profile-box {
+    background: #64110b;
+    height: 90%;
     text-align: center;
+    padding: 150px 150px;
+    color: white;
+    position: relative;
+    border-radius: 50px;
   }
-  h1 {
-    font-family: "Titillium Web", sans-serif;
-    color: black;
+
+  .menu-icon{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 40px;
+    top: 40px;
   }
-  
-  .formlogin {
-    font-family: "Titillium Web", sans-serif;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    color: black;
+
+  .menu-icon img{
+    width: 50px;
+    margin: 30px 5px;
+    cursor: pointer;
+    background-color: grey;
+    border-radius: 5px;
   }
-  
-  .formlabel {
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-    font-size: 108%;
+
+  .menu-icon:hover{
+    cursor: pointer;
+    transform: translateY(4px);
+    color: red;
   }
-  
-  .input {
-    font-family: "Titillium Web", sans-serif;
-    border: none;
+
+  .setting-icon{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 40px;
+    top: 90px;
+  }
+
+  .setting-icon:hover{
+    cursor: pointer;
     background: none;
-    width: 100%;
-    height: 3vh;
-    color: rgb(0, 0, 0);
-    font-size: 1em;
-    outline: none;
-    box-shadow: #000000 -1px 1px 0px 0px;
+    transform: translateY(4px);
+    color: red;
   }
-  
-  .forgot {
-    color: black;
-    margin-top: 2%;
-    float: right;
-    text-decoration: underline;
+
+  .plus-icon{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 40px;
+    top: 160px;
   }
-  
-  .forgot:hover {
-    color: #979394;
-  }
-  
-  .btn {
-    margin-top: 10%;
-    margin-left: 6%;
-  }
-  
-  .click {
-    border-radius: 3px;
-    padding: 5px 2em;
-    box-shadow: 0px 0px 0px 2px black;
-    text-decoration: none;
-    color: black;
-    outline: none;
+
+  .plus-icon:hover{
+    cursor: pointer;
     background: none;
-    border: none;
+    transform: translateY(4px);
+    color: red;
   }
-  .click:hover {
-    color: #979394;
-    box-shadow: 0px 0px 0px 2px #979394;
+
+  .profile-pic{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin-top: -70px;
+    background: black;
+    padding: 5px;
   }
+  
+  .profile-bottom{
+    background: red;
+    color: white;
+    padding: 60px 0;
+    height: 100px;
+    margin-right: -150px;
+    margin-left: -150px;
+    border-radius: 20px;
+    margin-top: -20px;
+  }
+
+  .profile-box button{
+    background: red;
+    color: white;
+    width: 200px;
+    height: 50px;
+    border-color: black;
+    box-shadow: 0 10px 15px #64110b;
+    padding: 10px 30 px 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .profile-box button:hover{
+    cursor: pointer;
+    background-color: black;
+    transform: translateY(4px);
+  }
+  .profile-box h3{
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  .social-media img{
+    width: 50px;
+    margin: 30px 5px;
+    cursor: pointer;
+    background-color: grey;
+    border-radius: 5px;
+  }
+
+  .social-media img:hover{
+    cursor: pointer;
+    background-color: red;
+    border: 2px;
+    border-color: red;
+    transform: translateY(4px);
+
+  }
+  
   </style>
   
