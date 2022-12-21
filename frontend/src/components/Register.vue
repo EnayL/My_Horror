@@ -9,21 +9,39 @@
           <div class="formlabel">
             <label for="email">Nom</label>
             <p class="forminput">
-              <input class="input" v-model="User.nom" type="string" id="nom" placeholder="." />
+              <input
+                class="input"
+                v-model="User.nom"
+                type="string"
+                id="nom"
+                placeholder="."
+              />
             </p>
           </div>
 
           <div class="formlabel">
             <label for="prenom">Prénom </label>
             <p class="forminput">
-              <input class="input" type="string" id="email" v-model="User.prenom" placeholder="." />
+              <input
+                class="input"
+                type="string"
+                id="email"
+                v-model="User.prenom"
+                placeholder="."
+              />
             </p>
           </div>
 
           <div class="formlabel">
             <label for="username">Pseudo</label>
             <p class="forminput">
-              <input class="input" v-model="User.username" type="string" id="email" placeholder="." />
+              <input
+                class="input"
+                v-model="User.username"
+                type="string"
+                id="email"
+                placeholder="."
+              />
             </p>
           </div>
 
@@ -43,22 +61,38 @@
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input class="input" v-model="User.password" type="string" id="password" placeholder="." />
+              <input
+                class="input"
+                v-model="User.password"
+                type="string"
+                id="password"
+                placeholder="."
+              />
             </p>
           </div>
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="." />
+              <input
+                class="input"
+                type="string"
+                id="password"
+                placeholder="."
+              />
             </p>
             <a href="" class="forgot">Déjà un compte?</a>
           </div>
-          <p id="error"></p>
-          
         </form>
-        <div class="btn">
-            <button id="button" type="submit" @click="addToDb" >Register</button>
-          </div>
+        <div class="btn2">
+          <button
+            class="click"
+            id="button"
+            type="submit"
+            @click="addToDb, goToLogin()"
+          >
+            Register
+          </button>
+        </div>
       </div>
     </div>
     <div class="leftcontainer">
@@ -70,47 +104,41 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "RegisterPage",
-   data() {
-    return{
-      User : { nom:"", prenom:"", username:"", email:"", password:"", confirm:""}
-    }
-  }, methods: {
-    addToDb(){      
+  data() {
+    return {
+      User: { nom: "", prenom: "", username: "", email: "", password: "" },
+    };
+  },
+  methods: {
+    addToDb() {
       let newUser = {
         nom: this.User.nom,
         prenom: this.User.prenom,
         username: this.User.username,
         email: this.User.email,
-        password: this.User.password
-      }
-      let confirm = this.User.confirm;
-      let password = this.User.password;
+        password: this.User.password,
+      };
 
-      
       let jsonData = JSON.stringify(newUser);
 
       console.log(jsonData);
-      if(confirm == password){
-        axios.post('http://localhost:3000/user/signup', newUser)
+      axios
+        .post("http://localhost:3000/user/signup", newUser)
         .then((response) => {
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
-      } else {
-        const message = "les mots de passe ne correspondent pas t'es nul frr concentre toi et ecrit mieux stp";
-        const pop = document.getElementById("error");
-        if(pop != undefined){
-          pop.innerHTML = message;
-        }
-      }
-    }      
-  }
+    },
+    goToLogin() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -232,8 +260,8 @@ h1 {
   color: #979394;
 }
 
-.btn {
-  margin-top: 10%;
+.btn2 {
+  margin-top: 2%;
   margin-left: 6%;
 }
 

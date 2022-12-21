@@ -52,13 +52,17 @@
           </label>
           <input style="display: none" id="file-input" type="file" />
         </div>
-        
+        <button
+          class="create-post__create"
+          style="cursor: pointer"
+          type="submit"
+          @click="addToAPI"
+        >
+          Poster !
+        </button>
       </div>
     </div>
   </form>
-        <button class="create-post__create" style="cursor: pointer" type="submit" @click="addToAPI">
-          Poster !
-        </button>
 </template>
 
 <script>
@@ -67,32 +71,22 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
-      Post: { titre: "", contenu: "", genre: "", owner:"" },
+      Post: { titre: "", contenu: "", genre: "" },
     };
   },
   methods: {
     addToAPI() {
-      const owner = localStorage.getItem("user");
-
       let newPost = {
         titre: this.Post.titre,
         contenu: this.Post.contenu,
         genre: this.Post.genre,
-        owner: owner
       };
       let jsonData = JSON.stringify(newPost);
-      const token = localStorage.getItem("token")
 
-     
       console.log(jsonData);
       axios
-        .post("http://localhost:3000/posts/add", newPost,{
-          headers:{
-           "Authorization":`Bearer ${token}`
-          }
-        })
+        .post("http://localhost:3000/posts/add", newPost)
         .then((response) => {
-          
           console.log(response);
         })
         .catch((error) => {

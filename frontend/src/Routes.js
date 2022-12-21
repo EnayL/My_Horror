@@ -8,13 +8,14 @@ import Header from "../src/components/LayoutHeader.vue";
 import Search from "../src/components/Search.vue";
 import Filtre from "../src/components/Filtre.vue";
 import UpdatePost from "../src/components/UpdatePost.vue";
+import Profil from "../src/components/Profil.vue";
 
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
-  { path: "/login", component: Login, name: "Login" },
   { path: "/register", component: Register, name: "Register" },
   { path: "/home", component: Home, name: "HomePage" },
+  { path: "/profil", component: Profil, name: "Profil" },
   { path: "/post", component: PostId, name: "PostIdPage" },
   { path: "/header", component: Header, name: "HeaderPage" },
   { path: "/search", component: Search, name: "SearchBar" },

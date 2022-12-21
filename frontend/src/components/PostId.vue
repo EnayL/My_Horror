@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import CreatePost from "../components/LayoutCreatePost.vue";
 import Post from "../components/LayoutPost.vue";
 export default {

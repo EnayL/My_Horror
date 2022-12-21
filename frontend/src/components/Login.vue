@@ -16,26 +16,25 @@
 
         <form class="formlogin">
           <div class="formlabel">
-            <label for="email">Username</label>
-            <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.username" />
-            </p>
+            <label for="email">Adresse email</label>
+            <div class="forminput">
+              <input class="input" type="text" id="email" required />
+            </div>
           </div>
 
           <div class="formlabel">
             <label for="email">Mot de passe</label>
-            <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.password" />
-            </p>
+            <div class="forminput">
+              <input class="input" type="text" id="email" required />
+            </div>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          
-        </form>
-        <div class="btn">
-            <button type="submit" @click="login" class="click">
+          <div class="btn">
+            <button type="submit" @click="login, goToHome()" class="click">
               Login
             </button>
           </div>
+        </form>
       </div>
     </div>
   </div>
@@ -46,19 +45,15 @@ import axios from "axios";
 
 export default {
   name: "LoginPage",
-  // goToHome() {
-  //   this.$router.push("/home");
-  // },
   data() {
     return {
-      User: { username: "", password: "" },
+      User: { email: "", password: "" },
     };
   },
   methods: {
-    
     login() {
       let connect = {
-        username: this.User.username,
+        email: this.User.email,
         password: this.User.password,
       };
 
@@ -68,15 +63,16 @@ export default {
       axios
         .post("http://localhost:3000/user/login", connect)
         .then((response) => {
-          localStorage.setItem("token",response.data.token);
-          localStorage.setItem("user",response.data.username);
-         
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
         });
     },
-  }
+  },
+  goToHome() {
+    this.$router.push("/home");
+  },
 };
 </script>
 

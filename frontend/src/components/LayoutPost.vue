@@ -10,6 +10,7 @@
 
         <div class="post-main__bottom">
           <img class="post-main__like" src="../assets/icon/heart-regular.svg" />
+          <span class="post-main__like-count ml-2">0</span>
         </div>
     </div>
   </div>
@@ -31,13 +32,7 @@ export default {
 
     async getPosts() {
       //récupération des données
-      const token = localStorage.getItem("token")
-      const res = await axios.get("http://localhost:3000/posts/",{
-        
-        headers:{
-           "Authorization":`Bearer ${token}`
-        }
-      });
+      const res = await axios.get("http://localhost:3000/posts/");
       const json = JSON.stringify(res);
       const jsonData = JSON.parse(json);
       var mainContainer = document.getElementById("containerpost");
@@ -53,10 +48,6 @@ export default {
         var div2 = document.createElement("p");
         div.class = "contenu";
         div2.innerHTML = contenu;
-        var div3 = document.createElement("h3");
-        div3.class = "owner";
-        div3.innerHTML = owner;
-        mainContainer.appendChild(div3);
         mainContainer.appendChild(div);
         mainContainer.appendChild(div2);
       }
