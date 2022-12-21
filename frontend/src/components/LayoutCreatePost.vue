@@ -168,6 +168,7 @@ export default {
   transition: 0.2s ease-in-out;
   cursor: pointer;
   margin-right: 1%;
+  margin-top: 10px;
 }
 .create-post__create:hover {
   background-color: rgb(82, 0, 0);
@@ -183,10 +184,10 @@ export default {
 .p1 input {
   border: none;
   background-color: rgba(82, 0, 0, 0.51);
+  padding-left: 5px;
   width: 100%;
   height: 40px;
   color: white;
-  padding-bottom: 3%;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
@@ -202,21 +203,19 @@ export default {
   background-color: rgba(82, 0, 0, 0.51);
   width: 100%;
   color: white;
-  padding-bottom: 5%;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 4%;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
 .p2 textarea::placeholder {
-  padding: 2%;
   top: 0;
   color: white;
   font-size: 15px;
 }
 
 .p1 input::placeholder {
-  padding-top: 2%;
-  padding-left: 2%;
-  top: 0;
   color: white;
   font-size: 15px;
 }
@@ -230,18 +229,16 @@ export default {
 
 .p3 input {
   margin-left: 5%;
+  padding-left: 7px;
   border: none;
   background-color: rgba(82, 0, 0, 0.51);
   width: 30%;
   height: 40px;
   color: white;
-  padding-bottom: 3%;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
 .p3 input::placeholder {
-  padding-top: 5%;
-  padding-left: 5%;
   top: 0;
   color: white;
   font-size: 15px;

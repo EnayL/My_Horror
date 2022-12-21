@@ -7,6 +7,7 @@ import PostId from "../src/components/PostId.vue";
 import Header from "../src/components/LayoutHeader.vue";
 import Search from "../src/components/Search.vue";
 import Filtre from "../src/components/Filtre.vue";
+import UpdatePost from "../src/components/UpdatePost.vue";
 
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   { path: "/header", component: Header, name: "HeaderPage" },
   { path: "/search", component: Search, name: "SearchBar" },
   { path: "/pouet", component: Filtre, name: "FiltredSearch" },
+  { path: "/updatePost", component: UpdatePost, name: "UpdatePost" },
 
 ];
 

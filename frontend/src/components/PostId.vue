@@ -38,7 +38,7 @@ export default {
   background-color: #5c0000;
 }
 .main-form {
-  margin-top: 60px;
+  margin-top: 20px;
   padding: 15px;
   border-bottom: 1px solid rgb(0, 0, 0);
 }

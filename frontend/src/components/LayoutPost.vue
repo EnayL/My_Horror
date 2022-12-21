@@ -4,22 +4,25 @@
       <div class="post__avatar">
         <img src="../assets/icon/logo.webp" alt="" class="post-avatar__img" />
       </div>
+      <img src="../assets/icon/modifier.png" @click="goModifyPost()" class="modifyPostIcon"/>
     
         <div id="containerpost"></div>
 
         <div class="post-main__bottom">
           <img class="post-main__like" src="../assets/icon/heart-regular.svg" />
         </div>
-      </div>
     </div>
+  </div>
   
 </template>
 
 <script>
 import axios from "axios";
-
 export default {
   methods: {
+    goModifyPost() {
+      this.$router.push("/updatePost");
+    },
     async getData() {
       const res = await fetch("http://localhost:3000/posts");
       const finalRes = await res.json("titre");
@@ -67,19 +70,23 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap");
 .bodypost {
   font-family: "Titillium Web", sans-serif;
-  padding: 0% 10%;
+  padding: 0% 0%;
   margin: 0%;
   height: auto;
   background-position: 84% 10%;
   width: 100%;
 }
 .post {
+  position: relative;
   display: flex;
   padding: 15px;
+  margin-bottom: 0px;
   border-top: 1px solid #000000;
 }
 .post__avatar {
@@ -94,7 +101,13 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
 }
-
+.modifyPostIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: fit-content;
+  width: 30px;
+}
 .post-main {
   display: flex;
   flex-direction: column;
