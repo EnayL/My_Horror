@@ -82,17 +82,9 @@
             </p>
             <a href="" class="forgot">Déjà un compte?</a>
           </div>
+          <p id="error"></p>
         </form>
-        <div class="btn2">
-          <button
-            class="click"
-            id="button"
-            type="submit"
-            @click="addToDb, goToLogin()"
-          >
-            Register
-          </button>
-        </div>
+        <button id="button" type="submit" @click="addToDb">Register</button>
       </div>
     </div>
     <div class="leftcontainer">
@@ -186,7 +178,7 @@ export default {
 }
 
 .rightcontainer {
-  background-color: #64110b;
+  background-color: #000000;
   width: 30%;
   height: 101vh;
 }
@@ -199,6 +191,17 @@ export default {
   margin-left: auto;
   margin-right: auto;
   background-color: hsla(0, 0%, 0%, 0.87);
+}
+
+#button {
+  background-color: #790e06;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: #790e06;
+  border-radius: 20em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .rightcontent {
@@ -234,7 +237,8 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  font-size: 108%;
+  font-size: 150%;
+  color: #790e06;
 }
 
 .input {
@@ -243,14 +247,14 @@ h1 {
   background: none;
   width: 100%;
   height: 3vh;
-  color: rgb(0, 0, 0);
+  color: #790e06;
   font-size: 1em;
   outline: none;
-  box-shadow: #000000 -1px 1px 0px 0px;
+  box-shadow: #790e06 -1px 1px 0px 0px;
 }
 
 .forgot {
-  color: black;
+  color: #790e06;
   margin-top: 2%;
   float: right;
   text-decoration: underline;
@@ -260,12 +264,11 @@ h1 {
   color: #979394;
 }
 
-.btn2 {
+<<<<<<< HEAD .btn2 {
   margin-top: 2%;
   margin-left: 6%;
 }
-
-.click {
+=======>>>>>>>refs/remotes/origin/tests_front .click {
   border-radius: 3px;
   padding: 5px 2em;
   box-shadow: 0px 0px 0px 2px black;

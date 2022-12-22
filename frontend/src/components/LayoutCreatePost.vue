@@ -1,8 +1,8 @@
 <template>
   <!-- multiple select -->
-  <form id="demo">
+  <form>
     <div class="create-post">
-      <div class="create-post__main">
+      <div>
         <div class="create-post__avatar">
           <img
             src="../assets/icon/logo.webp"
@@ -63,6 +63,14 @@
       </div>
     </div>
   </form>
+  <button
+    class="button"
+    style="cursor: pointer"
+    type="submit"
+    @click="addToAPI"
+  >
+    Poster !
+  </button>
 </template>
 
 <script>
@@ -99,12 +107,8 @@ export default {
 
 <style scoped>
 .create-post {
-  background-color: #6d0000;
-}
-
-.create-post__main {
-  display: flex;
-  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15px;
 }
 .create-post__avatar-img {
   height: 50px;
@@ -147,24 +151,22 @@ export default {
   width: 100%;
   padding: 10px;
 }
-.create-post__create {
-  background-color: rgb(141, 0, 0);
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
-  outline-style: none;
-  min-height: 39px;
-  padding-left: 30px;
-  padding-right: 30px;
+.button {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  min-height: 40px;
+  margin-top: 25px;
+  margin-left: 45%;
+  width: 10%;
   border-radius: 9999px;
-  color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 15px;
-  border-color: rgba(0, 0, 0, 0);
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  margin-right: 1%;
 }
-.create-post__create:hover {
-  background-color: rgb(82, 0, 0);
+.button:hover {
+  background-color: rgba(250, 250, 250, 0.3);
 }
 
 input {
@@ -172,48 +174,48 @@ input {
 }
 
 .p1 {
-  margin-top: 1%;
-  width: 60%;
+  margin: 1%;
+  width: 100%;
   height: 50px;
   border: none;
 }
 
 .p1 input {
   border: none;
-  background-color: rgba(82, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 40px;
   color: white;
-  padding-bottom: 3%;
+  padding: 3%;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
+.p1 input::placeholder {
+  padding-top: 2%;
+  padding-left: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
 .p2 {
-  margin-top: 1%;
-  width: 75%;
+  margin: 1%;
+  width: 95%;
   height: 50px;
   border: none;
 }
 
 .p2 textarea {
   border: none;
-  background-color: rgba(82, 0, 0, 0.51);
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
   color: white;
-  padding-bottom: 5%;
+  padding: 2%;
+  resize: none;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
 .p2 textarea::placeholder {
-  padding: 2%;
-  top: 0;
-  color: white;
-  font-size: 15px;
-}
-
-.p1 input::placeholder {
-  padding-top: 2%;
-  padding-left: 2%;
   top: 0;
   color: white;
   font-size: 15px;
@@ -227,13 +229,14 @@ input {
 }
 
 .p3 input {
-  margin-left: 5%;
+  margin-right: 10%;
   border: none;
-  background-color: rgba(82, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 30%;
   height: 40px;
   color: white;
-  padding-bottom: 3%;
+  padding: 3%;
+  float: right;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 

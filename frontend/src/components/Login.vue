@@ -135,7 +135,6 @@ export default {
 .rightcontent {
   display: flex;
   flex-direction: column;
-
   margin: 3%;
   padding-bottom: 5%;
 }
