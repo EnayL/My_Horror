@@ -29,12 +29,12 @@
             </div>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          <div class="btn">
-            <button type="submit" @click="login, goToHome()" class="click">
-              Login
-            </button>
-          </div>
         </form>
+        <div class="btn">
+          <button type="submit" @click="login, goToHome()" class="click">
+            Login
+          </button>
+        </div>
       </div>
     </div>
   </div>
