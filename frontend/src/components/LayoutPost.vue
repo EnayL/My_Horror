@@ -4,16 +4,15 @@
       <div class="post__avatar">
         <img src="../assets/icon/logo.webp" alt="" class="post-avatar__img" />
       </div>
-    
-        <div id="containerpost"></div>
 
-        <div class="post-main__bottom">
-          <img class="post-main__like" src="../assets/icon/heart-regular.svg" />
-          <span class="post-main__like-count ml-2">0</span>
-        </div>
+      <div id="containerpost"></div>
+
+      <div class="post-main__bottom">
+        <img class="post-main__like" src="../assets/icon/heart-regular.svg" />
+        <span class="post-main__like-count ml-2">0</span>
       </div>
     </div>
-  
+  </div>
 </template>
 
 <script>

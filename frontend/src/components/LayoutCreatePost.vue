@@ -167,6 +167,10 @@ export default {
   background-color: rgb(82, 0, 0);
 }
 
+input {
+  font-size: 1em;
+}
+
 .p1 {
   margin-top: 1%;
   width: 60%;
