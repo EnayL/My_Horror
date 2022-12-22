@@ -51,7 +51,7 @@ html {
   color: white;
   font-weight: normal;
   font-family: sans-serif;
-  background-color: #5c0000;
+  background-color: #000;
 }
 
 #ham-menu {
