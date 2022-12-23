@@ -30,11 +30,10 @@
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
         </form>
-        <div class="btn">
-          <button type="submit" @click="login, goToHome()" class="click">
-            Login
-          </button>
-        </div>
+
+        <button style="" id="button" type="submit" @click="login" class="click">
+          Login
+        </button>
       </div>
     </div>
   </div>
@@ -51,6 +50,9 @@ export default {
     };
   },
   methods: {
+    goToHome() {
+      this.$router.push("/home");
+    },
     login() {
       let connect = {
         email: this.User.email,
@@ -69,9 +71,6 @@ export default {
           console.log(error);
         });
     },
-  },
-  goToHome() {
-    this.$router.push("/home");
   },
 };
 </script>
@@ -186,15 +185,6 @@ h1 {
   text-decoration: underline;
 }
 
-.forgot:hover {
-  color: #979394;
-}
-
-.btn {
-  margin-top: 10%;
-  margin-left: 6%;
-}
-
 .click {
   border-radius: 3px;
   padding: 5px 2em;
@@ -208,5 +198,16 @@ h1 {
 .click:hover {
   color: #979394;
   box-shadow: 0px 0px 0px 2px #979394;
+}
+
+#button {
+  background-color: #790e06;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: #790e06;
+  border-radius: 20em;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

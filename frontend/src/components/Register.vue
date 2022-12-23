@@ -122,13 +122,11 @@ export default {
         .post("http://localhost:3000/user/signup", newUser)
         .then((response) => {
           console.log(response);
+          return this.$router.push("/login");
         })
         .catch((error) => {
           console.log(error);
         });
-    },
-    goToLogin() {
-      this.$router.push("/login");
     },
   },
 };
@@ -264,11 +262,7 @@ h1 {
   color: #979394;
 }
 
-<<<<<<< HEAD .btn2 {
-  margin-top: 2%;
-  margin-left: 6%;
-}
-=======>>>>>>>refs/remotes/origin/tests_front .click {
+.click {
   border-radius: 3px;
   padding: 5px 2em;
   box-shadow: 0px 0px 0px 2px black;
