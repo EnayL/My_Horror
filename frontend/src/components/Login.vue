@@ -50,9 +50,6 @@ export default {
     };
   },
   methods: {
-    goToHome() {
-      this.$router.push("/home");
-    },
     login() {
       let connect = {
         email: this.User.email,
@@ -66,6 +63,7 @@ export default {
         .post("http://localhost:3000/user/login", connect)
         .then((response) => {
           console.log(response);
+          return this.$router.push("/home");
         })
         .catch((error) => {
           console.log(error);
