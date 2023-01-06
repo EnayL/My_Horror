@@ -29,12 +29,11 @@
             </div>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          <div class="btn">
-            <button type="submit" @click="login, goToHome()" class="click">
-              Login
-            </button>
-          </div>
         </form>
+
+        <button style="" id="button" type="submit" @click="login" class="click">
+          Login
+        </button>
       </div>
     </div>
   </div>
@@ -64,14 +63,12 @@ export default {
         .post("http://localhost:3000/user/login", connect)
         .then((response) => {
           console.log(response);
+          return this.$router.push("/home");
         })
         .catch((error) => {
           console.log(error);
         });
     },
-  },
-  goToHome() {
-    this.$router.push("/home");
   },
 };
 </script>
@@ -135,7 +132,6 @@ export default {
 .rightcontent {
   display: flex;
   flex-direction: column;
-
   margin: 3%;
   padding-bottom: 5%;
 }
@@ -187,15 +183,6 @@ h1 {
   text-decoration: underline;
 }
 
-.forgot:hover {
-  color: #979394;
-}
-
-.btn {
-  margin-top: 10%;
-  margin-left: 6%;
-}
-
 .click {
   border-radius: 3px;
   padding: 5px 2em;
@@ -209,5 +196,16 @@ h1 {
 .click:hover {
   color: #979394;
   box-shadow: 0px 0px 0px 2px #979394;
+}
+
+#button {
+  background-color: #790e06;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: #790e06;
+  border-radius: 20em;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -1,4 +1,5 @@
-<template>
+<template class="body">
+  <div></div>
   <div class="bodyhome">
     <main class="main">
       <post></post>
@@ -13,6 +14,7 @@
 <script>
 import CreatePost from "../components/LayoutCreatePost.vue";
 import Post from "../components/LayoutPost.vue";
+
 export default {
   name: "PostIdPage",
   components: { CreatePost, Post },
@@ -25,30 +27,36 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .bodyhome {
-  background-image: url("../assets/img_wallpaper/de905de2a7d6905f5572a193c1352aa2.jpg");
+  background-image: url("../assets/back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
 }
+
 .main {
-  max-width: 1000px;
-  width: 100%;
-  border: 1px solid rgb(0, 0, 0);
+  padding: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 60%;
+  min-height: 100%;
+  max-height: fit-content;
   margin-left: auto;
   margin-right: auto;
-  background-color: #5c0000;
+  overflow: hidden;
+  overflow: auto;
 }
+
 .main-form {
   margin-top: 20px;
   padding: 15px;
   border-bottom: 1px solid rgb(0, 0, 0);
 }
-.main-line {
-  height: 10px;
-  background-color: rgb(0, 0, 0);
-}
+
 .main-line2 {
   height: 5px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(139, 139, 139);
   width: 100%;
 }
 </style>
