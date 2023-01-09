@@ -2,9 +2,10 @@
     <div class="globalcontainer" style="flex-direction: row">
       <div class="container">
         <div class="profile-box">
-          <img src="\src\assets\img_wallpaper\menuIC.png" class="menu-icon">
-          <img src="\src\assets\img_wallpaper\setting.png" class="setting-icon">
-          <img src="\src\assets\img_wallpaper\plusIcon.png" class="plus-icon">
+            <ul class="centre-text bold-text">
+              <li @click="goToEdit()">Edit</li>
+            </ul>
+            
           <img src="\src\assets\img_wallpaper\anonymous.jpg" class="profile-pic">
           <h3>NAME</h3>
           <p>Description</p>
@@ -13,19 +14,29 @@
             <img src="\src\assets\img_wallpaper\instagram.png">
             <img src="\src\assets\img_wallpaper\tiktok.png">
           </div>
-          <button type="button">Mes livres</button>
+          <button type="button">Mes favoris</button>
           <div class="profile-bottom">
-            <p>Description</p>
+            <p>Mes favoris</p>
           </div>
         </div>
-
       </div>
     </div>
   </template>
   
+  
   <script>
-  export default { name: "ProfilPage" };
-  </script>
+export default {
+  name: "Profil",
+  props: {},
+  methods: {
+    goToEdit() {
+      this.$router.push("/profil/edit");
+    },
+  },
+};
+</script>
+
+}
   
   <style lang="css">
   @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400&display=swap");
@@ -52,8 +63,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
+
+  label[for="profile-box"] {
+  display: block;
+  top: 5px;
+  left: 5px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background-color: #5c0000;
+  border-radius: 15px;
+  border: 2px solid rgb(0, 0, 0);
+  cursor: pointer;
+}
 
   .profile-box {
     background: #64110b;
@@ -65,9 +88,40 @@
     border-radius: 50px;
   }
 
+  .profile-box > ul {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: start;
+  margin-top: -20px;
+  padding: 20px;
+  height: 5%;
+}
+
+.profile-box > ul > li {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  color: black;
+}
+
+#profile-.profile-box + label {
+  background-color: transparent;
+  border-color: rgb(0, 0, 0);
+}
+#profile-box:checked ~ div.profile-box {
+  transform: translate(0px);
+  visibility: visible;
+}
+
   .menu-icon{
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 40px;
     top: 40px;
@@ -88,8 +142,8 @@
   }
 
   .setting-icon{
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 40px;
     top: 90px;
@@ -102,20 +156,7 @@
     color: red;
   }
 
-  .plus-icon{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    left: 40px;
-    top: 160px;
-  }
-
-  .plus-icon:hover{
-    cursor: pointer;
-    background: none;
-    transform: translateY(4px);
-    color: red;
-  }
+  
 
   .profile-pic{
     width: 125px;
