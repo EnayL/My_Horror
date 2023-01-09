@@ -8,7 +8,6 @@ import Header from "../src/components/LayoutHeader.vue";
 import Profil from "../src/components/Profil.vue";
 import Edit from "./components/Edit.vue"; 
 
-
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
   { path: "/login", component: Login, name: "Login" },
