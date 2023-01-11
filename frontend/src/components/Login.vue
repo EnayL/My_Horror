@@ -16,25 +16,26 @@
 
         <form class="formlogin">
           <div class="formlabel">
-            <label for="email">Adresse email</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <label for="email">Username</label>
+            <p class="forminput">
+              <input class="input" type="text" id="email" v-model="User.username" />
+            </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Mot de passe</label>
-            <div class="forminput">
-              <input class="input" type="text" id="email" required />
-            </div>
+            <p class="forminput">
+              <input class="input" type="text" id="email" v-model="User.password" />
+            </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          <div class="btn">
-            <button type="submit" @click="login, goToHome()" class="click">
+          
+        </form>
+        <div class="btn">
+            <button type="submit" @click="login" class="click">
               Login
             </button>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -45,15 +46,17 @@ import axios from "axios";
 
 export default {
   name: "LoginPage",
+  
   data() {
     return {
-      User: { email: "", password: "" },
+      User: { username: "", password: "" },
     };
   },
   methods: {
+    
     login() {
       let connect = {
-        email: this.User.email,
+        username: this.User.username,
         password: this.User.password,
       };
 
@@ -63,16 +66,18 @@ export default {
       axios
         .post("http://localhost:3000/user/login", connect)
         .then((response) => {
-          console.log(response);
+          localStorage.setItem("token",response.data.token);
+          localStorage.setItem("user",response.data.username);
+         
         })
         .catch((error) => {
           console.log(error);
         });
     },
-  },
-  goToHome() {
-    this.$router.push("/home");
-  },
+  // goToHome() {
+  //   this.$router.push("/home");
+  // },
+  }
 };
 </script>
 
@@ -87,10 +92,10 @@ export default {
   padding: 0;
 }
 
-.globalcontainer {
+/* .globalcontainer {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .leftcontainer {
   width: 70%;
@@ -135,7 +140,6 @@ export default {
 .rightcontent {
   display: flex;
   flex-direction: column;
-
   margin: 3%;
   padding-bottom: 5%;
 }

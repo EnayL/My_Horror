@@ -6,19 +6,6 @@
       <input type="file" name="anonymous" id="file" accept="image/*">
       <label for="file">Edit pic</label>
       <form class="formEdit">
-        <div class="formlabel1">
-            <label for="email">Nom</label>
-            <p class="forminput1">
-              <input class="input" v-model="User.nom" type="string" id="nom" placeholder="." />
-            </p>
-          </div>
-
-          <div class="formlabel1">
-            <label for="prenom">Prénom </label>
-            <p class="forminput1">
-              <input class="input" type="string" id="email" v-model="User.prenom" placeholder="." />
-            </p>
-          </div>
 
           <div class="formlabel1">
             <label for="username">Pseudo</label>
@@ -72,11 +59,30 @@ export default {
   name: "Edit",
   data() {
     return{
-      User : { nom:"", prenom:"", username:"", email:"", password:"", confirm:""}
+      User : {username:"", email:"", password:""}
     }
   },
   props: {},
   methods: {
+    addToDb() {
+      let newUser = {
+        username: this.User.username,
+        email: this.User.email,
+        password: this.User.password,
+      };
+
+      let jsonData = JSON.stringify(newUser);
+
+      console.log(jsonData);
+      axios
+        .post("http://localhost:3000/user/signup", newUser)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     goToProfil() {
       this.$router.push("/profil");
     },
