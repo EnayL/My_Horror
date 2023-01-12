@@ -1,5 +1,5 @@
 <template>
-    <a href="./hom" style="color: white;"> GO BACK HOME</a>
+    <a href="./home" style="color: white;"> GO BACK HOME</a>
     <div id="containerpost">
     </div>  
 </template>
@@ -38,7 +38,7 @@ export default {
         var container = document.createElement("div");
 
         var pp = document.createElement("img"); // pp
-        pp.src = "../assets/icon/heart-regular.svg";
+        pp.src = "../assets/img_wallpaper/heart.png";
 
         var div = document.createElement("div"); // div de la pp
 
@@ -60,18 +60,27 @@ export default {
         supp.id = "supprimer";
         supp.innerHTML = "X";
 
-        container.setAttribute(
-          "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
-        );
-        h1.setAttribute(
-          "style",
-          "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
-        );
-        supp.setAttribute(
-          "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        );
+        var modif = document.createElement("button"); // creation boutton supprimer
+        modif.id = "supprimer";
+        modif.innerHTML = "Modifier";
+
+        // container.setAttribute(
+        //   "style",
+        //   "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
+        // );
+        // h1.setAttribute(
+        //   "style",
+        //   "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
+        // );
+        // supp.setAttribute(
+        //   "style",
+        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+        // );
+
+        // modif.setAttribute(
+        //   "style",
+        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+        // );
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
         supp.addEventListener("click", function handleClick() {
@@ -87,7 +96,7 @@ export default {
                   Authorization: `Bearer ${token}`,
                 },
               })
-              .then((res) => {
+              .then(() => {
                 window.location.reload(true);
 
                 console.log(titre);
@@ -95,6 +104,17 @@ export default {
               .catch((err) => {
                 console.log(err);
               });
+          }
+        });
+
+        modif.addEventListener("click", function handleClick() {
+          if (owner != user) {
+            alert(
+              "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
+            );
+          } else {
+            this.$router.push("/updatePost");
+
           }
         
         });
@@ -115,6 +135,11 @@ export default {
           "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
         );
 
+        modif.setAttribute(
+          "style",
+          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+        );
+
         div2.setAttribute("style", "margin: 10px;");
 
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
@@ -125,6 +150,8 @@ export default {
         container.appendChild(h1);
         div.appendChild(pp);
         div.appendChild(supp);
+        div.appendChild(modif);
+
         container.appendChild(div2);
         container.appendChild(div3);
       }

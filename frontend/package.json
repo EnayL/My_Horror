@@ -13,7 +13,6 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@fortawesome/sharp-solid-svg-icons": "^6.2.0",
     "axios": "^1.2.1",
     "vue": "^3.2.37",
     "vue-axios": "^3.5.2",

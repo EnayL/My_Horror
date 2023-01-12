@@ -47,7 +47,7 @@
             </p>
           </div>
           <div class="formlabel">
-            <label for="password">Mot de passe</label>
+            <label for="password">Confirmer le mot de passe</label>
             <p class="forminput">
               <input class="input" type="string" v-model="User.confirm" id="password" placeholder="confirm your Password"/>
             </p>
