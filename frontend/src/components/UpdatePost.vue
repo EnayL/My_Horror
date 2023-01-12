@@ -18,12 +18,14 @@
             <p class="p1">
               <input
                 type="string"
+                v-model="Post.titre"
                 placeholder="donc la y'aurai le titre a update"
               />
             </p>
             <p class="p3">
               <input
                 type="string"
+                v-model="Post.genre"
                 placeholder="Le genre a update"
               />
             </p>
@@ -31,6 +33,7 @@
           <p class="p2">
             <textarea
               type="string"
+              v-model="Post.contenu"
               placeholder="le contenu a update"
             ></textarea>
           </p>
@@ -52,7 +55,7 @@
       </div>
     </div>
   </form>
-  <button class="button" style="cursor: pointer" type="submit" @click="addToAPI">
+  <button class="button" style="cursor: pointer" type="submit" @click="addToDb">
     Modifier !
   </button>
 </template>
@@ -63,28 +66,31 @@ import axios from 'axios';
         name: "UpdatePost",
         data() {
     return {
-      User: { photo:"", username: "", bio: "", password: "" },
+      Post: { titre:"", contenu: "", genre: "", owner: ""},
     };
   },
   props: {},
   methods: {
     addToDb() {
-      let newPost = {
-        photo: this.Post.title,
-        username: this.Post.content,
-        bio: this.Post.genre,
-      };
-      const username = localStorage.getItem("user");
+      const user = localStorage.getItem("user");
 
-      let jsonData = JSON.stringify(newUser);
+      let newPost = {
+        titre: this.Post.titre,
+        contenu: this.Post.contenu,
+        genre: this.Post.genre,
+        owner: user,
+      };
+      const titre = localStorage.getItem("titre");
+
+      let jsonData = JSON.stringify(newPost);
 
       console.log(jsonData);
       axios
-        .put(`http://localhost:3000/user/update/?title=${username}`, newUser)
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("user",newUser.username);
-          this.$router.push("/profil");
+        .put(`http://localhost:3000/posts/update/?titre=${titre}`, newPost)
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("titre", "");
+          this.$router.push("/post");
 
         })
         .catch((error) => {

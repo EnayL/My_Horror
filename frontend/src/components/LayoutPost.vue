@@ -10,10 +10,8 @@ import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
   methods: {
-    async getData() {
-      const res = await fetch("http://localhost:3000/posts");
-      const finalRes = await res.json("titre");
-      console.log(finalRes);
+    goToHome() {
+      this.$router.push("/updatePost");
     },
 
     async getPosts() {
@@ -32,8 +30,10 @@ export default {
       for (let i = 0; i < jsonData.data.length; i++) {
         const publi = jsonData.data[i];
         const titre = publi.titre;
-        const contenu = publi.contenu;
+        let contenu = publi.contenu;
         const owner = publi.owner;
+
+        contenu = contenu.replace(/\n/g, "<br>");
 
         var container = document.createElement("div");
 
@@ -60,27 +60,12 @@ export default {
         supp.id = "supprimer";
         supp.innerHTML = "X";
 
-        var modif = document.createElement("button"); // creation boutton supprimer
-        modif.id = "supprimer";
+        var modif = document.createElement("a"); // creation boutton supprimer
+        modif.id = "modif";
         modif.innerHTML = "Modifier";
 
-        // container.setAttribute(
-        //   "style",
-        //   "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
-        // );
-        // h1.setAttribute(
-        //   "style",
-        //   "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
-        // );
-        // supp.setAttribute(
-        //   "style",
-        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        // );
+        div.setAttribute("type", "submit");
 
-        // modif.setAttribute(
-        //   "style",
-        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        // );
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
         supp.addEventListener("click", function handleClick() {
@@ -108,13 +93,14 @@ export default {
         });
 
         modif.addEventListener("click", function handleClick() {
-          if (owner != user) {
+          if (owner == user) {
+            modif.setAttribute("href","/updatePost");
+            window.localStorage.setItem("titre", titre);
+            
+          } else {
             alert(
               "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
             );
-          } else {
-            this.$router.push("/updatePost");
-
           }
         
         });
@@ -135,10 +121,10 @@ export default {
           "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
         );
 
-        modif.setAttribute(
-          "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        );
+        // modif.setAttribute(
+        //   "style",
+        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+        // );
 
         div2.setAttribute("style", "margin: 10px;");
 

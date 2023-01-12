@@ -32,7 +32,7 @@
             </p>
           </div>
           <p class="p2">
-            <textarea type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire"></textarea>
+            <textarea style="white-space: pre-wrap;" type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire"></textarea>
           </p>
         </div>
       </div>
