@@ -1,5 +1,5 @@
 <template>
-    <a href="./home" style="color: white;"> GO BACK HOME</a>
+    <a href="./hom" style="color: white;"> GO BACK HOME</a>
     <div id="containerpost">
     </div>  
 </template>
@@ -21,7 +21,7 @@ export default {
 
     async getPosts() {
       //récupération des données
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const res = await axios.get("http://localhost:3000/posts/",{
         
         headers:{
@@ -92,13 +92,17 @@ export default {
             }
           })
           .then(res => {
+            window.location.reload(true);
+
             console.log(titre);
           })
           .catch(err => {
               console.log(err);
           });
-          }          
+          }
+          
         });
+
 
         container.setAttribute(
         'style',

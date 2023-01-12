@@ -18,8 +18,7 @@
             <label for="bio">biography</label>
             <p class="forminput1">
               <input
-                class="input" v-model="User.bio" type="string" id="bio" placeholder="write your bio"
-              />
+                class="input" v-model="User.bio" type="string" id="bio" placeholder="write your bio"/>
             </p>
           </div>
           
@@ -44,9 +43,7 @@
         <div class="cancel">
         <button type="submit" @click="goToProfil()" style="float: left; margin:10px 0 0 ;">CANCEL</button>
       </div>
-      <div class="done">
-        <button type="submit" @click="goToLogin()" style="float: right; margin:10px 0 0;">DONE</button>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -78,14 +75,12 @@ export default {
 
       console.log(jsonData);
       axios
-        .put(`http://localhost:3000/user/update/?username=${username}`,{
-           
-        headers:{
-           "Authorization":`Bearer ${token}`
-        }
-        }, newUser)
+        .put(`http://localhost:3000/user/update/?username=${username}`, newUser)
         .then((response) => {
           console.log(response);
+          localStorage.setItem("user",newUser.username);
+          this.$router.push("/profil");
+
         })
         .catch((error) => {
           console.log(error);
@@ -94,9 +89,7 @@ export default {
     goToProfil() {
       this.$router.push("/profil");
     },
-    goToLogin() {
-      this.$router.push("/login");
-    },
+    
   },
 };
 </script>

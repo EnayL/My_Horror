@@ -68,7 +68,7 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
-      Post: { titre: "", contenu: "", genre: "", owner:"" },
+      Post: { titre: "", contenu: "", genre: "", owner:"", select:"non"},
     };
   },
   methods: {
@@ -95,7 +95,9 @@ export default {
         .then((response) => {
           
           console.log(response);
-          this.$router.push("/home");
+          window.location.reload(true);
+          this.$router.push("/post");
+
         })
         .catch((error) => {
           console.log(error);

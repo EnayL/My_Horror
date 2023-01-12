@@ -1,4 +1,5 @@
 <template>
+  <Header></Header>
   <div class="bodyhome">
     <main class="main" id="main">
       <div class="main-form">
@@ -16,6 +17,8 @@
 <script>
 // @ is an alias to /src
 import Post from "./Post.vue";
+import Header from "./LayoutHeader.vue";
+
 
 export default {
   methods: {
@@ -23,6 +26,7 @@ export default {
   name: "Home",
   components: {
     Post,
+    Header,
   },
 };
 </script>
