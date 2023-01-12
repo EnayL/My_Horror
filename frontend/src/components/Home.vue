@@ -4,6 +4,8 @@
     <main class="main" id="main">
       <div class="main-form">
         <p>Notre selection du mois:</p>
+        <br><br>
+        <p>Pour le moment Aucune publication n'a retenu notre attention</p>
         <div class="container_selec"></div>
       </div>
       <div class="main-line"></div>

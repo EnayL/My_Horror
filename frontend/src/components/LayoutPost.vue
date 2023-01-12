@@ -88,6 +88,8 @@ export default {
                 },
               })
               .then((res) => {
+                window.location.reload(true);
+
                 console.log(titre);
               })
               .catch((err) => {

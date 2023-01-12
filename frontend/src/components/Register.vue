@@ -9,13 +9,7 @@
           <div class="formlabel">
             <label for="email">Nom</label>
             <p class="forminput">
-              <input
-                class="input"
-                v-model="User.nom"
-                type="string"
-                id="nom"
-                placeholder="."
-              />
+              <input class="input" v-model="User.nom" type="string" id="nom" placeholder="Entrez votre Nom"/>
             </p>
           </div>
 
@@ -27,7 +21,7 @@
                 type="string"
                 id="email"
                 v-model="User.prenom"
-                placeholder="."
+                placeholder="Entrez votre Prénom"
               />
             </p>
           </div>
@@ -35,57 +29,33 @@
           <div class="formlabel">
             <label for="username">Pseudo</label>
             <p class="forminput">
-              <input
-                class="input"
-                v-model="User.username"
-                type="string"
-                id="email"
-                placeholder="."
-              />
+              <input class="input" v-model="User.username" type="string" id="email" placeholder="entrez votre Username"/>
             </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Adresse email</label>
             <p class="forminput">
-              <input
-                class="input"
-                v-model="User.email"
-                type="string"
-                id="email"
-                placeholder="."
-              />
+              <input class="input" v-model="User.email" type="string" id="email" placeholder="entrez votre Email"/>
             </p>
           </div>
 
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input
-                class="input"
-                v-model="User.password"
-                type="string"
-                id="password"
-                placeholder="."
-              />
+              <input class="input" v-model="User.password" type="string" id="password" placeholder="choose your Password"/>
             </p>
           </div>
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input
-                class="input"
-                type="string"
-                v-model="User.confirm"
-                id="password"
-                placeholder="."
-              />
+              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="confirm your Password"/>
             </p>
             <a href="./login" class="forgot">Déjà un compte?</a>
           </div>
-          <p id="error"></p>
+          <p id="error" style="color:aliceblue;"></p>
         </form>
-        <button id="button" type="submit" @click="addToDb">Register</button>
+        <button id="button"  type="submit" @click="addToDb">Register</button>
       </div>
     </div>
     <div class="leftcontainer">
@@ -139,8 +109,7 @@ export default {
             console.log(error);
           });
       } else {
-        const message =
-          "les mots de passe ne correspondent pas t'es nul frr concentre toi et ecrit mieux stp";
+        const message = "les mots de passe ne correspondent pas";
         const pop = document.getElementById("error");
         if (pop != undefined) {
           pop.innerHTML = message;

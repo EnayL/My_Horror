@@ -3,12 +3,15 @@
     <div class="edit-box">
       <div class="box1">
         <img
-          src="\src\assets\img_wallpaper\anonymous.jpg"
+          id="photo"
           class="profile-pic"
         />
-        <input type="file" name="anonymous" id="file" accept="image/*" />
-        <label for="file">Edit pic</label>
-        <form class="formEdit">
+        
+            <form class="formEdit">
+              <p class="forminput1">
+              <input
+                class="input" v-model="User.photo" type="string" id="photo" placeholder="add link to you profil picture"/>
+            </p>
           <div class="formlabel1">
             <label for="username">Pseudo</label>
             <p class="forminput1">
@@ -74,37 +77,25 @@ export default {
   name: "Edit",
   data() {
     return {
-      User: { username: "", bio: "", password: "" },
+      User: { photo:"", username: "", bio: "", password: "" },
     };
   },
   props: {},
   methods: {
     addToDb() {
       let newUser = {
+        photo: this.User.photo,
         username: this.User.username,
         bio: this.User.bio,
         password: this.User.password,
       };
-      const token = localStorage.getItem("token");
       const username = localStorage.getItem("user");
 
       let jsonData = JSON.stringify(newUser);
 
       console.log(jsonData);
       axios
-<<<<<<< HEAD
         .put(`http://localhost:3000/user/update/?username=${username}`, newUser)
-=======
-        .put(
-          `http://localhost:3000/user/update/?username=${username}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-          newUser
-        )
->>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
         .then((response) => {
           console.log(response);
           localStorage.setItem("user",newUser.username);
@@ -117,6 +108,28 @@ export default {
     },
     goToProfil() {
       this.$router.push("/profil");
+    },
+    async getUser() {
+      const user = localStorage.getItem("user");
+
+      axios
+        .get(`http://localhost:3000/user/?username=${user}`)
+        .then((res) => {
+          var photo = document.getElementById("photo");
+
+          const data = res.data
+          if (photo !== null){
+            photo.setAttribute("src", data.photo);
+          }
+          
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      
+      
+
     },
     
   },

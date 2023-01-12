@@ -32,11 +32,7 @@
             </p>
           </div>
           <p class="p2">
-            <textarea
-              type="string"
-              v-model="Post.contenu"
-              placeholder="Racontez nous votre histoire"
-            ></textarea>
+            <textarea type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire"></textarea>
           </p>
         </div>
       </div>
@@ -52,23 +48,10 @@
           </label>
           <input style="display: none" id="file-input" type="file" />
         </div>
-        <button
-          class="create-post__create"
-          style="cursor: pointer"
-          type="submit"
-          @click="addToAPI"
-        >
-          Poster !
-        </button>
       </div>
     </div>
   </form>
-  <button
-    class="button"
-    style="cursor: pointer"
-    type="submit"
-    @click="addToAPI"
-  >
+  <button class="button" style="cursor: pointer" type="submit" @click="addToAPI">
     Poster !
   </button>
 </template>
@@ -79,33 +62,31 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
-<<<<<<< HEAD
-      Post: { titre: "", contenu: "", genre: "", owner:"", select:"non"},
-=======
-      Post: { titre: "", contenu: "", genre: "" },
->>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
+      Post: { titre: "", contenu: "", genre: "", owner:"", select:"", likes: ""},
     };
   },
   methods: {
     addToAPI() {
+      const pouet = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+
       let newPost = {
         titre: this.Post.titre,
         contenu: this.Post.contenu,
         genre: this.Post.genre,
+        owner: pouet,
+        select: "non",
+        likes: 0,
       };
       let jsonData = JSON.stringify(newPost);
 
-      console.log(jsonData);
       axios
         .post("http://localhost:3000/posts/add", newPost)
         .then((response) => {
           console.log(response);
-<<<<<<< HEAD
           window.location.reload(true);
           this.$router.push("/post");
 
-=======
->>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
         })
         .catch((error) => {
           console.log(error);

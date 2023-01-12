@@ -6,7 +6,7 @@
               <li @click="goToEdit()">Edit</li>
             </ul>
             
-          <img src="\src\assets\img_wallpaper\anonymous.jpg" class="profile-pic">
+          <img id="photo" class="profile-pic">
           <h3 id="name"></h3>
           <p id="bio"></p>
           <div class="social-media">
@@ -40,6 +40,8 @@ export default {
         .then((res) => {
           var name = document.getElementById("name");
           var bio = document.getElementById("bio");
+          var photo = document.getElementById("photo");
+
 
           const data = res.data
           if (name !== null){
@@ -49,7 +51,11 @@ export default {
             if( data.bio === undefined){
               data.bio = `${user} n'a pas encore mis à jour sa bio`
             }
-            bio.innerHTML =data.bio;
+            bio.innerHTML =  data.bio;
+          }
+
+          if (photo !== null){
+            photo.setAttribute("src", data.photo);
           }
 
         })

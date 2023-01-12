@@ -5,7 +5,7 @@
         class="searchInput"
         type="text"
         v-model="text"
-        placeholder="Text"
+        placeholder="Search a User"
         @input="handleInput"
         v-on:keyup="handleInput"
       />
@@ -34,8 +34,8 @@ export default {
       if (event.key == "Enter") {
         axios
           .get(`http://localhost:3000/user/?username=${event.target.value}`)
-          .then((response) => {
-            console.log(response.data[0].email);
+          .then((res) => {
+            console.log(res.data.email);
           })
           .catch(() => {
             console.log("we didn't find this user");
