@@ -1,25 +1,31 @@
 <template>
-  <input type="checkbox" id="ham-menu" />
-  <label for="ham-menu">
-    <div class="hide-des">
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
+  <div class="nav">
+    <input type="checkbox" id="ham-menu" />
+    <label for="ham-menu">
+      <div class="hide-des">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </div>
+    </label>
+    <div class="full-page-green"></div>
+    <div class="ham-menu">
+      <ul class="centre-text bold-text">
+        <li @click="goToHome()">Home</li>
+        <li @click="goToProfil()">Profile</li>
+        <li @click="goToLike()">Like</li>
+      </ul>
     </div>
-  </label>
-  <div class="full-page-green"></div>
-  <div class="ham-menu">
-    <ul class="centre-text bold-text">
-      <li @click="goToHome()">Home</li>
-      <li @click="goToProfil()">Profile</li>
-      <li @click="goToLike()">Like</li>
-    </ul>
+    <search></search>
   </div>
 </template>
 
 <script>
+import Search from "./Search.vue";
+
 export default {
   name: "HeaderPage",
+  components: { Search },
   props: {},
   methods: {
     goToLike() {
@@ -51,7 +57,16 @@ html {
   color: white;
   font-weight: normal;
   font-family: sans-serif;
+  background-color: #000;
+}
+
+.hide-des {
+  margin-left: 3%;
+}
+.nav {
+  width: 100%;
   background-color: #5c0000;
+  height: 80px;
 }
 
 #ham-menu {

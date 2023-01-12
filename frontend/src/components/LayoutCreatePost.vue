@@ -52,14 +52,25 @@
           </label>
           <input style="display: none" id="file-input" type="file" />
         </div>
-        
+        <button
+          class="create-post__create"
+          style="cursor: pointer"
+          type="submit"
+          @click="addToAPI"
+        >
+          Poster !
+        </button>
       </div>
     </div>
   </form>
-        <button class="button" style="cursor: pointer" type="submit" @click="addToAPI">
-          Poster !
-        </button>
-      
+  <button
+    class="button"
+    style="cursor: pointer"
+    type="submit"
+    @click="addToAPI"
+  >
+    Poster !
+  </button>
 </template>
 
 <script>
@@ -68,36 +79,33 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
+<<<<<<< HEAD
       Post: { titre: "", contenu: "", genre: "", owner:"", select:"non"},
+=======
+      Post: { titre: "", contenu: "", genre: "" },
+>>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
     };
   },
   methods: {
     addToAPI() {
-      const owner = localStorage.getItem("user");
-
       let newPost = {
         titre: this.Post.titre,
         contenu: this.Post.contenu,
         genre: this.Post.genre,
-        owner: owner
       };
       let jsonData = JSON.stringify(newPost);
-      const token = localStorage.getItem("token")
 
-     
       console.log(jsonData);
       axios
-        .post("http://localhost:3000/posts/add", newPost,{
-          headers:{
-           "Authorization":`Bearer ${token}`
-          }
-        })
+        .post("http://localhost:3000/posts/add", newPost)
         .then((response) => {
-          
           console.log(response);
+<<<<<<< HEAD
           window.location.reload(true);
           this.$router.push("/post");
 
+=======
+>>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
         })
         .catch((error) => {
           console.log(error);
@@ -109,7 +117,7 @@ export default {
 
 <style scoped>
 .create-post {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 15px;
 }
 .create-post__avatar-img {
@@ -159,8 +167,8 @@ export default {
   border: none;
   min-height: 40px;
   margin-top: 25px;
-  margin-left:45%;
-  width:10%;
+  margin-left: 45%;
+  width: 10%;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 15px;
@@ -169,6 +177,10 @@ export default {
 }
 .button:hover {
   background-color: rgba(250, 250, 250, 0.3);
+}
+
+input {
+  font-size: 1em;
 }
 
 .p1 {
@@ -196,7 +208,6 @@ export default {
   font-size: 15px;
 }
 
-
 .p2 {
   margin: 1%;
   width: 95%;
@@ -206,7 +217,7 @@ export default {
 
 .p2 textarea {
   border: none;
-  width:100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
   padding: 2%;
@@ -219,7 +230,6 @@ export default {
   color: white;
   font-size: 15px;
 }
-
 
 .p3 {
   margin-top: 1%;
@@ -236,7 +246,7 @@ export default {
   height: 40px;
   color: white;
   padding: 3%;
-  float:right;
+  float: right;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 

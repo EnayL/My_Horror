@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <Header></Header>
+=======
+  <layout-header></layout-header>
+>>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
   <div class="bodyhome">
     <main class="main" id="main">
       <div class="main-form">
@@ -16,17 +20,21 @@
 
 <script>
 // @ is an alias to /src
+import LayoutHeader from "./LayoutHeader.vue";
 import Post from "./Post.vue";
 import Header from "./LayoutHeader.vue";
 
 
 export default {
-  methods: {
-  },
+  methods: {},
   name: "Home",
   components: {
     Post,
+<<<<<<< HEAD
     Header,
+=======
+    LayoutHeader,
+>>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
   },
 };
 </script>
