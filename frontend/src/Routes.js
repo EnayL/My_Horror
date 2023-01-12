@@ -7,12 +7,13 @@ import PostId from "../src/components/PostId.vue";
 import Header from "../src/components/LayoutHeader.vue";
 import Profil from "../src/components/Profil.vue";
 import Edit from "./components/Edit.vue"; 
+import ForgetPassword from "../src/components/ForgetPassword.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
   { path: "/login", component: Login, name: "Login" },
   { path: "/register", component: Register, name: "Register" },
-  { path: "/login", component: Login, name: "Login" },
+  { path: "/login/forget", component: ForgetPassword, name: "ForgetPassword" },
   { path: "/home", component: Home, name: "HomePage" },
   { path: "/profil", component: Profil, name: "Profil" },
   { path: "/profil/edit", component: Edit, name: "Edit" },
