@@ -1,4 +1,5 @@
 <template>
+  <layout-header></layout-header>
   <div class="bodyhome">
     <main class="main" id="main">
       <div class="main-form">
@@ -15,14 +16,15 @@
 
 <script>
 // @ is an alias to /src
+import LayoutHeader from "./LayoutHeader.vue";
 import Post from "./Post.vue";
 
 export default {
-  methods: {
-  },
+  methods: {},
   name: "Home",
   components: {
     Post,
+    LayoutHeader,
   },
 };
 </script>
