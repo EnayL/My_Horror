@@ -1,0 +1,209 @@
+<template>
+      <form>
+    <div class="update-post">
+      <div>
+        <div class="update-post__avatar">
+          <img
+            src="../assets/icon/logo.webp"
+            alt=""
+            class="update-post__avatar-img"
+          />
+        </div>
+        <div
+          class="update-post__text ml-3"
+          style="color: white; display: flex; flex-direction: column"
+        >
+          <!-- text -->
+          <div style="display: flex">
+            <p class="p1">
+              <input
+                type="string"
+                placeholder="donc la y'aurai le titre a update"
+              />
+            </p>
+            <p class="p3">
+              <input
+                type="string"
+                placeholder="Le genre a update"
+              />
+            </p>
+          </div>
+          <p class="p2">
+            <textarea
+              type="string"
+              placeholder="le contenu a update"
+            ></textarea>
+          </p>
+        </div>
+      </div>
+      <div class="update-post__action">
+        <div class="update-post__add">
+          <label for="file-input">
+            <img
+              style="cursor: pointer"
+              class="update-post__add-img"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231da1f2'%3E%3Cg%3E%3Cpath d='M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z'%3E%3C/path%3E%3Ccircle cx='8.868' cy='8.309' r='1.542'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E"
+              alt=""
+            />
+          </label>
+          <input style="display: none" id="file-input" type="file" />
+        </div>
+        
+      </div>
+    </div>
+  </form>
+</template>
+
+<script>
+import axios from 'axios';
+    export default {
+        name: "UpdatePost",
+        methods: {
+                   
+        },
+    }
+    
+</script>
+
+<style scoped>
+.update-post {
+  background-color: rgba(255,255,255,0.2);
+  padding: 15px;
+}
+.update-post__avatar-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
+}
+.update-post__text {
+  outline: none;
+  user-select: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-size: 19px;
+  font-weight: 400;
+  color: rgb(15, 20, 25);
+  line-height: 1.3125;
+  width: 100%;
+  margin-left: 2%;
+}
+.update-post__action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.update-post__add {
+  border-radius: 9999px;
+  cursor: pointer;
+  width: 39px;
+  height: 39px;
+  transition: 0.2s ease-in-out;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.update-post__add:hover {
+  background-color: rgba(29, 161, 242, 0.1);
+}
+.update-post__add-img {
+  width: 100%;
+  padding: 10px;
+}
+.button {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  min-height: 40px;
+  margin-top: 25px;
+  margin-left:45%;
+  width:10%;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgba(250, 250, 250, 0.3);
+}
+
+.p1 {
+  margin: 1%;
+  width: 100%;
+  height: 50px;
+  border: none;
+}
+
+.p1 input {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding: 3%;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p1 input::placeholder {
+  padding-top: 2%;
+  padding-left: 2%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+
+.p2 {
+  margin: 1%;
+  width: 95%;
+  height: 50px;
+  border: none;
+}
+
+.p2 textarea {
+  border: none;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 2%;
+  resize: none;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p2 textarea::placeholder {
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+
+.p3 {
+  margin-top: 1%;
+  width: 75%;
+  height: 50px;
+  border: none;
+}
+
+.p3 input {
+  margin-right: 10%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 30%;
+  height: 40px;
+  color: white;
+  padding: 3%;
+  float:right;
+  font-family: "OpenSansCondensed-Bold", sans-serif;
+}
+
+.p3 input::placeholder {
+  padding-top: 5%;
+  padding-left: 5%;
+  top: 0;
+  color: white;
+  font-size: 15px;
+}
+
+</style>

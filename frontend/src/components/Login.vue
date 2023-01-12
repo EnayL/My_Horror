@@ -25,7 +25,7 @@
           <div class="formlabel">
             <label for="email">Mot de passe</label>
             <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.password" />
+              <input class="input" type="password" id="password" v-model="User.password" />
             </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
@@ -179,6 +179,7 @@ h1 {
   width: 100%;
   height: 3vh;
   color: rgb(0, 0, 0);
+  padding-left: 2px;
   font-size: 1em;
   outline: none;
   box-shadow: #000000 -1px 1px 0px 0px;

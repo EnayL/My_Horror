@@ -43,13 +43,13 @@
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input class="input" v-model="User.password" type="string" id="password" placeholder="." />
+              <input class="input" v-model="User.password" type="password" id="password" placeholder="." />
             </p>
           </div>
           <div class="formlabel">
-            <label for="password">Mot de passe</label>
+            <label for="password">Confirmer le mot de passe</label>
             <p class="forminput">
-              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="." />
+              <input class="input" type="password" v-model="User.confirm" id="password" placeholder="." />
             </p>
             <a href="" class="forgot">Déjà un compte?</a>
           </div>
