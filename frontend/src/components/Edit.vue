@@ -10,15 +10,15 @@
           <div class="formlabel1">
             <label for="username">Pseudo</label>
             <p class="forminput1">
-              <input class="input" v-model="User.username" type="string" id="email" placeholder="." />
+              <input class="input" v-model="User.username" type="string" id="username" placeholder="new username" />
             </p>
           </div>
 
           <div class="formlabel1">
-            <label for="email">Adresse email</label>
+            <label for="bio">biography</label>
             <p class="forminput1">
               <input
-                class="input" v-model="User.email" type="string" id="email" placeholder="."
+                class="input" v-model="User.bio" type="string" id="bio" placeholder="write your bio"
               />
             </p>
           </div>
@@ -27,13 +27,13 @@
           <div class="formlabel1">
             <label for="password">Mot de passe</label>
             <p class="forminput1">
-              <input class="input" v-model="User.password" type="string" id="password" placeholder="." />
+              <input class="input" v-model="User.password" type="string" id="password" placeholder="new password" />
             </p>
           </div>
           <div class="formlabel1">
             <label for="password">Confirmer le Mot de passe</label>
             <p class="forminput1">
-              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="." />
+              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="confirm" />
             </p>
           </div>
           <p id="error"></p>
@@ -59,7 +59,7 @@ export default {
   name: "Edit",
   data() {
     return{
-      User : {username:"", email:"", password:""}
+      User : {username:"", bio:"", password:""}
     }
   },
   props: {},
@@ -67,15 +67,23 @@ export default {
     addToDb() {
       let newUser = {
         username: this.User.username,
-        email: this.User.email,
+        bio: this.User.bio,
         password: this.User.password,
       };
+      const token = localStorage.getItem("token")
+      const username = localStorage.getItem("user")
+
 
       let jsonData = JSON.stringify(newUser);
 
       console.log(jsonData);
       axios
-        .post("http://localhost:3000/user/signup", newUser)
+        .put(`http://localhost:3000/user/update/?username=${username}`,{
+           
+        headers:{
+           "Authorization":`Bearer ${token}`
+        }
+        }, newUser)
         .then((response) => {
           console.log(response);
         })

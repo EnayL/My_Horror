@@ -95,6 +95,7 @@ export default {
         .then((response) => {
           
           console.log(response);
+          this.$router.push("/home");
         })
         .catch((error) => {
           console.log(error);

@@ -9,6 +9,7 @@
         <img src="../assets/img_wallpaper/login.jpg" />
       </div>
     </div>
+    
     <div class="rightcontainer">
       <div class="rightcontent">
         <img class="image" src="../assets/icon/logo.webp" />
@@ -32,7 +33,7 @@
           
         </form>
         <div class="btn">
-            <button type="submit" @click="login" class="click">
+            <button type="submit" @click="login" style="color:white; background-color: red;" class="click">
               Login
             </button>
           </div>
@@ -68,15 +69,13 @@ export default {
         .then((response) => {
           localStorage.setItem("token",response.data.token);
           localStorage.setItem("user",response.data.username);
+          this.$router.push("/home");
          
         })
         .catch((error) => {
           console.log(error);
         });
     },
-  // goToHome() {
-  //   this.$router.push("/home");
-  // },
   }
 };
 </script>
