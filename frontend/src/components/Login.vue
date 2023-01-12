@@ -9,7 +9,7 @@
         <img src="../assets/img_wallpaper/login.jpg" />
       </div>
     </div>
-    
+
     <div class="rightcontainer">
       <div class="rightcontent">
         <img class="image" src="../assets/icon/logo.webp" />
@@ -19,24 +19,31 @@
           <div class="formlabel">
             <label for="email">Username</label>
             <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.username" />
+              <input
+                class="input"
+                type="text"
+                id="email"
+                v-model="User.username"
+              />
             </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Mot de passe</label>
             <p class="forminput">
-              <input class="input" type="text" id="email" v-model="User.password" />
+              <input
+                class="input"
+                type="text"
+                id="email"
+                v-model="User.password"
+              />
             </p>
             <a href="" class="forgot">Mot de passe oublié?</a>
           </div>
-          
         </form>
         <div class="btn">
-            <button type="submit" @click="login" style="color:white; background-color: red;" class="click">
-              Login
-            </button>
-          </div>
+          <button id="button" type="submit" @click="login">Login</button>
+        </div>
       </div>
     </div>
   </div>
@@ -47,14 +54,13 @@ import axios from "axios";
 
 export default {
   name: "LoginPage",
-  
+
   data() {
     return {
       User: { username: "", password: "" },
     };
   },
   methods: {
-    
     login() {
       let connect = {
         username: this.User.username,
@@ -67,16 +73,15 @@ export default {
       axios
         .post("http://localhost:3000/user/login", connect)
         .then((response) => {
-          localStorage.setItem("token",response.data.token);
-          localStorage.setItem("user",response.data.username);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", response.data.username);
           this.$router.push("/home");
-         
         })
         .catch((error) => {
           console.log(error);
         });
     },
-  }
+  },
 };
 </script>
 
@@ -208,6 +213,17 @@ h1 {
   outline: none;
   background: none;
   border: none;
+}
+
+#button {
+  background-color: #790e06;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-color: #790e06;
+  border-radius: 20em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .click:hover {
   color: #979394;
