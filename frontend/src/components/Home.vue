@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
-  <Header></Header>
-=======
-  <layout-header></layout-header>
->>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
+  <LayoutHeader></LayoutHeader>
   <div class="bodyhome">
     <main class="main" id="main">
       <div class="main-form">
@@ -30,11 +26,7 @@ export default {
   name: "Home",
   components: {
     Post,
-<<<<<<< HEAD
-    Header,
-=======
     LayoutHeader,
->>>>>>> 3007625084b95a55694e07e6f851add1e7d730e9
   },
 };
 </script>
