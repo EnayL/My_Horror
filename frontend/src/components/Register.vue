@@ -51,7 +51,7 @@
             <p class="forminput">
               <input class="input" type="password" v-model="User.confirm" id="password" placeholder="." />
             </p>
-            <a href="" class="forgot">Déjà un compte?</a>
+            <a href="./login" class="forgot">Déjà un compte?</a>
           </div>
           <p id="error"></p>
           
@@ -96,6 +96,7 @@ export default {
         axios.post('http://localhost:3000/user/signup', newUser)
         .then((response) => {
           console.log(response);
+          this.$router.push("/login");
         })
         .catch((error) => {
           console.log(error);
