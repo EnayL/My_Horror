@@ -50,7 +50,7 @@ export default {
       this.$router.push("/login");
     },
     goToHome() {
-      this.$router.push("/post");
+      this.$router.push("/home");
     },
   },
 };
