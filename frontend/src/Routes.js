@@ -6,7 +6,9 @@ import Home from "../src/components/Home.vue";
 import PostId from "../src/components/PostId.vue";
 import Header from "../src/components/LayoutHeader.vue";
 import Profil from "../src/components/Profil.vue";
+import UpdatePost from "../src/components/UpdatePost.vue";
 import Edit from "./components/Edit.vue"; 
+import Search from "./components/Search.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
@@ -18,6 +20,9 @@ const routes = [
   { path: "/profil/edit", component: Edit, name: "Edit" },
   { path: "/post", component: PostId, name: "PostIdPage" },
   { path: "/header", component: Header, name: "HeaderPage" },
+  { path: "/search", component: Search, name: "Search" },
+
+  { path: "/updatePost", component: UpdatePost, name: "UpdatePost" },
 ];
 
 export const router = createRouter({

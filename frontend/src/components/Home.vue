@@ -1,9 +1,11 @@
 <template>
-  <layout-header></layout-header>
+  <LayoutHeader></LayoutHeader>
   <div class="bodyhome">
     <main class="main" id="main">
       <div class="main-form">
         <p>Notre selection du mois:</p>
+        <br /><br />
+        <p>Pour le moment Aucune publication n'a retenu notre attention</p>
         <div class="container_selec"></div>
       </div>
       <div class="main-line"></div>
@@ -17,6 +19,7 @@
 // @ is an alias to /src
 import LayoutHeader from "./LayoutHeader.vue";
 import Post from "./Post.vue";
+import Header from "./LayoutHeader.vue";
 
 export default {
   methods: {},

@@ -1,17 +1,16 @@
 <template>
-  <!-- multiple select -->
   <form>
-    <div class="create-post">
+    <div class="update-post">
       <div>
-        <div class="create-post__avatar">
+        <div class="update-post__avatar">
           <img
             src="../assets/icon/logo.webp"
             alt=""
-            class="create-post__avatar-img"
+            class="update-post__avatar-img"
           />
         </div>
         <div
-          class="create-post__text ml-3"
+          class="update-post__text ml-3"
           style="color: white; display: flex; flex-direction: column"
         >
           <!-- text -->
@@ -20,28 +19,32 @@
               <input
                 type="string"
                 v-model="Post.titre"
-                placeholder="Saisissez le titre de votre Publication"
+                placeholder="donc la y'aurai le titre a update"
               />
             </p>
             <p class="p3">
               <input
                 type="string"
                 v-model="Post.genre"
-                placeholder="Genre du post"
+                placeholder="Le genre a update"
               />
             </p>
           </div>
           <p class="p2">
-            <textarea style="white-space: pre-wrap;" type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire"></textarea>
+            <textarea
+              type="string"
+              v-model="Post.contenu"
+              placeholder="le contenu a update"
+            ></textarea>
           </p>
         </div>
       </div>
-      <div class="create-post__action">
-        <div class="create-post__add">
+      <div class="update-post__action">
+        <div class="update-post__add">
           <label for="file-input">
             <img
               style="cursor: pointer"
-              class="create-post__add-img"
+              class="update-post__add-img"
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231da1f2'%3E%3Cg%3E%3Cpath d='M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z'%3E%3C/path%3E%3Ccircle cx='8.868' cy='8.309' r='1.542'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E"
               alt=""
             />
@@ -51,42 +54,42 @@
       </div>
     </div>
   </form>
-  <button class="button" style="cursor: pointer" type="submit" @click="addToAPI">
-    Poster !
+  <button class="button" style="cursor: pointer" type="submit" @click="addToDb">
+    Modifier !
   </button>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "CreatePostPage",
+  name: "UpdatePost",
   data() {
     return {
-      Post: { titre: "", contenu: "", genre: "", owner:"", select:"", likes: ""},
+      Post: { titre: "", contenu: "", genre: "", owner: "" },
     };
   },
+  props: {},
   methods: {
-    addToAPI() {
-      const pouet = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
+    addToDb() {
+      const user = localStorage.getItem("user");
 
       let newPost = {
         titre: this.Post.titre,
         contenu: this.Post.contenu,
         genre: this.Post.genre,
-        owner: pouet,
-        select: "non",
-        likes: 0,
+        owner: user,
       };
+      const titre = localStorage.getItem("titre");
+
       let jsonData = JSON.stringify(newPost);
 
+      console.log(jsonData);
       axios
-        .post("http://localhost:3000/posts/add", newPost)
-        .then((response) => {
-          console.log(response);
-          window.location.reload(true);
+        .put(`http://localhost:3000/posts/update/?titre=${titre}`, newPost)
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("titre", "");
           this.$router.push("/post");
-
         })
         .catch((error) => {
           console.log(error);
@@ -97,11 +100,11 @@ export default {
 </script>
 
 <style scoped>
-.create-post {
+.update-post {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 15px;
 }
-.create-post__avatar-img {
+.update-post__avatar-img {
   height: 50px;
   width: 50px;
   border-radius: 9999px;
@@ -109,7 +112,7 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
 }
-.create-post__text {
+.update-post__text {
   outline: none;
   user-select: text;
   white-space: pre-wrap;
@@ -121,12 +124,30 @@ export default {
   width: 100%;
   margin-left: 2%;
 }
-.create-post__action {
+
+.button {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  min-height: 40px;
+  margin-top: 25px;
+  margin-left: 45%;
+  width: 10%;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgba(250, 250, 250, 0.3);
+}
+.update-post__action {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.create-post__add {
+.update-post__add {
   border-radius: 9999px;
   cursor: pointer;
   width: 39px;
@@ -135,10 +156,10 @@ export default {
   margin-left: 50px;
   margin-top: 20px;
 }
-.create-post__add:hover {
+.update-post__add:hover {
   background-color: rgba(29, 161, 242, 0.1);
 }
-.create-post__add-img {
+.update-post__add-img {
   width: 100%;
   padding: 10px;
 }
@@ -158,10 +179,6 @@ export default {
 }
 .button:hover {
   background-color: rgba(250, 250, 250, 0.3);
-}
-
-input {
-  font-size: 1em;
 }
 
 .p1 {

@@ -71,7 +71,7 @@
             </p>
           </div>
           <div class="formlabel">
-            <label for="password">Mot de passe</label>
+            <label for="password">Confirmer le mot de passe</label>
             <p class="forminput">
               <input
                 class="input"
@@ -83,13 +83,9 @@
             </p>
             <a href="./login" class="forgot">Déjà un compte?</a>
           </div>
-          <p id="error"></p>
+          <p id="error" style="color: aliceblue"></p>
         </form>
-        <div class="btn3">
-          <button id="button" class="click2" type="submit" @click="addToDb">
-            Register
-          </button>
-        </div>
+        <button id="button" type="submit" @click="addToDb">Register</button>
       </div>
     </div>
     <div class="leftcontainere">
@@ -147,8 +143,7 @@ export default {
             console.log(error);
           });
       } else {
-        const message =
-          "les mots de passe ne correspondent pas t'es nul frr concentre toi et ecrit mieux stp";
+        const message = "les mots de passe ne correspondent pas";
         const pop = document.getElementById("error");
         if (pop != undefined) {
           pop.innerHTML = message;

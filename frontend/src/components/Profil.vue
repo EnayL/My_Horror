@@ -6,18 +6,18 @@
               <li @click="goToEdit()">Edit</li>
             </ul>
             
-          <img src="\src\assets\img_wallpaper\anonymous.jpg" class="profile-pic">
-          <h3>NAME</h3>
-          <p>Description</p>
+          <img id="photo" class="profile-pic">
+          <h3 id="name"></h3>
+          <p id="bio"></p>
           <div class="social-media">
             <img src="\src\assets\img_wallpaper\twitter.png">
             <img src="\src\assets\img_wallpaper\instagram.png">
             <img src="\src\assets\img_wallpaper\tiktok.png">
           </div>
-          <button type="button">Mes favoris</button>
+          <!-- <button type="button">Mes favoris</button>
           <div class="profile-bottom">
             <p>Mes favoris</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -25,13 +25,53 @@
   
   
   <script>
+  import axios from "axios";
+
 export default {
+  
   name: "Profil",
   props: {},
   methods: {
+    async getUser() {
+      const user = localStorage.getItem("user");
+
+      axios
+        .get(`http://localhost:3000/user/?username=${user}`)
+        .then((res) => {
+          var name = document.getElementById("name");
+          var bio = document.getElementById("bio");
+          var photo = document.getElementById("photo");
+
+
+          const data = res.data
+          if (name !== null){
+            name.innerHTML =data.username;
+          }
+          if (name !== null){
+            if( data.bio === undefined){
+              data.bio = `${user} n'a pas encore mis à jour sa bio`
+            }
+            bio.innerHTML =  data.bio;
+          }
+
+          if (photo !== null){
+            photo.setAttribute("src", data.photo);
+          }
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      
+      
+
+    },
     goToEdit() {
       this.$router.push("/profil/edit");
     },
+  },
+  mounted() {
+    this.getUser();
   },
 };
 </script>

@@ -33,8 +33,8 @@
             <p class="forminput">
               <input
                 class="input"
-                type="text"
-                id="email"
+                type="password"
+                id="password"
                 v-model="User.password"
               />
             </p>
@@ -77,7 +77,7 @@ export default {
         .then((response) => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", response.data.username);
-          this.$router.push("/home");
+          this.$router.push("/post");
         })
         .catch((error) => {
           console.log(error);

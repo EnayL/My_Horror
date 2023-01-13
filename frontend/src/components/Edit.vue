@@ -3,12 +3,15 @@
     <div class="edit-box">
       <div class="box1">
         <img
-          src="\src\assets\img_wallpaper\anonymous.jpg"
+          id="photo"
           class="profile-pic"
         />
-        <input type="file" name="anonymous" id="file" accept="image/*" />
-        <label for="file">Edit pic</label>
-        <form class="formEdit">
+        
+            <form class="formEdit">
+              <p class="forminput1">
+              <input
+                class="input" v-model="User.photo" type="string" id="photo" placeholder="add link to you profil picture"/>
+            </p>
           <div class="formlabel1">
             <label for="username">Pseudo</label>
             <p class="forminput1">
@@ -26,12 +29,7 @@
             <label for="bio">biography</label>
             <p class="forminput1">
               <input
-                class="input"
-                v-model="User.bio"
-                type="string"
-                id="bio"
-                placeholder="write your bio"
-              />
+                class="input" v-model="User.bio" type="string" id="bio" placeholder="write your bio"/>
             </p>
           </div>
 
@@ -65,23 +63,8 @@
           <button id="button" type="submit" @click="addToDb">Save</button>
         </div>
         <div class="cancel">
-          <button
-            type="submit"
-            @click="goToProfil()"
-            style="float: left; margin: 10px 0 0"
-          >
-            CANCEL
-          </button>
-        </div>
-        <div class="done">
-          <button
-            type="submit"
-            @click="goToLogin()"
-            style="float: right; margin: 10px 0 0"
-          >
-            DONE
-          </button>
-        </div>
+        <button type="submit" @click="goToProfil()" style="float: left; margin:10px 0 0 ;">CANCEL</button>
+      </div>
       </div>
     </div>
   </div>
@@ -94,35 +77,30 @@ export default {
   name: "Edit",
   data() {
     return {
-      User: { username: "", bio: "", password: "" },
+      User: { photo:"", username: "", bio: "", password: "" },
     };
   },
   props: {},
   methods: {
     addToDb() {
       let newUser = {
+        photo: this.User.photo,
         username: this.User.username,
         bio: this.User.bio,
         password: this.User.password,
       };
-      const token = localStorage.getItem("token");
       const username = localStorage.getItem("user");
 
       let jsonData = JSON.stringify(newUser);
 
       console.log(jsonData);
       axios
-        .put(
-          `http://localhost:3000/user/update/?username=${username}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-          newUser
-        )
+        .put(`http://localhost:3000/user/update/?username=${username}`, newUser)
         .then((response) => {
           console.log(response);
+          localStorage.setItem("user",newUser.username);
+          this.$router.push("/profil");
+
         })
         .catch((error) => {
           console.log(error);
@@ -131,9 +109,29 @@ export default {
     goToProfil() {
       this.$router.push("/profil");
     },
-    goToLogin() {
-      this.$router.push("/login");
+    async getUser() {
+      const user = localStorage.getItem("user");
+
+      axios
+        .get(`http://localhost:3000/user/?username=${user}`)
+        .then((res) => {
+          var photo = document.getElementById("photo");
+
+          const data = res.data
+          if (photo !== null){
+            photo.setAttribute("src", data.photo);
+          }
+          
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      
+      
+
     },
+    
   },
 };
 </script>
