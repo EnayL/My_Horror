@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .bodyhome {
-  background-image: url("../assets/img_wallpaper/de905de2a7d6905f5572a193c1352aa2.jpg");
+  background-color: #111111;
 }
 .main {
   max-width: 1000px;
@@ -35,7 +35,7 @@ export default {
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;
   margin-right: auto;
-  background-color: #5c0000;
+  background-color: #350619;
 }
 .main-form {
   margin-top: 60px;

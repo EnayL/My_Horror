@@ -60,7 +60,7 @@ export default {
 
         container.setAttribute(
           "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
+          "background-color: rgb(254, 254, 254); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
         );
         h1.setAttribute(
           "style",
