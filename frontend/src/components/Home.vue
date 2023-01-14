@@ -19,7 +19,6 @@
 // @ is an alias to /src
 import LayoutHeader from "./LayoutHeader.vue";
 import Post from "./Post.vue";
-import Header from "./LayoutHeader.vue";
 
 export default {
   methods: {},

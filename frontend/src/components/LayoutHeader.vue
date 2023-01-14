@@ -8,6 +8,7 @@
     <div class="ham-menu">
       <ul class="centre-text bold-text">
         <li @click="goToHome()">Home</li>
+        <li @click="goToPoste()">Poste</li>
         <li @click="goToProfil()">Profile</li>
         <li @click="goToLike()">Like</li>
       </ul>
@@ -32,6 +33,9 @@ export default {
     },
     goToHome() {
       this.$router.push("/home");
+    },
+    goToPoste() {
+      this.$router.push("/post");
     },
   },
 };
@@ -84,7 +88,7 @@ label[for="ham-menu"] {
 }
 
 .ham-menu {
-  width: 23.8vw;
+  width: 17vw;
   height: 100%;
   position: fixed;
   top: 0;
