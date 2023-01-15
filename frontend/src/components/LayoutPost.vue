@@ -1,7 +1,6 @@
 <template>
-  <a href="./home" style="color: white;"> GO BACK HOME</a>
-  <div id="containerpost">
-  </div>
+  <layout-header></layout-header>
+  <div id="containerpost"></div>
 </template>
 
 <script>
@@ -39,10 +38,10 @@ export default {
 
         const container = document.createElement("div");
 
-        const pp = document.createElement("img"); // pp
-        pp.src = "../assets/img_wallpaper/heart.png";
+        // const pp = document.createElement("img"); // pp
+        // pp.src = "../assets/img_wallpaper/heart.png";
 
-        const divtest = document.createElement("div"); // div de la pp
+        const divtest = document.createElement("div"); 
 
         const h1 = document.createElement("p"); // creation element titre
         h1.innerHTML = titre + ":";
@@ -54,7 +53,7 @@ export default {
         div3.innerHTML = "Par " + owner;
         mainContainer.appendChild(container);
 
-        div2.setAttribute("style", "margin: 10px;");
+        div2.setAttribute("style", "margin: 10px; font-size: 5px;");
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
@@ -65,9 +64,11 @@ export default {
 
         const modif = document.createElement("a"); // creation boutton supprimer
         modif.id = "modif";
-        modif.innerHTML = "Modifier";
+        (modif.innerHTML = "---"), modif.setAttribute("type", "submit");
 
         divtest.setAttribute("type", "submit");
+        divtest.setAttribute("id", "divtest");
+
 
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
@@ -77,7 +78,13 @@ export default {
               "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
             );
           } else {
+            if (popup == true) {
             alert("vous avez supprimé une publication");
+            window.location="http://localhost:3001/Selection";
+             //For an example, but you could change the URL of the website to another on, or do whatever you want here...
+          } else {
+                  return false; //or open another popup, etc, you choose what you need over the function...
+            }
             axios
               .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
                 headers: {
@@ -111,33 +118,37 @@ export default {
 
         container.setAttribute(
           "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
+          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 20px; display:flex; flex-direction: column;"
         );
 
         h1.setAttribute(
           "style",
-          "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
+          "font-size: x-large; margin: 5px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
         );
 
         supp.setAttribute(
           "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+          "color: white; width:5%; margin-left:auto; padding: 1px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; cursor:pointer; "
         );
 
-        div2.setAttribute("style", "margin: 10px;");
+       modif.setAttribute(
+          "style",
+          "color: white;  font-size: x-large; cursor:pointer; "
+        );
 
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
+        div2.setAttribute("style", "margin: 50px; font-size:20px;");
+
+        div3.setAttribute("style", "margin: 25px; font-size: x-small;");
 
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
         container.appendChild(divtest);
         container.appendChild(h1);
-        divtest.appendChild(pp);
+        // divtest.appendChild(pp);
         divtest.appendChild(supp);
         divtest.appendChild(modif);
         
 
-        divtest.appendChild(select);
 
 
 
@@ -145,24 +156,26 @@ export default {
         container.appendChild(div3);
       }
 
-  var select = document.createElement("button"); // creation boutton supprimer
+      const select = document.createElement("button"); // pp
     select.id = "select";
-    select.innerHTML = "Add to selction";
+    select.innerHTML = "Add to selection";
+    select.addEventListener("click", function handleClick() {
+      window.location="http://localhost:3001/Selection";
+    });
 
-    select.setAttribute(
-      "href",
-      "./selection"
-    );
     select.setAttribute(
       "style",
       "color: white; font-size: x-large;"
     );
     const role = resUser.data.role;
     console.log(role);
-    const div= document.getElementById("select");
+    var divtest = document.getElementById("divtest");
+
+    divtest.appendChild(select);
+
     if (role != "admin") {
       console.log("pouet");
-      div.style.display = "none";
+      select.style.display = "none";
     }
     }
   },
@@ -192,5 +205,14 @@ export default {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
+}
+
+.main {
+  max-width: 1095px;
+  width: 100%;
+  border: 1px solid rgb(0, 0, 0);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #350619;
 }
 </style>

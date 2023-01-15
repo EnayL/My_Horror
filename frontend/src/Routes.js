@@ -9,6 +9,8 @@ import Profil from "../src/components/Profil.vue";
 import UpdatePost from "../src/components/UpdatePost.vue";
 import Edit from "./components/Edit.vue"; 
 import Search from "./components/Search.vue";
+import Selection from "./components/Selection.vue";
+
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
@@ -21,7 +23,7 @@ const routes = [
   { path: "/post", component: PostId, name: "PostIdPage" },
   { path: "/header", component: Header, name: "HeaderPage" },
   { path: "/search", component: Search, name: "Search" },
-
+  { path: "/Selection", component: Selection, name: "Selection" },
   { path: "/updatePost", component: UpdatePost, name: "UpdatePost" },
 ];
 

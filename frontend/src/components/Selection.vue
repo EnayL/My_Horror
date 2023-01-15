@@ -1,21 +1,33 @@
 <template>
-    <a href="./home" style="color: white;"> GO BACK HOME</a>
-    <div id="containerpost"></div>
+    <h1></h1>
+    <a href="./home" style="color: white;"> Home</a>
+   <br><br><br><br><br>
+    <p style="font-size:20px">Page Admin: Appuyez sur "X" pour supprimer définitivement une publication et sur Add pour l'ajouter à la selection et sur Remove pour l'enlever</p>
+    <div id="containerpost" style="display:flex; flex-direction: row; flex-wrap: wrap;"></div>
 </template>
 <script>
 import axios from "axios";
 import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
+  data() {
+    return {
+      Post: { select: "" },
+    };
+  },
   methods: {
 
     async getPosts() {
+
       //récupération des données
       const token = localStorage.getItem("token");
       const user = localStorage.getItem("user");
       const resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
       
-          
+      if(resUser.data.role != "admin"){
+        alert("Vous n'avez pas le rôle d'admin, vous n'etes donc pas autorisé à être sur cette page");
+        window.location="http://localhost:3001/home";
+      }
 
       const res = await axios.get("http://localhost:3000/posts/", {
 
@@ -31,15 +43,11 @@ export default {
         const publi = jsonData.data[i];
         const titre = publi.titre;
         let contenu = publi.contenu;
-        const owner = publi.owner;
+        let select = publi.select;
 
         contenu = contenu.replace(/\n/g, "<br>");
 
         const container = document.createElement("div");
-
-        const pp = document.createElement("img"); // pp
-        pp.src = "../assets/img_wallpaper/heart.png";
-
         const divtest = document.createElement("div"); // div de la pp
 
         const h1 = document.createElement("p"); // creation element titre
@@ -47,28 +55,30 @@ export default {
         const div2 = document.createElement("p"); // creation element contenu
 
         div2.innerHTML = contenu;
-        const div3 = document.createElement("p"); //creation element owner
-        div3.class = "owner";
-        div3.innerHTML = "Par " + owner;
         mainContainer.appendChild(container);
 
         div2.setAttribute("style", "margin: 10px;");
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
         const supp = document.createElement("button"); // creation boutton supprimer
         supp.id = "supprimer";
+        supp.setAttribute("style", "cursor :pointer;")
         supp.innerHTML = "X";
 
+        const  add = document.createElement("button"); // creation boutton supprimer
+        add.id = "select";
+        add.setAttribute("style", "cursor :pointer;")
+        console.log(select);
+        add.innerHTML = "Add";
 
-        const modif = document.createElement("a"); // creation boutton supprimer
-        modif.id = "modif";
-        modif.innerHTML = "Modifier";
+        if(select != "non"){
+          add.innerHTML = "Remove";
+        }
+
+
 
         divtest.setAttribute("type", "submit");
 
-        const token = localStorage.getItem("token");
-        const user = localStorage.getItem("user");
         supp.addEventListener("click", function handleClick() {
           
             alert("vous avez supprimé une publication");
@@ -87,15 +97,40 @@ export default {
                 console.log(err);
               });
         });
+        let link = "";
 
-        modif.addEventListener("click", function handleClick() {
-            modif.setAttribute("href", "/updatePost");
-            window.localStorage.setItem("titre", titre);
+        add.addEventListener("click", function handleClick() {
+          let value = "oui";
+          link = `http://localhost:3000/posts/select/?titre=${titre}`
+          // console.log(select);
+
+          if(select != "non"){
+            // console.log("pouet");
+            value = "non";
+            link = `http://localhost:3000/posts/remove/?titre=${titre}`
+          }
+          
+          // console.log("value : " + value);
+          let newPost = {
+            select: value,
+          };
+          //alert("vous avez ajouté une publication à la sélection");
+          axios
+          .put(link, newPost)
+          .then((res) => {
+            console.log(res);
+            // this.$router.push("/Selection");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         });
+
+        
 
         container.setAttribute(
           "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
+          "background-color: rgba(9,9,9, 0.5); min-height: 150px;max-height: 250px; overflow-x: hidden; margin: 15px; display:flex; flex-direction: column; width: 20%;"
         );
 
         h1.setAttribute(
@@ -105,23 +140,25 @@ export default {
 
         supp.setAttribute(
           "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+          "width:5%; margin-left:65%;margin-right:15px; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; color: white;"
+        );
+        add.setAttribute(
+          "style",
+          "width:5%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; color: white;"
         );
 
-        div2.setAttribute("style", "margin: 10px;");
+        div2.setAttribute("style", "margin: 10px; font-size: 15px;");
 
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
 
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
+        
+
         container.appendChild(divtest);
         container.appendChild(h1);
-        divtest.appendChild(pp);
         divtest.appendChild(supp);
-        divtest.appendChild(modif);
-
+        divtest.appendChild(add);
         container.appendChild(div2);
-        container.appendChild(div3);
       }
    
     }
@@ -130,9 +167,12 @@ export default {
   mounted() {
     this.getPosts();
   },
-  name: "PostPage",
+  name: "Selection",
+  
   components: {
     LayoutHeader,
   },
-};</script>
+
+};
+</script>
 <style></style>

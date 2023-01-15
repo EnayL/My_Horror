@@ -10,7 +10,6 @@
       </div>
       <div class="main-line"></div>
 
-      <Post></Post>
     </main>
   </div>
 </template>
@@ -18,13 +17,11 @@
 <script>
 // @ is an alias to /src
 import LayoutHeader from "./LayoutHeader.vue";
-import Post from "./Post.vue";
 
 export default {
   methods: {},
   name: "Home",
   components: {
-    Post,
     LayoutHeader,
   },
 };
@@ -34,9 +31,12 @@ export default {
 .bodyhome {
   background-color: #111111;
 }
+p{
+  font-size:20px;
+}
 
 .main {
-  max-width: 1000px;
+  max-width: 1095px;
   width: 100%;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;

@@ -106,12 +106,12 @@ export default {
 
         supp.setAttribute(
           "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+          "width:5%; margin-left:auto; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; color:white; cursor:pointer;"
         );
 
-        div2.setAttribute("style", "margin: 10px;");
+        div2.setAttribute("style", "margin: 50px;");
 
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
+        div3.setAttribute("style", "margin: 25px; font-size: x-small;");
 
         div.setAttribute("style", "display: flex; flex-direction: row;");
 
