@@ -1,9 +1,7 @@
 <template>
-  <a href="./home" style="color: white;"> GO BACK HOME</a>
-  <div id="containerpost">
-  </div>
+    <a href="./home" style="color: white;"> GO BACK HOME</a>
+    <div id="containerpost"></div>
 </template>
-
 <script>
 import axios from "axios";
 import LayoutHeader from "./LayoutHeader.vue";
@@ -72,11 +70,7 @@ export default {
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
         supp.addEventListener("click", function handleClick() {
-          if (owner != user) {
-            alert(
-              "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
-            );
-          } else {
+          
             alert("vous avez supprimé une publication");
             axios
               .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
@@ -92,22 +86,12 @@ export default {
               .catch((err) => {
                 console.log(err);
               });
-          }
         });
 
         modif.addEventListener("click", function handleClick() {
-          if (owner == user) {
             modif.setAttribute("href", "/updatePost");
             window.localStorage.setItem("titre", titre);
-
-          } else {
-            alert(
-              "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
-            );
-          }
-
         });
-
 
         container.setAttribute(
           "style",
@@ -135,35 +119,11 @@ export default {
         divtest.appendChild(pp);
         divtest.appendChild(supp);
         divtest.appendChild(modif);
-        
-
-        divtest.appendChild(select);
-
-
 
         container.appendChild(div2);
         container.appendChild(div3);
       }
-
-  var select = document.createElement("button"); // creation boutton supprimer
-    select.id = "select";
-    select.innerHTML = "Add to selction";
-
-    select.setAttribute(
-      "href",
-      "./selection"
-    );
-    select.setAttribute(
-      "style",
-      "color: white; font-size: x-large;"
-    );
-    const role = resUser.data.role;
-    console.log(role);
-    const div= document.getElementById("select");
-    if (role != "admin") {
-      console.log("pouet");
-      div.style.display = "none";
-    }
+   
     }
   },
 
@@ -174,23 +134,5 @@ export default {
   components: {
     LayoutHeader,
   },
-};
-</script>
-
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap");
-/* style="cursor: pointer" */
-
-.post__avatar {
-  margin-right: 20%;
-}
-
-.post-avatar__img {
-  height: 50px;
-  width: 50px;
-  border-radius: 9999px;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
-}
-</style>
+};</script>
+<style></style>
