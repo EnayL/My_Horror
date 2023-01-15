@@ -1,19 +1,19 @@
 <template>
   <div class="globalcontainer" style="flex-direction: row">
-    <div class="leftcontainer">
-      <div class="image">
-        <div class="tease">
+    <div class="leftcontainere">
+      <div class="image2">
+        <img src="../assets/img_wallpaper/login3.jpg" />
+        <div class="tease1">
           <h1>Hello,</h1>
           <h1>Welcome to our nightmare..</h1>
         </div>
-        <img src="../assets/img_wallpaper/login.jpg" />
       </div>
     </div>
 
-    <div class="rightcontainer">
+    <div class="rightcontainere">
       <div class="rightcontent">
         <img class="image" src="../assets/icon/logo.webp" />
-        <h1 class="welcom">Bienvenue dans H-Realm !</h1>
+        <h1 class="welcom1">Bienvenue dans H-Realm !</h1>
 
         <form class="formlogin">
           <div class="formlabel">
@@ -31,13 +31,20 @@
           <div class="formlabel">
             <label for="email">Mot de passe</label>
             <p class="forminput">
-              <input class="input" type="password" id="password" v-model="User.password" />
+              <input
+                class="input"
+                type="password"
+                id="password"
+                v-model="User.password"
+              />
             </p>
-            <a href="" class="forgot">Mot de passe oublié?</a>
+            <a href="" class="forgot1">Mot de passe oublié?</a>
           </div>
         </form>
-        <div class="btn">
-          <button id="button" type="submit" @click="login">Login</button>
+        <div class="btn2">
+          <button id="button" class="click2" type="submit" @click="login">
+            Login
+          </button>
         </div>
       </div>
     </div>
@@ -96,44 +103,50 @@ export default {
   flex-direction: row;
 } */
 
-.leftcontainer {
-  width: 70%;
-  background-color: #000000d2;
+.leftcontainere {
+  width: 100%;
+  height: 100vh;
+  background-color: #111111;
 }
 
-.image img {
-  width: 100%;
-  height: auto;
+.image2 img {
+  transform: scaleX(-1);
+  margin-left: 81%;
+  width: 20%;
+  height: 100vh;
   max-width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.tease {
+.tease1 {
   position: absolute;
-  width: 70%;
+  width: 55%;
   top: 30%;
   font-family: "Titillium Web", sans-serif;
   text-align: center;
 }
-.tease h1 {
-  color: #979394;
+.tease1 h1 {
+  color: #fff2f3;
 }
 
-.rightcontainer {
-  background-color: #64110b;
+.rightcontainere {
+  position: absolute;
+  background-color: #350619;
   width: 30%;
+  height: 100vh;
+  margin-left: 56%;
 }
 
-.rightcontainer img {
+.rightcontainere img {
   position: relative;
   margin-top: 30%;
   border-radius: 50%;
   width: 25%;
   margin-left: auto;
   margin-right: auto;
-  background-color: hsla(0, 0%, 0%, 0.87);
+  background-color: hsla(0, 0%, 100%, 0.332);
 }
 
 .rightcontent {
@@ -142,17 +155,18 @@ export default {
   margin: 3%;
   padding-bottom: 5%;
 }
-.welcom {
+.welcom1 {
   max-width: 70%;
   margin-top: 5%;
   font-size: 200%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  color: #fff2f3;
 }
-h1 {
+.welcom1 h1 {
   font-family: "Titillium Web", sans-serif;
-  color: black;
+  color: #fff2f3;
 }
 
 .formlogin {
@@ -160,7 +174,7 @@ h1 {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  color: black;
+  color: #d8d8d8;
 }
 
 .formlabel {
@@ -169,6 +183,7 @@ h1 {
   margin-right: auto;
   width: 80%;
   font-size: 108%;
+  color: #fff2f3;
 }
 
 .input {
@@ -177,52 +192,55 @@ h1 {
   background: none;
   width: 100%;
   height: 3vh;
-  color: rgb(0, 0, 0);
-  padding-left: 2px;
+  color: #D8D8D8(0, 0, 0);
   font-size: 1em;
   outline: none;
-  box-shadow: #000000 -1px 1px 0px 0px;
+  box-shadow: #d8d8d8;
 }
 
-.forgot {
-  color: black;
+.forgot1 {
+  color: #fff2f3;
   margin-top: 2%;
   float: right;
   text-decoration: underline;
 }
 
-.forgot:hover {
-  color: #979394;
+.forgot1:hover {
+  color: #fff2f3af;
 }
 
-.btn {
-  margin-top: 10%;
-  margin-left: 6%;
+.btn2 {
+  margin-top: 5%;
+  margin-left: 10%;
 }
 
-.click {
+.click2 {
+  height: 30px;
   border-radius: 3px;
   padding: 5px 2em;
-  box-shadow: 0px 0px 0px 2px black;
+  box-shadow: 0px 0px 0px 2px #fff2f3;
   text-decoration: none;
-  color: black;
+  color: #fff2f3;
   outline: none;
   background: none;
   border: none;
 }
-
-#button {
-  background-color: #790e06;
-  padding: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-  border-color: #790e06;
-  border-radius: 20em;
-  margin-left: auto;
-  margin-right: auto;
+.click2:hover {
+  color: #fff2f3;
+  box-shadow: 0px 0px 0px 2px #fff2f3;
+  cursor: pointer;
 }
-.click:hover {
-  color: #979394;
-  box-shadow: 0px 0px 0px 2px #979394;
+
+@media (max-width: 850px) {
+  .image2 img {
+    display: none;
+  }
+  .rightcontainere {
+    position: absolute;
+    background-color: #350619;
+    width: 45%;
+    height: 100vh;
+    margin-left: 56%;
+  }
 }
 </style>

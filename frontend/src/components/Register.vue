@@ -3,13 +3,19 @@
     <div class="rightcontainer">
       <div class="rightcontent">
         <img class="image" src="../assets/icon/logo.webp" />
-        <h1 class="welcom">Rentrez dans notre Royaume !</h1>
+        <h1 class="welcom1">Rentrez dans notre Royaume !</h1>
 
         <form class="formlogin">
           <div class="formlabel">
             <label for="email">Nom</label>
             <p class="forminput">
-              <input class="input" v-model="User.nom" type="string" id="nom" placeholder="Entrez votre Nom"/>
+              <input
+                class="input"
+                v-model="User.nom"
+                type="string"
+                id="nom"
+                placeholder="Rentrez votre nom"
+              />
             </p>
           </div>
 
@@ -21,7 +27,7 @@
                 type="string"
                 id="email"
                 v-model="User.prenom"
-                placeholder="Entrez votre Prénom"
+                placeholder="Rentrez votre prenom"
               />
             </p>
           </div>
@@ -29,38 +35,66 @@
           <div class="formlabel">
             <label for="username">Pseudo</label>
             <p class="forminput">
-              <input class="input" v-model="User.username" type="string" id="email" placeholder="entrez votre Username"/>
+              <input
+                class="input"
+                v-model="User.username"
+                type="string"
+                id="email"
+                placeholder="Rentrez votre username"
+              />
             </p>
           </div>
 
           <div class="formlabel">
             <label for="email">Adresse email</label>
             <p class="forminput">
-              <input class="input" v-model="User.email" type="string" id="email" placeholder="entrez votre Email"/>
+              <input
+                class="input"
+                v-model="User.email"
+                type="string"
+                id="email"
+                placeholder="Rentrez votre email"
+              />
             </p>
           </div>
 
           <div class="formlabel">
             <label for="password">Mot de passe</label>
             <p class="forminput">
-              <input class="input" v-model="User.password" type="string" id="password" placeholder="choose your Password"/>
+              <input
+                class="input"
+                v-model="User.password"
+                type="string"
+                id="password"
+                placeholder="Rentrez votre password"
+              />
             </p>
           </div>
           <div class="formlabel">
             <label for="password">Confirmer le mot de passe</label>
             <p class="forminput">
-              <input class="input" type="string" v-model="User.confirm" id="password" placeholder="confirm your Password"/>
+              <input
+                class="input"
+                type="string"
+                v-model="User.confirm"
+                id="password"
+                placeholder="confirmez votre password"
+              />
             </p>
             <a href="./login" class="forgot">Déjà un compte?</a>
           </div>
-          <p id="error" style="color:aliceblue;"></p>
+          <p id="error" style="color: aliceblue"></p>
         </form>
-        <button id="button"  type="submit" @click="addToDb">Register</button>
+        <button id="button" type="submit" @click="addToDb">Register</button>
       </div>
     </div>
-    <div class="leftcontainer">
+    <div class="leftcontainere">
       <div class="image">
         <img src="../assets/img_wallpaper/register.jpg" />
+        <div class="tease2">
+          <h1>Hey,</h1>
+          <h1>You're about to join a scary place..</h1>
+        </div>
       </div>
     </div>
   </div>
@@ -138,37 +172,28 @@ export default {
   flex-direction: row;
 }
 
-.leftcontainer {
-  width: 70%;
-  background-color: #000000d2;
+.leftcontainere {
+  width: 100%;
+  background-color: #111111;
 }
 
 .image img {
-  width: 100%;
+  margin-left: -15%;
+  width: 30%;
   height: auto;
   max-width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100.5vh;
-}
-
-.tease {
-  position: right;
-  width: 70%;
-  top: 40%;
-  font-family: "Titillium Web", sans-serif;
-  font-weight: bold;
-  text-align: center;
-}
-.tease h1 {
-  color: #a8a3a4;
+  height: 100vh;
 }
 
 .rightcontainer {
-  background-color: #000000;
+  background-color: #350619;
   width: 30%;
-  height: 101vh;
+  height: 100vh;
+  position: absolute;
+  margin-left: 10%;
 }
 
 .rightcontainer img {
@@ -178,18 +203,7 @@ export default {
   width: 25%;
   margin-left: auto;
   margin-right: auto;
-  background-color: hsla(0, 0%, 0%, 0.87);
-}
-
-#button {
-  background-color: #790e06;
-  padding: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-  border-color: #790e06;
-  border-radius: 20em;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: hsla(0, 0%, 100%, 0.332);
 }
 
 .rightcontent {
@@ -207,10 +221,6 @@ export default {
   margin-right: auto;
   text-align: center;
 }
-h1 {
-  font-family: "Titillium Web", sans-serif;
-  color: black;
-}
 
 .formlogin {
   font-family: "Titillium Web", sans-serif;
@@ -226,7 +236,7 @@ h1 {
   margin-right: auto;
   width: 80%;
   font-size: 150%;
-  color: #790e06;
+  color: #fff2f3;
 }
 
 .input {
@@ -235,35 +245,69 @@ h1 {
   background: none;
   width: 100%;
   height: 3vh;
-  color: #790e06;
+  color: #fff2f3;
   font-size: 1em;
   outline: none;
-  box-shadow: #790e06 -1px 1px 0px 0px;
+  box-shadow: #fff2f3 -1px 1px 0px 0px;
 }
 
 .forgot {
-  color: #790e06;
+  color: #fff2f3;
   margin-top: 2%;
   float: right;
   text-decoration: underline;
 }
 
 .forgot:hover {
-  color: #979394;
+  color: #fff2f3a6;
 }
 
-.click {
+.btn3 {
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.click2 {
   border-radius: 3px;
   padding: 5px 2em;
-  box-shadow: 0px 0px 0px 2px black;
+  box-shadow: 0px 0px 0px 2px #fff2f3;
   text-decoration: none;
-  color: black;
+  color: #fff2f3;
   outline: none;
   background: none;
   border: none;
 }
-.click:hover {
-  color: #979394;
-  box-shadow: 0px 0px 0px 2px #979394;
+.click2:hover {
+  color: #fff2f3af;
+  box-shadow: 0px 0px 0px 2px #fff2f3a9;
+}
+
+::placeholder {
+  color: #fff2f3a8;
+}
+
+.tease2 {
+  margin-left: 50%;
+  position: absolute;
+  top: 30%;
+  font-family: "Titillium Web", sans-serif;
+  text-align: center;
+}
+
+.tease2 h1 {
+  color: #fff2f3;
+}
+
+@media (max-width: 850px) {
+  .image img {
+    display: none;
+  }
+  .rightcontainer {
+    background-color: #350619;
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    margin-left: 0;
+  }
 }
 </style>

@@ -1,17 +1,20 @@
 <template>
+  <layout-header></layout-header>
   <div class="maincontainer">
     <div class="edit-box">
       <div class="box1">
-        <img
-          id="photo"
-          class="profile-pic"
-        />
-        
-            <form class="formEdit">
-              <p class="forminput1">
-              <input
-                class="input" v-model="User.photo" type="string" id="photo" placeholder="add link to you profil picture"/>
-            </p>
+        <img id="photo" class="profile-pic" />
+
+        <form class="formEdit">
+          <p class="forminput1">
+            <input
+              class="input"
+              v-model="User.photo"
+              type="string"
+              id="photo"
+              placeholder="add link to you profil picture"
+            />
+          </p>
           <div class="formlabel1">
             <label for="username">Pseudo</label>
             <p class="forminput1">
@@ -29,7 +32,12 @@
             <label for="bio">biography</label>
             <p class="forminput1">
               <input
-                class="input" v-model="User.bio" type="string" id="bio" placeholder="write your bio"/>
+                class="input"
+                v-model="User.bio"
+                type="string"
+                id="bio"
+                placeholder="write your bio"
+              />
             </p>
           </div>
 
@@ -59,12 +67,21 @@
           </div>
           <p id="error"></p>
         </form>
-        <div class="btn1">
-          <button id="button" type="submit" @click="addToDb">Save</button>
+        <div class="btn3">
+          <button class="click3" id="button" type="submit" @click="addToDb">
+            Save
+          </button>
         </div>
-        <div class="cancel">
-        <button type="submit" @click="goToProfil()" style="float: left; margin:10px 0 0 ;">CANCEL</button>
-      </div>
+        <div class="btn3">
+          <button
+            type="submit"
+            @click="goToProfil()"
+            style="float: left; margin: 10px 0 0"
+            class="click3"
+          >
+            CANCEL
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -72,12 +89,14 @@
 
 <script>
 import axios from "axios";
+import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
+  components: { LayoutHeader },
   name: "Edit",
   data() {
     return {
-      User: { photo:"", username: "", bio: "", password: "" },
+      User: { photo: "", username: "", bio: "", password: "" },
     };
   },
   props: {},
@@ -98,9 +117,8 @@ export default {
         .put(`http://localhost:3000/user/update/?username=${username}`, newUser)
         .then((response) => {
           console.log(response);
-          localStorage.setItem("user",newUser.username);
+          localStorage.setItem("user", newUser.username);
           this.$router.push("/profil");
-
         })
         .catch((error) => {
           console.log(error);
@@ -117,21 +135,15 @@ export default {
         .then((res) => {
           var photo = document.getElementById("photo");
 
-          const data = res.data
-          if (photo !== null){
+          const data = res.data;
+          if (photo !== null) {
             photo.setAttribute("src", data.photo);
           }
-          
-
         })
         .catch((error) => {
           console.log(error);
         });
-      
-      
-
     },
-    
   },
 };
 </script>
@@ -159,7 +171,7 @@ export default {
 .edit-box {
   width: 100%;
   height: 100vh;
-  background-image: url(../src/assets/img_wallpaper/login2.jpg);
+  background-color: #111111;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -172,9 +184,9 @@ export default {
   width: 460px;
   height: 95%;
   border: 2px solid black;
-  box-shadow: -3px -3px 7px red, 3px 3px 5px white;
+  box-shadow: -3px -3px 7px #350619, 3px 3px 5px #111111;
   border-radius: 5px;
-  background-color: #64110b;
+  background-color: #350619;
   margin-top: 10px;
   overflow: hidden;
   display: flex;
@@ -208,12 +220,11 @@ export default {
 .forminput1 .input {
   display: block;
   box-sizing: border-box;
-  background-color: black;
   color: white;
   margin-bottom: 5px;
   padding: 4px;
   width: 220px;
-  height: 20px;
+  height: 30px;
   border: none;
   border-bottom: 1px solid black;
   font-weight: 400;
@@ -222,35 +233,32 @@ export default {
 }
 
 .forminput1 .input:focus {
-  border-bottom: 1px solid red;
   border-bottom-right-radius: 20px;
-  background-color: #64110b;
-  color: red;
+
   transition: 0.2 ease;
 }
 
-.btn1 button {
-  border: 1px solid white;
-  background-color: blue;
-  color: white;
-  height: 30px;
-  width: 100px;
-  border-radius: 5px;
-  margin: 0px;
-  margin-top: 10px;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.btn3 {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.btn1 button:hover {
-  transform: scale(1.1);
+.click3 {
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px 2em;
+  box-shadow: 0px 0px 0px 2px #fff2f3;
+  text-decoration: none;
+  color: #fff2f3;
+  outline: none;
+  background: none;
+  border: none;
+}
+.click3:hover {
+  color: #fff2f3;
+  box-shadow: 0px 0px 0px 2px #fff2f3;
   cursor: pointer;
-  background-color: blue;
-  color: cyan;
-  font-weight: bold;
-  box-shadow: -3px -3px 7px blue, 3px 3px 5px cyan;
+  transform: scale(1.2);
 }
 
 .cancel button {
@@ -298,5 +306,34 @@ export default {
   color: white;
   font-weight: bold;
   box-shadow: -3px -3px 7px green, 3px 3px 5px darkgreen;
+}
+
+.formEdit {
+  font-family: "Titillium Web", sans-serif;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #d8d8d8;
+}
+
+.formlabel {
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  font-size: 108%;
+  color: #fff2f3;
+}
+
+.input {
+  font-family: "Titillium Web", sans-serif;
+  border: none;
+  background: none;
+  width: 100%;
+  height: 3vh;
+  color: #D8D8D8(0, 0, 0);
+  font-size: 1em;
+  outline: none;
+  box-shadow: #d8d8d8;
 }
 </style>

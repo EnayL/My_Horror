@@ -2,16 +2,13 @@
   <div class="nav">
     <input type="checkbox" id="ham-menu" />
     <label for="ham-menu">
-      <div class="hide-des">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </div>
+      <img style="cursor: pointer" src="../assets/icon/house-solid copie.svg" />
     </label>
     <div class="full-page-green"></div>
     <div class="ham-menu">
       <ul class="centre-text bold-text">
         <li @click="goToHome()">Home</li>
+        <li @click="goToPoste()">Poste</li>
         <li @click="goToProfil()">Profile</li>
         <li @click="goToLike()">Like</li>
       </ul>
@@ -36,6 +33,9 @@ export default {
     },
     goToHome() {
       this.$router.push("/home");
+    },
+    goToPoste() {
+      this.$router.push("/post");
     },
   },
 };
@@ -65,7 +65,7 @@ html {
 }
 .nav {
   width: 100%;
-  background-color: #5c0000;
+  background-color: #350619;
   height: 80px;
 }
 
@@ -73,6 +73,7 @@ html {
   display: none;
 }
 label[for="ham-menu"] {
+  margin-left: 0.5%;
   display: block;
   position: fixed;
   top: 5px;
@@ -80,21 +81,21 @@ label[for="ham-menu"] {
   z-index: 999;
   width: 60px;
   height: 60px;
-  background-color: #5c0000;
+  background-color: #350619;
   border-radius: 15px;
-  border: 2px solid rgb(0, 0, 0);
+
   cursor: pointer;
 }
 
 .ham-menu {
-  width: 50vw;
+  width: 17vw;
   height: 100%;
   position: fixed;
   top: 0;
   visibility: hidden;
   transform: translate(-110%);
   z-index: 998;
-  background-color: #5c0000;
+  background-color: #350619;
   transition: 1s;
   display: flex;
   justify-content: center;
@@ -112,7 +113,7 @@ label[for="ham-menu"] {
   white-space: nowrap;
   letter-spacing: 0.15em;
   cursor: pointer;
-  color: rgb(0, 0, 0);
+  color: #fff2f3;
 }
 
 #ham-menu:checked + label {
@@ -129,7 +130,7 @@ label[for="ham-menu"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.475);
+  background-color: #35061992;
   z-index: 997;
   opacity: 0;
   visibility: hidden;

@@ -1,5 +1,5 @@
 <template>
-      <form>
+  <form>
     <div class="update-post">
       <div>
         <div class="update-post__avatar">
@@ -51,7 +51,6 @@
           </label>
           <input style="display: none" id="file-input" type="file" />
         </div>
-        
       </div>
     </div>
   </form>
@@ -61,12 +60,12 @@
 </template>
 
 <script>
-import axios from 'axios';
-    export default {
-        name: "UpdatePost",
-        data() {
+import axios from "axios";
+export default {
+  name: "UpdatePost",
+  data() {
     return {
-      Post: { titre:"", contenu: "", genre: "", owner: ""},
+      Post: { titre: "", contenu: "", genre: "", owner: "" },
     };
   },
   props: {},
@@ -91,20 +90,18 @@ import axios from 'axios';
           console.log(res);
           localStorage.setItem("titre", "");
           this.$router.push("/post");
-
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    }
-  }
-    
+  },
+};
 </script>
 
 <style scoped>
 .update-post {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 15px;
 }
 .update-post__avatar-img {
@@ -172,8 +169,8 @@ import axios from 'axios';
   border: none;
   min-height: 40px;
   margin-top: 25px;
-  margin-left:45%;
-  width:10%;
+  margin-left: 45%;
+  width: 10%;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 15px;
@@ -209,7 +206,6 @@ import axios from 'axios';
   font-size: 15px;
 }
 
-
 .p2 {
   margin: 1%;
   width: 95%;
@@ -219,7 +215,7 @@ import axios from 'axios';
 
 .p2 textarea {
   border: none;
-  width:100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
   padding: 2%;
@@ -232,7 +228,6 @@ import axios from 'axios';
   color: white;
   font-size: 15px;
 }
-
 
 .p3 {
   margin-top: 1%;
@@ -249,7 +244,7 @@ import axios from 'axios';
   height: 40px;
   color: white;
   padding: 3%;
-  float:right;
+  float: right;
   font-family: "OpenSansCondensed-Bold", sans-serif;
 }
 
@@ -260,5 +255,4 @@ import axios from 'axios';
   color: white;
   font-size: 15px;
 }
-
 </style>

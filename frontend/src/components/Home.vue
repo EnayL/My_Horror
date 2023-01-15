@@ -4,12 +4,11 @@
     <main class="main" id="main">
       <div class="main-form">
         <p>Notre selection du mois:</p>
-        <br><br>
+        <br /><br />
         <p>Pour le moment Aucune publication n'a retenu notre attention</p>
         <div class="container_selec"></div>
       </div>
       <div class="main-line"></div>
-      <p>Publications:</p>
 
       <Post></Post>
     </main>
@@ -20,8 +19,6 @@
 // @ is an alias to /src
 import LayoutHeader from "./LayoutHeader.vue";
 import Post from "./Post.vue";
-import Header from "./LayoutHeader.vue";
-
 
 export default {
   methods: {},
@@ -35,15 +32,16 @@ export default {
 
 <style scoped>
 .bodyhome {
-  background-image: url("../assets/img_wallpaper/de905de2a7d6905f5572a193c1352aa2.jpg");
+  background-color: #111111;
 }
+
 .main {
   max-width: 1000px;
   width: 100%;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;
   margin-right: auto;
-  background-color: #5c0000;
+  background-color: #350619;
 }
 .main-form {
   margin-top: 60px;
@@ -51,7 +49,7 @@ export default {
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 .main-line {
-  height: 10px;
-  background-color: rgb(0, 0, 0);
+  height: 5px;
+  background-color: rgb(254, 254, 254);
 }
 </style>

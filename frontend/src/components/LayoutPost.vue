@@ -1,7 +1,6 @@
 <template>
-  <a href="./home" style="color: white;"> GO BACK HOME</a>
-  <div id="containerpost">
-  </div>
+  <a href="./home" style="color: white"> GO BACK HOME</a>
+  <div id="containerpost"></div>
 </template>
 
 <script>
@@ -99,15 +98,12 @@ export default {
           if (owner == user) {
             modif.setAttribute("href", "/updatePost");
             window.localStorage.setItem("titre", titre);
-
           } else {
             alert(
               "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
             );
           }
-
         });
-
 
         container.setAttribute(
           "style",

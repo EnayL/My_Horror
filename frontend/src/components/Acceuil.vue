@@ -19,7 +19,10 @@
       </div>
 
       <a @click="goToHome()"
-        ><img src="../assets/icon/logo.webp" class="logo"
+        ><img
+          style="cursor: pointer"
+          src="../assets/icon/logo.webp"
+          class="logo2"
       /></a>
 
       <ul class="medias">
@@ -50,7 +53,7 @@ export default {
       this.$router.push("/login");
     },
     goToHome() {
-      this.$router.push("/post");
+      this.$router.push("/home");
     },
   },
 };
@@ -147,7 +150,7 @@ h2 span {
   top: 20px;
 }
 
-.logo {
+.logo2 {
   position: absolute;
   right: 2.9%;
   top: 4%;
