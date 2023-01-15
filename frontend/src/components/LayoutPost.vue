@@ -1,7 +1,7 @@
 <template>
-    <a href="./home" style="color: white;"> GO BACK HOME</a>
-    <div id="containerpost">
-    </div>  
+  <a href="./home" style="color: white;"> GO BACK HOME</a>
+  <div id="containerpost">
+  </div>
 </template>
 
 <script>
@@ -10,17 +10,19 @@ import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
   methods: {
-    goToHome() {
-      this.$router.push("/updatePost");
-    },
 
     async getPosts() {
       //récupération des données
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:3000/posts/",{
-        
-        headers:{
-           "Authorization":`Bearer ${token}`
+      const user = localStorage.getItem("user");
+      const resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
+      
+          
+
+      const res = await axios.get("http://localhost:3000/posts/", {
+
+        headers: {
+          "Authorization": `Bearer ${token}`
         }
       });
       const json = JSON.stringify(res);
@@ -35,36 +37,37 @@ export default {
 
         contenu = contenu.replace(/\n/g, "<br>");
 
-        var container = document.createElement("div");
+        const container = document.createElement("div");
 
-        var pp = document.createElement("img"); // pp
+        const pp = document.createElement("img"); // pp
         pp.src = "../assets/img_wallpaper/heart.png";
 
-        var div = document.createElement("div"); // div de la pp
+        const divtest = document.createElement("div"); // div de la pp
 
-        var h1 = document.createElement("p"); // creation element titre
+        const h1 = document.createElement("p"); // creation element titre
         h1.innerHTML = titre + ":";
-        var div2 = document.createElement("p"); // creation element contenu
+        const div2 = document.createElement("p"); // creation element contenu
 
         div2.innerHTML = contenu;
-        var div3 = document.createElement("p"); //creation element owner
+        const div3 = document.createElement("p"); //creation element owner
         div3.class = "owner";
         div3.innerHTML = "Par " + owner;
         mainContainer.appendChild(container);
 
         div2.setAttribute("style", "margin: 10px;");
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
-        div.setAttribute("style", "display: flex; flex-direction: row;");
+        divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
-        var supp = document.createElement("button"); // creation boutton supprimer
+        const supp = document.createElement("button"); // creation boutton supprimer
         supp.id = "supprimer";
         supp.innerHTML = "X";
 
-        var modif = document.createElement("a"); // creation boutton supprimer
+
+        const modif = document.createElement("a"); // creation boutton supprimer
         modif.id = "modif";
         modif.innerHTML = "Modifier";
 
-        div.setAttribute("type", "submit");
+        divtest.setAttribute("type", "submit");
 
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
@@ -94,17 +97,17 @@ export default {
 
         modif.addEventListener("click", function handleClick() {
           if (owner == user) {
-            modif.setAttribute("href","/updatePost");
+            modif.setAttribute("href", "/updatePost");
             window.localStorage.setItem("titre", titre);
-            
+
           } else {
             alert(
               "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
             );
           }
-        
+
         });
-      
+
 
         container.setAttribute(
           "style",
@@ -121,28 +124,52 @@ export default {
           "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
         );
 
-        // modif.setAttribute(
-        //   "style",
-        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        // );
+
+      // modif.setAttribute(
+      //   "style",
+      //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+      // );
 
         div2.setAttribute("style", "margin: 10px;");
 
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
 
-        div.setAttribute("style", "display: flex; flex-direction: row;");
+        divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
-        container.appendChild(div);
+        container.appendChild(divtest);
         container.appendChild(h1);
-        div.appendChild(pp);
-        div.appendChild(supp);
-        div.appendChild(modif);
+        divtest.appendChild(pp);
+        divtest.appendChild(supp);
+        divtest.appendChild(modif);
+        // var select = document.createElement("button"); // creation boutton supprimer
+        // select.id = "select";
+        // select.innerHTML = "Add to selction";
+
+
+        // select.setAttribute(
+        //   "style",
+        //   "color: white; font-size: x-large;"
+        // );
+
+        // divtest.appendChild(select);
+
+
 
         container.appendChild(div2);
         container.appendChild(div3);
+
+      
+        // const role = resUser.data.role;
+        // console.log(role);
+        // const div= document.getElementById("select");
+        // if (role != "admin") {
+        //   console.log("pouet");
+        //   div.style.display = "none";
+        // }
       }
-    },
+    }
   },
+
   mounted() {
     this.getPosts();
   },

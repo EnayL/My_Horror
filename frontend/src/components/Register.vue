@@ -80,6 +80,7 @@ export default {
         email: "",
         password: "",
         confirm: "",
+        role: "",
       },
     };
   },
@@ -91,6 +92,7 @@ export default {
         username: this.User.username,
         email: this.User.email,
         password: this.User.password,
+        role: "user",
       };
       let confirm = this.User.confirm;
       let password = this.User.password;
