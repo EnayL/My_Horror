@@ -13,6 +13,7 @@
 <script>
 import CreatePost from "../components/LayoutCreatePost.vue";
 import Post from "../components/LayoutPost.vue";
+
 export default {
   name: "PostIdPage",
   components: { CreatePost, Post },

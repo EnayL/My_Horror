@@ -36,7 +36,7 @@ export default {
 }
 
 .main {
-  max-width: 1000px;
+  max-width: 1095px;
   width: 100%;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;

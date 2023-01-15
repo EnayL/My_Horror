@@ -11,6 +11,12 @@
         <li @click="goToPoste()">Poste</li>
         <li @click="goToProfil()">Profile</li>
         <li @click="goToLike()">Like</li>
+        <li @click="goToLogout()">
+          Logout<img
+            class="logout"
+            src="../assets/icon/right-from-bracket-solid.svg"
+          />
+        </li>
       </ul>
     </div>
     <search></search>
@@ -37,6 +43,8 @@ export default {
     goToPoste() {
       this.$router.push("/post");
     },
+    // utilise cette fonction pour le logout
+    goToLogout() {},
   },
 };
 </script>
@@ -88,7 +96,7 @@ label[for="ham-menu"] {
 }
 
 .ham-menu {
-  width: 17vw;
+  width: 35vw;
   height: 100%;
   position: fixed;
   top: 0;
@@ -252,5 +260,11 @@ li:hover {
 }
 .bold-text {
   font-weight: bold;
+}
+
+.logout {
+  margin-top: 10%;
+  width: 10%;
+  height: 60px;
 }
 </style>

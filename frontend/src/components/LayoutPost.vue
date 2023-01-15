@@ -1,5 +1,5 @@
 <template>
-  <a href="./home" style="color: white"> GO BACK HOME</a>
+  <layout-header></layout-header>
   <div id="containerpost"></div>
 </template>
 
@@ -54,15 +54,13 @@ export default {
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
         div.setAttribute("style", "display: flex; flex-direction: row;");
 
+        var modif = document.createElement("a"); // creation boutton supprimer
+        modif.id = "modif";
+        (modif.innerHTML = "---"), div.setAttribute("type", "submit");
+
         var supp = document.createElement("button"); // creation boutton supprimer
         supp.id = "supprimer";
         supp.innerHTML = "X";
-
-        var modif = document.createElement("a"); // creation boutton supprimer
-        modif.id = "modif";
-        modif.innerHTML = "Modifier";
-
-        div.setAttribute("type", "submit");
 
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
@@ -103,27 +101,27 @@ export default {
 
         container.setAttribute(
           "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
+          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 20px; display:flex; flex-direction: column;"
         );
 
         h1.setAttribute(
           "style",
-          "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
+          "font-size: x-large; margin: 5px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
         );
 
         supp.setAttribute(
           "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
+          "color: white; width:5%; margin-left:auto; padding: 1px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; cursor:pointer; "
         );
 
-        // modif.setAttribute(
-        //   "style",
-        //   "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        // );
+        modif.setAttribute(
+          "style",
+          "color: white;  font-size: x-large; cursor:pointer; "
+        );
 
-        div2.setAttribute("style", "margin: 10px;");
+        div2.setAttribute("style", "margin: 50px; font-size:22px;");
 
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
+        div3.setAttribute("style", "margin: 25px; font-size: x-small;");
 
         div.setAttribute("style", "display: flex; flex-direction: row;");
 
@@ -163,5 +161,14 @@ export default {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
+}
+
+.main {
+  max-width: 1095px;
+  width: 100%;
+  border: 1px solid rgb(0, 0, 0);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #350619;
 }
 </style>
