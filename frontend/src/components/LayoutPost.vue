@@ -13,8 +13,6 @@ export default {
     async getPosts() {
       //récupération des données
       const token = localStorage.getItem("token");
-      const user = localStorage.getItem("user");
-      const resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
       
           
 
@@ -29,20 +27,31 @@ export default {
       var mainContainer = document.getElementById("containerpost");
 
       for (let i = 0; i < jsonData.data.length; i++) {
+        
+
+
         const publi = jsonData.data[i];
         const titre = publi.titre;
         let contenu = publi.contenu;
         const owner = publi.owner;
 
+        let resUser = await axios.get(`http://localhost:3000/user/?username=${owner}`)
+
+        let photo = resUser.data.photo;
+
         contenu = contenu.replace(/\n/g, "<br>");
 
         const container = document.createElement("div");
 
-        // const pp = document.createElement("img"); // pp
-        // pp.src = "../assets/img_wallpaper/heart.png";
+        const pp = document.createElement("img"); // pp
+        pp.src = photo;
+
+        if (photo === undefined){
+          pp.src = "/src/assets/icon/no_pic.webp"
+        }
 
         const divtest = document.createElement("div"); 
-
+        
         const h1 = document.createElement("p"); // creation element titre
         h1.innerHTML = titre + ":";
         const div2 = document.createElement("p"); // creation element contenu
@@ -52,9 +61,13 @@ export default {
         div3.class = "owner";
         div3.innerHTML = "Par " + owner;
         mainContainer.appendChild(container);
+        const div4 = document.createElement("div");
+
 
         div2.setAttribute("style", "margin: 10px; font-size: 5px;");
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
+        div4.setAttribute("style", "display: flex; flex-direction: row;");
+
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
         const supp = document.createElement("button"); // creation boutton supprimer
@@ -62,7 +75,7 @@ export default {
         supp.innerHTML = "X";
 
 
-        const modif = document.createElement("a"); // creation boutton supprimer
+        const modif = document.createElement("a"); // creation boutton modifier
         modif.id = "modif";
         (modif.innerHTML = "---"), modif.setAttribute("type", "submit");
 
@@ -71,7 +84,7 @@ export default {
 
 
         const token = localStorage.getItem("token");
-        const user = localStorage.getItem("user");
+        
         supp.addEventListener("click", function handleClick() {
           if (owner != user) {
             alert(
@@ -116,6 +129,10 @@ export default {
         });
 
 
+        pp.setAttribute(
+          "style",
+          "height:40px;width:40px;border-radius:50%; margin-left:10px;"
+        );
         container.setAttribute(
           "style",
           "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 20px; display:flex; flex-direction: column;"
@@ -138,13 +155,12 @@ export default {
 
         div2.setAttribute("style", "margin: 50px; font-size:20px;");
 
-        div3.setAttribute("style", "margin: 25px; font-size: x-small;");
+        div3.setAttribute("style", "margin: 25px; font-size: small;");
 
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 
         container.appendChild(divtest);
         container.appendChild(h1);
-        // divtest.appendChild(pp);
         divtest.appendChild(supp);
         divtest.appendChild(modif);
         
@@ -153,10 +169,14 @@ export default {
 
 
         container.appendChild(div2);
-        container.appendChild(div3);
+        div4.appendChild(pp);
+
+        div4.appendChild(div3);
+        container.appendChild(div4);
+
       }
 
-      const select = document.createElement("button"); // pp
+      const select = document.createElement("button"); 
     select.id = "select";
     select.innerHTML = "Add to selection";
     select.addEventListener("click", function handleClick() {
@@ -167,6 +187,10 @@ export default {
       "style",
       "color: white; font-size: x-large;"
     );
+    let user = localStorage.getItem("user");
+
+    let resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
+
     const role = resUser.data.role;
     console.log(role);
     var divtest = document.getElementById("divtest");

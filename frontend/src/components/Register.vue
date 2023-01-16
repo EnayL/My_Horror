@@ -64,7 +64,7 @@
               <input
                 class="input"
                 v-model="User.password"
-                type="string"
+                type="password"
                 id="password"
                 placeholder="Rentrez votre password"
               />
@@ -75,7 +75,7 @@
             <p class="forminput">
               <input
                 class="input"
-                type="string"
+                type="password"
                 v-model="User.confirm"
                 id="password"
                 placeholder="confirmez votre password"

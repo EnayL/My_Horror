@@ -27,7 +27,6 @@
               />
             </p>
           </div>
-
           <div class="formlabel1">
             <label for="bio">biography</label>
             <p class="forminput1">
@@ -37,31 +36,6 @@
                 type="string"
                 id="bio"
                 placeholder="write your bio"
-              />
-            </p>
-          </div>
-
-          <div class="formlabel1">
-            <label for="password">Mot de passe</label>
-            <p class="forminput1">
-              <input
-                class="input"
-                v-model="User.password"
-                type="string"
-                id="password"
-                placeholder="new password"
-              />
-            </p>
-          </div>
-          <div class="formlabel1">
-            <label for="password">Confirmer le Mot de passe</label>
-            <p class="forminput1">
-              <input
-                class="input"
-                type="string"
-                v-model="User.confirm"
-                id="password"
-                placeholder="confirm"
               />
             </p>
           </div>
@@ -96,19 +70,28 @@ export default {
   name: "Edit",
   data() {
     return {
-      User: { photo: "", username: "", bio: "", password: "" },
+      User: { photo: "", username: "", bio: ""},
     };
   },
   props: {},
   methods: {
     addToDb() {
+      const datas = this.User;
+
+      if(datas.photo == "" || datas.username == "" || datas.bio == "" ){
+        alert(
+              "Vous n'avez pas pu modifier votre profil car vous n'avez pas remplis tous les champs."
+            ); 
+        window.location="http://localhost:3001/profil";
+       
+      }
       let newUser = {
         photo: this.User.photo,
         username: this.User.username,
         bio: this.User.bio,
-        password: this.User.password,
       };
       const username = localStorage.getItem("user");
+      // const exUser = username
 
       let jsonData = JSON.stringify(newUser);
 
@@ -119,6 +102,15 @@ export default {
           console.log(response);
           localStorage.setItem("user", newUser.username);
           this.$router.push("/profil");
+          const newUsername = localStorage.getItem("user");
+          axios
+          .put(`http://localhost:3000/posts/owner/?owner=${username}`, {"owner":newUsername})
+          .then((response) => {
+            console.log(`http://localhost:3000/posts/owner/?owner=${username}`);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         })
         .catch((error) => {
           console.log(error);

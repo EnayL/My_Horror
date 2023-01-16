@@ -1,4 +1,6 @@
 <template>
+    <LayoutHeader></LayoutHeader>
+
   <div class="bodyhome">
     <main class="main">
       <post></post>
@@ -13,10 +15,11 @@
 <script>
 import CreatePost from "../components/LayoutCreatePost.vue";
 import Post from "../components/LayoutPost.vue";
+import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
   name: "PostIdPage",
-  components: { CreatePost, Post },
+  components: { CreatePost, Post,LayoutHeader },
   props: {},
   method: {},
   data() {

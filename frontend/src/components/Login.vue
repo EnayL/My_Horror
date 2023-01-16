@@ -38,7 +38,7 @@
                 v-model="User.password"
               />
             </p>
-            <a href="" class="forgot1">Mot de passe oublié?</a>
+            <a href="/login/forget" class="forgot1">Mot de passe oublié?</a>
           </div>
         </form>
         <div class="btn2">

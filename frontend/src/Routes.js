@@ -10,7 +10,7 @@ import UpdatePost from "../src/components/UpdatePost.vue";
 import Edit from "./components/Edit.vue"; 
 import Search from "./components/Search.vue";
 import Selection from "./components/Selection.vue";
-
+import ForgetPassword from "../src/components/ForgetPassword.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
@@ -25,6 +25,7 @@ const routes = [
   { path: "/search", component: Search, name: "Search" },
   { path: "/Selection", component: Selection, name: "Selection" },
   { path: "/updatePost", component: UpdatePost, name: "UpdatePost" },
+  { path: "/login/forget", component: ForgetPassword, name: "ForgetPassword" },
 ];
 
 export const router = createRouter({
