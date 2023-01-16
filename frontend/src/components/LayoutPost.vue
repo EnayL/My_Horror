@@ -63,8 +63,8 @@ export default {
         mainContainer.appendChild(container);
         const div4 = document.createElement("div");
 
-
-        div2.setAttribute("style", "margin: 10px; font-size: 5px;");
+        div2.setAttribute("style", 
+        "margin: 10px; font-size: 5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;");
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
         div4.setAttribute("style", "display: flex; flex-direction: row;");
 
@@ -131,7 +131,7 @@ export default {
 
         pp.setAttribute(
           "style",
-          "height:40px;width:40px;border-radius:50%; margin-left:10px;"
+          "height: 40px; width: 40px; border-radius: 50%; margin-left: 10px; margin-top: 10px;"
         );
         container.setAttribute(
           "style",
@@ -153,9 +153,9 @@ export default {
           "color: white;  font-size: x-large; cursor:pointer; "
         );
 
-        div2.setAttribute("style", "margin: 50px; font-size:20px;");
+        div2.setAttribute("style", "margin: 50px; font-size:20px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 10; overflow: hidden; text-overflow: ellipsis; white-space: normal;");
 
-        div3.setAttribute("style", "margin: 25px; font-size: small;");
+        div3.setAttribute("style", "margin: 20px; font-size: small;");
 
         divtest.setAttribute("style", "display: flex; flex-direction: row;");
 

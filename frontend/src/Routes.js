@@ -11,6 +11,7 @@ import Edit from "./components/Edit.vue";
 import Search from "./components/Search.vue";
 import Selection from "./components/Selection.vue";
 import ForgetPassword from "../src/components/ForgetPassword.vue";
+import PostDetail from "../src/components/PostDetail.vue";
 
 const routes = [
   { path: "/", component: Acceuil, name: "Acceuil" },
@@ -26,6 +27,7 @@ const routes = [
   { path: "/Selection", component: Selection, name: "Selection" },
   { path: "/updatePost", component: UpdatePost, name: "UpdatePost" },
   { path: "/login/forget", component: ForgetPassword, name: "ForgetPassword" },
+  { path: "/post/:id", component: PostDetail, name: "PostDetailPage" },
 ];
 
 export const router = createRouter({

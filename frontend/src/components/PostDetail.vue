@@ -1,6 +1,5 @@
 <template>
-  <!-- <a href="./home" style="color: white;"> GO BACK HOME</a> -->
-  <div id="containerpost"></div>
+    <div id="containerpost"></div>
 </template>
 
 <script>
@@ -9,9 +8,6 @@ import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
   methods: {
-    GotoDetail() {
-      this.$router.push("/post/:id");
-    },
     async getData() {
       const res = await fetch("http://localhost:3000/posts");
       const finalRes = await res.json("titre");
@@ -37,7 +33,7 @@ export default {
         const owner = publi.owner;
 
         var container = document.createElement("div");
-        container.addEventListener("click", this.GotoDetail);
+
         var pp = document.createElement("img"); // pp
         pp.src = "../assets/icon/heart-regular.svg";
 
@@ -130,7 +126,7 @@ export default {
   mounted() {
     this.getPosts();
   },
-  name: "PostPage",
+  name: "PostDetailPage",
   components: {
     LayoutHeader,
   },
