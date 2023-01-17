@@ -1,5 +1,4 @@
 <template>
-  <layout-header></layout-header>
   <div id="containerpost"></div>
 </template>
 
@@ -9,33 +8,28 @@ import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
   methods: {
-
     async getPosts() {
       //récupération des données
       const token = localStorage.getItem("token");
-      
-          
 
       const res = await axios.get("http://localhost:3000/posts/", {
-
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       const json = JSON.stringify(res);
       const jsonData = JSON.parse(json);
       var mainContainer = document.getElementById("containerpost");
 
       for (let i = 0; i < jsonData.data.length; i++) {
-        
-
-
         const publi = jsonData.data[i];
         const titre = publi.titre;
         let contenu = publi.contenu;
         const owner = publi.owner;
 
-        let resUser = await axios.get(`http://localhost:3000/user/?username=${owner}`)
+        let resUser = await axios.get(
+          `http://localhost:3000/user/?username=${owner}`
+        );
 
         let photo = resUser.data.photo;
 
@@ -46,12 +40,12 @@ export default {
         const pp = document.createElement("img"); // pp
         pp.src = photo;
 
-        if (photo === undefined){
-          pp.src = "/src/assets/icon/no_pic.webp"
+        if (photo === undefined) {
+          pp.src = "/src/assets/icon/no_pic.webp";
         }
 
-        const divtest = document.createElement("div"); 
-        
+        const divtest = document.createElement("div");
+
         const h1 = document.createElement("p"); // creation element titre
         h1.innerHTML = titre + ":";
         const div2 = document.createElement("p"); // creation element contenu
@@ -63,8 +57,10 @@ export default {
         mainContainer.appendChild(container);
         const div4 = document.createElement("div");
 
-        div2.setAttribute("style", 
-        "margin: 10px; font-size: 5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;");
+        div2.setAttribute(
+          "style",
+          "margin: 10px; font-size: 5px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;"
+        );
         div3.setAttribute("style", "margin: 10px; font-size: x-small;");
         div4.setAttribute("style", "display: flex; flex-direction: row;");
 
@@ -74,7 +70,6 @@ export default {
         supp.id = "supprimer";
         supp.innerHTML = "X";
 
-
         const modif = document.createElement("a"); // creation boutton modifier
         modif.id = "modif";
         (modif.innerHTML = "---"), modif.setAttribute("type", "submit");
@@ -82,9 +77,8 @@ export default {
         divtest.setAttribute("type", "submit");
         divtest.setAttribute("id", "divtest");
 
-
         const token = localStorage.getItem("token");
-        
+
         supp.addEventListener("click", function handleClick() {
           if (owner != user) {
             alert(
@@ -92,11 +86,11 @@ export default {
             );
           } else {
             if (popup == true) {
-            alert("vous avez supprimé une publication");
-            window.location="http://localhost:3001/Selection";
-             //For an example, but you could change the URL of the website to another on, or do whatever you want here...
-          } else {
-                  return false; //or open another popup, etc, you choose what you need over the function...
+              alert("vous avez supprimé une publication");
+              window.location = "http://localhost:3001/Selection";
+              //For an example, but you could change the URL of the website to another on, or do whatever you want here...
+            } else {
+              return false; //or open another popup, etc, you choose what you need over the function...
             }
             axios
               .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
@@ -119,15 +113,12 @@ export default {
           if (owner == user) {
             modif.setAttribute("href", "/updatePost");
             window.localStorage.setItem("titre", titre);
-
           } else {
             alert(
               "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
             );
           }
-
         });
-
 
         pp.setAttribute(
           "style",
@@ -148,12 +139,15 @@ export default {
           "color: white; width:5%; margin-left:auto; padding: 1px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; cursor:pointer; "
         );
 
-       modif.setAttribute(
+        modif.setAttribute(
           "style",
           "color: white;  font-size: x-large; cursor:pointer; "
         );
 
-        div2.setAttribute("style", "margin: 50px; font-size:20px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 10; overflow: hidden; text-overflow: ellipsis; white-space: normal;");
+        div2.setAttribute(
+          "style",
+          "margin: 50px; font-size:20px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 10; overflow: hidden; text-overflow: ellipsis; white-space: normal;"
+        );
 
         div3.setAttribute("style", "margin: 20px; font-size: small;");
 
@@ -163,45 +157,39 @@ export default {
         container.appendChild(h1);
         divtest.appendChild(supp);
         divtest.appendChild(modif);
-        
-
-
-
 
         container.appendChild(div2);
         div4.appendChild(pp);
 
         div4.appendChild(div3);
         container.appendChild(div4);
-
       }
 
-      const select = document.createElement("button"); 
-    select.id = "select";
-    select.innerHTML = "Add to selection";
-    select.addEventListener("click", function handleClick() {
-      window.location="http://localhost:3001/Selection";
-    });
+      const select = document.createElement("button");
+      select.id = "select";
+      select.innerHTML = "Add to selection";
+      select.addEventListener("click", function handleClick() {
+        window.location = "http://localhost:3001/Selection";
+      });
 
-    select.setAttribute(
-      "style",
-      "color: white; font-size: x-large;"
-    );
-    let user = localStorage.getItem("user");
+      select.setAttribute("style", "color: white; font-size: x-large;");
+      let user = localStorage.getItem("user");
 
-    let resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
+      let resUser = await axios.get(
+        `http://localhost:3000/user/?username=${user}`
+      );
 
-    const role = resUser.data.role;
-    console.log(role);
-    var divtest = document.getElementById("divtest");
+      const role = resUser.data.role;
+      console.log(role);
+      var divtest = document.getElementById("divtest");
 
-    divtest.appendChild(select);
+      divtest.appendChild(select);
 
-    if (role != "admin") {
-      console.log("pouet");
-      select.style.display = "none";
-    }
-    }
+      if (role != "admin") {
+        console.log("pouet");
+        select.style.display = "none";
+      }
+    },
   },
 
   mounted() {
