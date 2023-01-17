@@ -85,7 +85,11 @@
           </div>
           <p id="error" style="color: aliceblue"></p>
         </form>
-        <button id="button" type="submit" @click="addToDb">Register</button>
+        <div class="btn2">
+          <button class="click2" id="button" type="submit" @click="addToDb">
+            Register
+          </button>
+        </div>
       </div>
     </div>
     <div class="leftcontainere">
@@ -93,7 +97,8 @@
         <img src="../assets/img_wallpaper/register.jpg" />
         <div class="tease2">
           <h1>Hey,</h1>
-          <h1>You're about to join a scary place..</h1>
+          <h1>You're about to join a</h1>
+          <h1>scary place..</h1>
         </div>
       </div>
     </div>
@@ -198,7 +203,7 @@ export default {
 
 .rightcontainer img {
   position: relative;
-  margin-top: 10%;
+  margin-top: 2%;
   border-radius: 50%;
   width: 25%;
   margin-left: auto;
@@ -213,7 +218,8 @@ export default {
   margin: 3%;
   padding-bottom: 5%;
 }
-.welcom {
+.welcom1 {
+  font-size: 20px !important;
   max-width: 70%;
   margin-top: 5%;
   font-size: 200%;
@@ -231,7 +237,7 @@ export default {
 }
 
 .formlabel {
-  margin-top: 5%;
+  margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
@@ -239,12 +245,12 @@ export default {
   color: #fff2f3;
 }
 
-.input {
+.forminput .input {
   font-family: "Titillium Web", sans-serif;
   border: none;
   background: none;
   width: 100%;
-  height: 3vh;
+  height: 4vh;
   color: #fff2f3;
   font-size: 1em;
   outline: none;
@@ -256,6 +262,7 @@ export default {
   margin-top: 2%;
   float: right;
   text-decoration: underline;
+  font-size: 15px;
 }
 
 .forgot:hover {
@@ -287,9 +294,10 @@ export default {
 }
 
 .tease2 {
-  margin-left: 50%;
+  margin-left: 35%;
   position: absolute;
-  top: 30%;
+  width: 42%;
+  top: 29%;
   font-family: "Titillium Web", sans-serif;
   text-align: center;
 }

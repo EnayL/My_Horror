@@ -188,7 +188,7 @@ h2 span {
 .logo-medias {
   width: 40px;
   height: 40px;
-  margin-top: 100%;
-  margin-left: 5%;
+  margin-top: 30%;
+  margin-left: 2%;
 }
 </style>

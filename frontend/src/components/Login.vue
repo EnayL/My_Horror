@@ -186,12 +186,12 @@ export default {
   color: #fff2f3;
 }
 
-.input {
+.forminput .input {
   font-family: "Titillium Web", sans-serif;
   border: none;
   background: none;
   width: 100%;
-  height: 3vh;
+  height: 4vh;
   color: #D8D8D8(0, 0, 0);
   font-size: 1em;
   outline: none;
@@ -203,6 +203,7 @@ export default {
   margin-top: 2%;
   float: right;
   text-decoration: underline;
+  font-size: 15px;
 }
 
 .forgot1:hover {

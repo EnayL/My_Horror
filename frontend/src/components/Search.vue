@@ -49,6 +49,8 @@ export default {
 <style scoped>
 body {
   background-image: linear-gradient(to right, #cb2d3e, #ef473a);
+  max-height: 100vh;
+  max-width: 100vw;
 }
 
 .searchBox {

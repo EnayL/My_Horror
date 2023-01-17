@@ -6,19 +6,28 @@
         <ul class="centre-text bold-text">
           <li @click="goToEdit()" style="color: white">Edit</li>
         </ul>
-
-        <img id="photo" class="profile-pic" />
-        <h3 id="name"></h3>
-        <p id="bio"></p>
-        <div class="social-media">
-          <img src="\src\assets\img_wallpaper\twitter.png" />
-          <img src="\src\assets\img_wallpaper\instagram.png" />
-          <img src="\src\assets\img_wallpaper\tiktok.png" />
-        </div>
-        <!-- <button type="button">Mes favoris</button>
+        <div>
+          <img id="photo" class="profile-pic" />
+          <h3 id="name"></h3>
+          <div style="margin-top: 5%">
+            <label>Abonné</label>
+            <p style="font-size: 20px">0</p>
+            &nbsp;
+            <label>Abonnement</label>
+            <p style="font-size: 20px">0</p>
+          </div>
+          <div class="social-media">
+            <img src="\src\assets\img_wallpaper\twitter.png" />
+            <img src="\src\assets\img_wallpaper\instagram.png" />
+            <img src="\src\assets\img_wallpaper\tiktok.png" />
+          </div>
+          <br />
+          <p id="bio"></p>
+          <!-- <button type="button">Mes favoris</button>
           <div class="profile-bottom">
             <p>Mes favoris</p>
           </div> -->
+        </div>
       </div>
     </div>
   </div>

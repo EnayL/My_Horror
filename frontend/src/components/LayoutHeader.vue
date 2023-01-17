@@ -64,8 +64,7 @@ export default {
 }
 body,
 html {
-  width: 100%;
-  font-size: 10px;
+  font-size: 15px;
   color: white;
   font-weight: normal;
   font-family: sans-serif;
@@ -121,7 +120,7 @@ label[for="ham-menu"] {
   height: 50%;
 }
 .ham-menu > ul > li {
-  font-size: 5rem;
+  font-size: 3rem;
   white-space: nowrap;
   letter-spacing: 0.15em;
   cursor: pointer;
