@@ -3,7 +3,7 @@
     <div >
         <p> {{ index }} </p>
         <p>Titre: {{ post.titre }}</p>
-        <p> Owner: {{ post.owner }}</p>
+        <p id="owner"> Owner: {{ post.owner }}</p>
     </div>
   </div>
 </template>
@@ -24,9 +24,8 @@ export default {
         const token = localStorage.getItem("token");
 
         const res = await axios.get("http://localhost:3000/posts/", {
-
             headers: {
-            "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             }
         });      
         

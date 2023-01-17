@@ -1,7 +1,6 @@
 <template>
-  <layout-header></layout-header>
+  <button id="select">Change selection</button>
   <div v-for="(post, index) in posts">
-    <button id="select">Change selection</button>
   <div id="containerpost" >
     <div id="post">
       <div id="interact">
@@ -11,7 +10,6 @@
       <p id="title">{{ post.titre }}</p>
       <p id="content">{{ post.contenu }}</p>
       <div id="ownerInfos">
-        <img src="" alt="">
         <p id="owner">{{ post.owner }}</p>
       </div>
     </div>
@@ -27,7 +25,6 @@ export default {
   data(){
         return {
             posts: [],
-            user:{}
         };
     },
   methods: {
@@ -81,10 +78,10 @@ export default {
 
       for (let i = 0; i < res.data.length; i++){        
 
-        res.data[i].contenu = res.data[i].contenu.replace(/\n/g, "<br>");
-        if (res.data[i].photo === undefined){
-            res.data[i].photo = "/src/assets/icon/no_pic.webp"
-          }
+        // res.data[i].contenu = res.data[i].contenu.replace(/\n/g, "<br>");
+        if (res.data[i].photo === undefined || res.data[i].photo == ""){
+          res.data[i].photo = "/src/assets/icon/no_pic.webp"
+        }
       }
       
 
@@ -122,6 +119,9 @@ export default {
   margin-right: 20%;
 }
 
+p {
+  white-space: pre-line;
+}
 .post-avatar__img {
   height: 50px;
   width: 50px;
