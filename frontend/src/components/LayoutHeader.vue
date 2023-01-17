@@ -64,8 +64,7 @@ export default {
 }
 body,
 html {
-  width: 100%;
-  font-size: 10px;
+  font-size: 15px;
   color: white;
   font-weight: normal;
   font-family: sans-serif;

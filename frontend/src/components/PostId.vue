@@ -32,6 +32,7 @@ export default {
 <style scoped>
 .bodyhome {
   background-color: #111111;
+  height: 100vh;
 }
 .main {
   max-width: 1000px;
