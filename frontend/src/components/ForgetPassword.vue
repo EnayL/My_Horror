@@ -5,7 +5,7 @@
         <div class="forget_content">
           <img class="image" src="../assets/icon/logo.webp" />
           <h1 class="forget_text">
-            Rentrez votre adresse mail, pour reçevoir un nouveau mot de passe
+            Rentrez votre adresse mail pour réinitialiser votre mot de passe
           </h1>
 
           <form class="forget_login">
@@ -17,8 +17,15 @@
             </div>
           </form>
 
-          <div class="forget_yes">
-            <button type="submit" @click="goToLogin()">Receive</button>
+          <div class="btn4">
+            <button
+              id="button"
+              class="click2"
+              type="submit"
+              @click="goToLogin()"
+            >
+              Login
+            </button>
           </div>
         </div>
       </div>
@@ -63,13 +70,10 @@ export default {
 .forgetcontainer {
   width: 100%;
   height: 100vh;
-  background-image: url(../src/assets/img_wallpaper/login.jpg);
-  background-size: cover;
-  background-position: center;
+  background-color: #111111;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
 }
 
 .tease2 {
@@ -85,9 +89,10 @@ export default {
 }
 
 .forget {
-  background-color: black;
+  background-color: #350619;
   width: 30%;
-  height: 70%;
+  height: 600px;
+  border-radius: 10%;
 }
 
 .forget img {
@@ -123,7 +128,7 @@ h1 {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  color: black;
+  color: #979394;
 }
 
 .forget_label {
@@ -132,7 +137,7 @@ h1 {
   margin-right: auto;
   width: 80%;
   font-size: 108%;
-  color: #790e06;
+  color: #979394;
 }
 
 .forget_input {
@@ -162,24 +167,9 @@ h1 {
   box-shadow: 0px 0px 0px 2px #979394;
 }
 
-.forget_yes button {
-  background-color: #790e06;
-  padding: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-  border-color: red;
+.btn4 {
   margin-top: 10%;
-  border-radius: 10em;
-  margin-left: 25%;
-}
-.forget_yes button:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  background-color: black;
-  border-color: white;
-  color: grey;
-  font-weight: bold;
-  border-radius: 15em;
-  box-shadow: -3px -3px 7px grey, 3px 3px 5px white;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>
