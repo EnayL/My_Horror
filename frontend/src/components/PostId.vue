@@ -2,12 +2,13 @@
     <LayoutHeader></LayoutHeader>
 
   <div class="bodyhome">
+    <div class="main-form">
+      <create-post></create-post>
+
+      </div>
     <main class="main">
       <post></post>
-      <div class="main-line2"></div>
-      <div class="main-form">
-        <create-post></create-post>
-      </div>
+      
     </main>
   </div>
 </template>
@@ -33,14 +34,19 @@ export default {
 .bodyhome {
   background-color: #111111;
   height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 .main {
   max-width: 1000px;
   width: 100%;
+  max-height: 100vh;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;
   margin-right: auto;
   background-color: #350619;
+  overflow:scroll;
+  scrollbar-width: thin;
 }
 .main-form {
   margin-top: 60px;
