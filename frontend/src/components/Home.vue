@@ -9,7 +9,6 @@
         <div class="container_selec"></div>
       </div>
       <div class="main-line"></div>
-
     </main>
   </div>
 </template>
@@ -19,7 +18,6 @@
 import LayoutHeader from "./LayoutHeader.vue";
 import axios from "axios";
 
-
 export default {
   methods: {
     async getSelection() {
@@ -28,28 +26,31 @@ export default {
       const jsonData = JSON.parse(json);
       var mainContainer = document.getElementById("selection");
 
-      if(jsonData.data.length == 0){
-        mainContainer.innerHTML = "Pour le moment, aucune publications n'a retenu notre attention"
-      }else{
+      if (jsonData.data.length == 0) {
+        mainContainer.innerHTML =
+          "Pour le moment, aucune publications n'a retenu notre attention";
+      } else {
         for (let i = 0; i < jsonData.data.length; i++) {
           const publi = jsonData.data[i];
           const titre = publi.titre;
           let contenu = publi.contenu;
           let select = publi.select;
           const owner = publi.owner;
-          
-          let resUser = await axios.get(`http://localhost:3000/user/?username=${owner}`)
+
+          let resUser = await axios.get(
+            `http://localhost:3000/user/?username=${owner}`
+          );
 
           let photo = resUser.data.photo;
           const pp = document.createElement("img"); // pp
           pp.src = photo;
 
-          if (photo === undefined){
-            pp.src = "/src/assets/icon/no_pic.webp"
+          if (photo === undefined) {
+            pp.src = "/src/assets/icon/no_pic.webp";
           }
           const div3 = document.createElement("p"); //creation element owner
           div3.class = "owner";
-          div3.innerHTML = "Par " + owner; 
+          div3.innerHTML = "Par " + owner;
           contenu = contenu.replace(/\n/g, "<br>");
 
           const divtest = document.createElement("div"); // div de la pp
@@ -72,11 +73,9 @@ export default {
           divtest.setAttribute("style", "display: flex; flex-direction: row;");
           divtest.setAttribute("type", "submit");
 
-
           div4.appendChild(pp);
 
           div4.appendChild(div3);
-                    
 
           mainContainer.setAttribute(
             "style",
@@ -90,18 +89,13 @@ export default {
 
           div2.setAttribute("style", "margin: 10px; font-size: 15px;");
 
-
           divtest.setAttribute("style", "display: flex; flex-direction: row;");
-
-          
 
           mainContainer.appendChild(divtest);
           mainContainer.appendChild(h1);
           mainContainer.appendChild(div2);
           mainContainer.appendChild(div4);
-
         }
-    
       }
     },
   },
@@ -119,12 +113,11 @@ export default {
 .bodyhome {
   background-color: #111111;
 }
-p{
-  font-size:20px;
+p {
+  font-size: 20px;
 }
 
 .main {
-  
   width: 80vw;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;
@@ -144,6 +137,5 @@ p{
 /* .selection{
   display
 } */
-
 
 </style>

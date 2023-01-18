@@ -15,7 +15,6 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
@@ -99,8 +98,7 @@ export default {
           "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
         );
       } else {
-        
-        alert("vous avez supprimé une publication");        
+        alert("vous avez supprimé une publication");
         axios
           .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
             headers: {
@@ -120,10 +118,9 @@ export default {
       //récupération des données
       const token = localStorage.getItem("token");
       let res = await axios.get("http://localhost:3000/posts/", {
-
         headers: {
-          "Authorization": `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
 
 
@@ -136,20 +133,22 @@ export default {
       }
       console.log(res.data);
 
-      this.posts = res.data;        
+      this.posts = res.data;
       const user = localStorage.getItem("user");
 
-      let resUser = await axios.get(`http://localhost:3000/user/?username=${user}`)
-      const select = document.getElementById("select"); 
+      let resUser = await axios.get(
+        `http://localhost:3000/user/?username=${user}`
+      );
+      const select = document.getElementById("select");
       select.addEventListener("click", function handleClick() {
-        window.location="http://localhost:3001/Selection";
+        window.location = "http://localhost:3001/Selection";
       });
       const role = resUser.data.role;
       if (role != "admin") {
         console.log("pouet");
         select.style.display = "none";
       }
-    }
+    },
   },
 
   mounted() {
@@ -192,29 +191,28 @@ p {
   background-color: #350619;
 }
 
-#interact{
-  display: flex; 
+#interact {
+  display: flex;
   flex-direction: row;
 }
-#select{
+#select {
   color: white;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   font-size: large;
   padding: 10px;
   margin-left: 42%;
   border: none;
-
 }
 
-#ownerInfos img{
-  height:40px;
-  width:40px;
-  border-radius:50%; 
-  margin-left:10px;
+#ownerInfos img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
 }
 
-#ownerInfos{
-  display: flex; 
+#ownerInfos {
+  display: flex;
   flex-direction: row;
 }
 #post{
@@ -228,39 +226,40 @@ p {
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.9) rgba(0,0,0,0.3);
 }
-#supprimer{
-  color: white; width:5%; 
-  margin-left:auto; 
-  padding: 1px; 
-  text-align: center; 
-  background-color: rgba(0,0,0,0); 
-  border: none; 
-  font-size: x-large; 
-  cursor:pointer; 
+#supprimer {
+  color: white;
+  width: 5%;
+  margin-left: auto;
+  padding: 1px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: x-large;
+  cursor: pointer;
 }
 
-#title{
-  font-size: x-large; 
-  margin: 5px; 
-  text-decoration: underline dotted ;
-  margin-right:auto; 
-  margin-left:auto;
+#title {
+  font-size: x-large;
+  margin: 5px;
+  text-decoration: underline dotted;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-#modif{
-  color: white;  
-  font-size: x-large; 
-  cursor:pointer;
+#modif {
+  color: white;
+  font-size: x-large;
+  cursor: pointer;
 }
 
-#content{
-  margin: 50px; 
+#content {
+  margin: 50px;
   font-size: 20px;
 }
 
-#owner{
-  margin: 25px; 
-  font-size: small; 
+#owner {
+  margin: 25px;
+  font-size: small;
 }
 #like{
   margin: 25px; 

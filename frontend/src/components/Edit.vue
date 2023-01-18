@@ -70,7 +70,7 @@ export default {
   name: "Edit",
   data() {
     return {
-      User: { photo: "", username: "", bio: ""},
+      User: { photo: "", username: "", bio: "" },
     };
   },
   props: {},
@@ -78,12 +78,11 @@ export default {
     addToDb() {
       const datas = this.User;
 
-      if(datas.photo == "" || datas.username == "" || datas.bio == "" ){
+      if (datas.photo == "" || datas.username == "" || datas.bio == "") {
         alert(
-              "Vous n'avez pas pu modifier votre profil car vous n'avez pas remplis tous les champs."
-            ); 
-        window.location="http://localhost:3001/profil";
-       
+          "Vous n'avez pas pu modifier votre profil car vous n'avez pas remplis tous les champs."
+        );
+        window.location = "http://localhost:3001/profil";
       }
       let newUser = {
         photo: this.User.photo,
@@ -104,13 +103,17 @@ export default {
           this.$router.push("/profil");
           const newUsername = localStorage.getItem("user");
           axios
-          .put(`http://localhost:3000/posts/owner/?owner=${username}`, {"owner":newUsername})
-          .then((response) => {
-            console.log(`http://localhost:3000/posts/owner/?owner=${username}`);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            .put(`http://localhost:3000/posts/owner/?owner=${username}`, {
+              owner: newUsername,
+            })
+            .then((response) => {
+              console.log(
+                `http://localhost:3000/posts/owner/?owner=${username}`
+              );
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
           console.log(error);
@@ -218,7 +221,7 @@ export default {
   width: 220px;
   height: 30px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   font-weight: 400;
   font-size: 15px;
   transition: 0.2s ease;
@@ -309,7 +312,7 @@ export default {
 }
 
 .formlabel {
-  margin-top: 5%;
+  margin-top: 4%;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
