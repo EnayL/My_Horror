@@ -7,11 +7,12 @@
         <button id="supprimer" @click="suppr(post.titre, post.owner)">X</button>
         <a href="" type="submit" @click="modif(post.titre, post.owner)" id="modif" >---</a>
       </div>
-      <p id="title">{{ post.titre }}</p>
-      <p id="content">{{ post.contenu }}</p>
-      <a @click="like(post.titre)"><img id="like" src="../assets/icon/no_like.webp" alt=""></a>
-      <div id="ownerInfos">
-        <p id="owner">{{ post.owner }}</p>
+        <p id="title">{{ post.titre }}</p>
+        <p id="content">{{ post.contenu }}</p>
+        <a style="color:white;" @click="like(post.titre)"><img :id="'like'+post.titre" :src="post.linklike" alt="" style="  margin: 25px; width: 100px;height: 60px;"> {{ post.likes }}</a>
+        <div id="ownerInfos">
+          <p id="owner">{{ post.owner }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +30,7 @@ export default {
     },
   methods: {
     async like(titre){
-      const like = document.getElementById("like");
+      const like = document.getElementById("like"+titre);
       const token = localStorage.getItem("token");
       if(like.src == "http://localhost:3001/src/assets/icon/no_like.webp"){
         like.src = "http://localhost:3001/src/assets/icon/like.webp";
@@ -45,21 +46,25 @@ export default {
           })
           .then((res) => {
             let count = res.data[0].likes;
-
+            let link ="";
             console.log(count);
 
             if(like.src == "http://localhost:3001/src/assets/icon/no_like.webp"){
               count += 1
               like.src = "http://localhost:3001/src/assets/icon/like.webp";
+              link = "http://localhost:3001/src/assets/icon/like.webp";
             }else if(like.src == "http://localhost:3001/src/assets/icon/like.webp"){
               count -= 1
               like.src = "http://localhost:3001/src/assets/icon/no_like.webp"; 
+              link = "http://localhost:3001/src/assets/icon/no_like.webp";
             }
 
             axios
-            .put(`http://localhost:3000/posts/likesCount/?titre=${titre}`, {"likes": count})
+            .put(`http://localhost:3000/posts/likesCount/?titre=${titre}`, {"likes": count, "linklike": link})
             .then((res) => {
               console.log(res);
+              like.innerHTML = count;
+              window.location.reload(true);
             })
             .catch((error) => {
               console.log(error);
@@ -79,26 +84,22 @@ export default {
     },
     async modif(titre, owner) {
       const user = localStorage.getItem("user");
-      if (owner != user) {
+      if (owner === user) {
+        this.$router.push("/updatePost");
+        window.localStorage.setItem("titre", titre);
+        
+      } else {
         alert(
           "Vous n'avez pas le droit de modifier une publication qui n'est pas à vous."
         );
-      } else {
-        window.location.href='http://localhost:3001/updatePost';
-        window.localStorage.setItem("titre", titre);
-        
       }
     },
     async suppr(titre, owner) {
       const user = localStorage.getItem("user");
       const token = localStorage.getItem("token");
 
-      if (owner != user) {
-        alert(
-          "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
-        );
-      } else {
-        alert("vous avez supprimé une publication");
+      if (owner === user) {
+
         axios
           .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
             headers: {
@@ -106,11 +107,19 @@ export default {
             },
           })
           .then(() => {
+            console.log("deleted");
+            alert("vous avez supprimé une publication");
             window.location.reload(true);
           })
           .catch((err) => {
             console.log(err);
           });
+
+        
+      } else {
+        alert(
+          "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
+        );
       }
     },
     async getPosts() {
@@ -143,6 +152,7 @@ export default {
       select.addEventListener("click", function handleClick() {
         window.location = "http://localhost:3001/Selection";
       });
+      
       const role = resUser.data.role;
       if (role != "admin") {
         console.log("pouet");
@@ -260,11 +270,5 @@ p {
 #owner {
   margin: 25px;
   font-size: small;
-}
-#like{
-  margin: 25px; 
-  width: 100px;
-  height: 100px;
-
 }
 </style>

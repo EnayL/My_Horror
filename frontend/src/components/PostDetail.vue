@@ -1,5 +1,20 @@
 <template>
-    <div id="containerpost"></div>
+    <LayoutHeader></LayoutHeader>
+    <div v-for="(post, index) in posts">
+      <div id="containerpost" >
+      <div id="post">
+        <div id="interact">
+          <button id="supprimer" @click="suppr(post.titre, post.owner)">X</button>
+          <a href="" type="submit" @click="modif(post.titre, post.owner)" id="modif" >---</a>
+        </div>
+          <p id="title">{{ post.titre }}</p>
+          <p id="content">{{ post.wcontenu }}</p>
+          <div id="ownerInfos">
+            <p id="owner">{{ post.owner }}</p>
+            </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -7,128 +22,28 @@ import axios from "axios";
 import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
+  data(){
+    return {
+        posts: [],
+    };
+  },
   methods: {
-    async getData() {
-      const res = await fetch("http://localhost:3000/posts");
-      const finalRes = await res.json("titre");
-      console.log(finalRes);
-    },
-
     async getPosts() {
-      //récupération des données
-      const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:3000/posts/", {
+      const titre = localStorage.getItem("title")
+      const res = await axios.get(`http://localhost:3000/posts/?titre=${titre}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      });
-      const json = JSON.stringify(res);
-      const jsonData = JSON.parse(json);
-      var mainContainer = document.getElementById("containerpost");
-
-      for (let i = 0; i < jsonData.data.length; i++) {
-        const publi = jsonData.data[i];
-        const titre = publi.titre;
-        const contenu = publi.contenu;
-        const owner = publi.owner;
-
-        var container = document.createElement("div");
-
-        var pp = document.createElement("img"); // pp
-        pp.src = "../assets/icon/heart-regular.svg";
-
-        var div = document.createElement("div"); // div de la pp
-
-        var h1 = document.createElement("p"); // creation element titre
-        h1.innerHTML = titre + ":";
-        var div2 = document.createElement("p"); // creation element contenu
-
-        div2.innerHTML = contenu;
-        var div3 = document.createElement("p"); //creation element owner
-        div3.class = "owner";
-        div3.innerHTML = "Par " + owner;
-        mainContainer.appendChild(container);
-
-        div2.setAttribute("style", "margin: 10px;");
-        div3.setAttribute("style", "margin: 10px; font-size: x-small;");
-        div.setAttribute("style", "display: flex; flex-direction: row;");
-
-        var supp = document.createElement("button"); // creation boutton supprimer
-        supp.id = "supprimer";
-        supp.innerHTML = "X";
-
-        container.setAttribute(
-          "style",
-          " background-color: #350619; min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
-        );
-        h1.setAttribute(
-          "style",
-          "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
-        );
-        supp.setAttribute(
-          "style",
-          "width:5%; margin-left:95%; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large;"
-        );
-        const token = localStorage.getItem("token");
-        const user = localStorage.getItem("user");
-        supp.addEventListener("click", function handleClick() {
-          if (owner != user) {
-            alert(
-              "Vous n'avez pas le droit de supprimer une publication qui n'est pas à vous."
-            );
-          } else {
-            alert("vous avez supprimé une publication");
-            axios
-              .delete(`http://localhost:3000/posts/delete/?titre=${titre}`, {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              })
-              .then((res) => {
-                console.log(titre);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
-        });
-
-        container.setAttribute(
-          "style",
-          "background-color: rgba(9,9,9, 0.5); min-height: 150px; margin: 15px; display:flex; flex-direction: column;"
-        );
-
-        h1.setAttribute(
-          "style",
-          "font-size: x-large; margin: 10px; text-decoration: underline dotted ;margin-right:auto; margin-left:auto;"
-        );
-
-        supp.setAttribute(
-          "style",
-          "width:5%; margin-left:auto; padding: 5px; text-align: center; background-color: rgba(0,0,0,0); border: none; font-size: x-large; color:white; cursor:pointer;"
-        );
-
-        div2.setAttribute("style", "margin: 50px;");
-
-        div3.setAttribute("style", "margin: 25px; font-size: x-small;");
-
-        div.setAttribute("style", "display: flex; flex-direction: row;");
-
-        container.appendChild(div);
-        container.appendChild(h1);
-        div.appendChild(pp);
-        div.appendChild(supp);
-        container.appendChild(div2);
-        container.appendChild(div3);
-      }
+      })
+      this.posts = res.data;
     },
-  },
-  mounted() {
-    this.getPosts();
-  },
-  name: "PostDetailPage",
-  components: {
-    LayoutHeader,
+    mounted() {
+      this.getPosts();
+    },
+    name: "PostDetailPage",
+    components: {
+      LayoutHeader,
+    },
   },
 };
 </script>
@@ -149,4 +64,75 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
 }
+
+#interact {
+  display: flex;
+  flex-direction: row;
+}
+#select {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: large;
+  padding: 10px;
+  margin-left: 42%;
+  border: none;
+}
+
+#ownerInfos img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+#ownerInfos {
+  display: flex;
+  flex-direction: row;
+}
+#post{
+  background-color: rgba(9,9,9, 0.5); 
+  min-height: 150px; 
+  max-height: 500px;
+  margin: 20px; 
+  display:flex; 
+  flex-direction: column;
+  overflow:scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.9) rgba(0,0,0,0.3);
+}
+#supprimer {
+  color: white;
+  width: 5%;
+  margin-left: auto;
+  padding: 1px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+#title {
+  font-size: x-large;
+  margin: 5px;
+  text-decoration: underline dotted;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#modif {
+  color: white;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+#content {
+  margin: 50px;
+  font-size: 20px;
+}
+
+#owner {
+  margin: 25px;
+  font-size: small;
+} 
 </style>

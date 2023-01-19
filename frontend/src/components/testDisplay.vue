@@ -1,17 +1,9 @@
 <template>
-<<<<<<< HEAD
     <div v-for="(post, index) in posts">
     <div >
         <p> {{ index }} </p>
         <p>Titre: {{ post.titre }}</p>
         <p id="owner"> Owner: {{ post.owner }}</p>
-=======
-  <div v-for="(post, index) in posts">
-    <div>
-      <p>{{ index }}</p>
-      <p>Titre: {{ post.titre }}</p>
-      <p>Owner: {{ post.owner }}</p>
->>>>>>> ff1ee0e79516520359e447bd13f99ba61fe95948
     </div>
   </div>
 </template>
@@ -29,12 +21,7 @@ export default {
     methods: {
         async getSelection() {
         const token = localStorage.getItem("token");
-
-        const res = await axios.get("http://localhost:3000/posts/", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        });      
+   
         
 
       const res = await axios.get("http://localhost:3000/posts/", {

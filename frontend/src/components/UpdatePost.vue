@@ -89,7 +89,7 @@ export default {
         .then((res) => {
           console.log(res);
           localStorage.setItem("titre", "");
-          // this.$router.push("/post");
+          this.$router.push("/post");
         })
         .catch((error) => {
           console.log(error);

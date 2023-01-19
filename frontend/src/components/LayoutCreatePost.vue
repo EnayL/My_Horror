@@ -40,7 +40,7 @@
         <div class="create-post__add">
           <label for="file-input">
             <img
-              style="cursor: pointer"
+              style="cursor: pointer"              
               class="create-post__add-img"
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231da1f2'%3E%3Cg%3E%3Cpath d='M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z'%3E%3C/path%3E%3Ccircle cx='8.868' cy='8.309' r='1.542'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E"
               alt=""
@@ -62,7 +62,7 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
-      Post: { titre: "", contenu: "", genre: "", owner:"", select:"", likes: ""},
+      Post: { titre: "", contenu: "", genre: "", owner:"", select:"", likes: "", linklike: ""},
     };
   },
   methods: {
@@ -76,9 +76,9 @@ export default {
         genre: this.Post.genre,
         owner: pouet,
         select: "non",
-        likes: 0,
+        likes: "0",
+        linklike:"http://localhost:3001/src/assets/icon/no_like.webp"
       };
-      let jsonData = JSON.stringify(newPost);
 
       axios
         .post("http://localhost:3000/posts/add", newPost)

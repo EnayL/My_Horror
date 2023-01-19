@@ -23,10 +23,17 @@
           </div>
           <br />
           <p id="bio"></p>
-          <!-- <button type="button">Mes favoris</button>
+          <br><br>
+          <p>Vos publications :</p>
+          <br> <br>
+          <div v-for="(post, index) in posts">
+            <div id="post">
+              <a @click="getTitle" href="/post/detail" id="titre">{{ post.titre }}</a>
+            </div>            
+          </div>
           <div class="profile-bottom">
-            <p>Mes favoris</p>
-          </div> -->
+
+          </div> 
         </div>
       </div>
     </div>
@@ -41,9 +48,18 @@ export default {
   components: { LayoutHeader },
   name: "Profil",
   props: {},
+  data(){
+        return {
+            posts: [],
+        };
+    },
   methods: {
+    async getTitle(title){
+      window.localStorage.setItem("title", title);
+    },
     async getUser() {
       const user = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
 
       axios
         .get(`http://localhost:3000/user/?username=${user}`)
@@ -70,6 +86,16 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+        const res = await axios.get(`http://localhost:3000/posts/?owner=${user}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          
+          this.posts = res.data
+
+
     },
     goToEdit() {
       this.$router.push("/profil/edit");
@@ -131,6 +157,8 @@ label[for="profile-box"] {
   color: white;
   position: relative;
   border-radius: 50px;
+  max-width: 50%;
+  min-width: 50%;
 }
 
 .profile-box > ul {
@@ -211,7 +239,6 @@ label[for="profile-box"] {
 }
 
 .profile-bottom {
-  background: red;
   color: white;
   padding: 60px 0;
   height: 100px;
@@ -222,7 +249,6 @@ label[for="profile-box"] {
 }
 
 .profile-box button {
-  background: red;
   color: white;
   width: 200px;
   height: 50px;

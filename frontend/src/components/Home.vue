@@ -6,7 +6,13 @@
         <p>Notre selection du mois:</p>
         <br /><br />
         <p id="selection"></p>
-        <div class="container_selec"></div>
+        <div class="container_selec" v-for="(post) in selection">
+          <div class="post">
+            <p class="titre">{{ post.titre }}</p>
+            <p class="contenu">{{ post.contenu }}</p>
+            <p class="owner">{{ post.owner }}</p>
+          </div>          
+        </div>
       </div>
       <div class="main-line"></div>
     </main>
@@ -19,48 +25,42 @@ import LayoutHeader from "./LayoutHeader.vue";
 import axios from "axios";
 
 export default {
+  data(){
+        return {
+            selection: [],
+        };
+    },
   methods: {
     async getSelection() {
       const res = await axios.get("http://localhost:3000/posts/selection/");
       const json = JSON.stringify(res);
       const jsonData = JSON.parse(json);
       var mainContainer = document.getElementById("selection");
-
+      this.selection = res.data;
       if (jsonData.data.length == 0) {
         mainContainer.innerHTML =
           "Pour le moment, aucune publications n'a retenu notre attention";
-      } else {
-        for (let i = 0; i < jsonData.data.length; i++) {
-          const publi = jsonData.data[i];
-          const titre = publi.titre;
-          let contenu = publi.contenu;
-          let select = publi.select;
-          const owner = publi.owner;
+       } 
+      //   for (let i = 0; i < jsonData.data.length; i++) {
+      //     // const publi = jsonData.data[i];
+          // const titre = publi.titre;
+          // let contenu = publi.contenu;
+          // let select = publi.select;
+          // const owner = publi.owner;
 
-          let resUser = await axios.get(
-            `http://localhost:3000/user/?username=${owner}`
-          );
+          // const div3 = document.createElement("p"); //creation element owner
+          // div3.class = "owner";
+          // div3.innerHTML = "Par " + owner;
+          // contenu = contenu.replace(/\n/g, "<br>");
 
-          let photo = resUser.data.photo;
-          const pp = document.createElement("img"); // pp
-          pp.src = photo;
+          // const divtest = document.createElement("div"); // div de la pp
 
-          if (photo === undefined) {
-            pp.src = "/src/assets/icon/no_pic.webp";
-          }
-          const div3 = document.createElement("p"); //creation element owner
-          div3.class = "owner";
-          div3.innerHTML = "Par " + owner;
-          contenu = contenu.replace(/\n/g, "<br>");
-
-          const divtest = document.createElement("div"); // div de la pp
-
-          const h1 = document.createElement("p"); // creation element titre
-          h1.innerHTML = titre + ":";
-          const div2 = document.createElement("p"); // creation element contenu
+          // const h1 = document.createElement("p"); // creation element titre
+          // h1.innerHTML = titre + ":";
+          // const div2 = document.createElement("p"); // creation element contenu
           const div4 = document.createElement("div");
 
-          div2.innerHTML = contenu;
+          // div2.innerHTML = contenu;
 
           div2.setAttribute("style", "margin: 10px;");
           pp.setAttribute(
@@ -73,7 +73,6 @@ export default {
           divtest.setAttribute("style", "display: flex; flex-direction: row;");
           divtest.setAttribute("type", "submit");
 
-          div4.appendChild(pp);
 
           div4.appendChild(div3);
 
@@ -95,8 +94,6 @@ export default {
           mainContainer.appendChild(h1);
           mainContainer.appendChild(div2);
           mainContainer.appendChild(div4);
-        }
-      }
     },
   },
   name: "Home",
@@ -115,6 +112,15 @@ export default {
 }
 p {
   font-size: 20px;
+  white-space: pre-line;
+}
+
+.titre {
+  font-size: x-large;
+  margin: 5px;
+  text-decoration: underline dotted;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .main {
@@ -132,6 +138,18 @@ p {
 .main-line {
   height: 5px;
   background-color: rgb(254, 254, 254);
+}
+
+.post{
+  background-color: rgba(9,9,9, 0.5); 
+  min-height: 150px; 
+  max-height: 500px;
+  margin: 20px; 
+  display:flex; 
+  flex-direction: column;
+  overflow:scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.9) rgba(0,0,0,0.3);
 }
 
 /* .selection{
