@@ -125,12 +125,12 @@ export default {
   .box1{
     box-sizing: border-box;
     width: 460px;
-    height: 95%;
+    height: 98%;
     border: 2px solid black;
     box-shadow: -3px -3px 7px red, 3px 3px 5px white;
     border-radius: 5px;
-    background-color: #64110b;
-    margin-top: 10px;
+    background-color: black;
+    margin-top: 5px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -186,7 +186,7 @@ export default {
     transition: 0.2 ease;
   }
 
-  .btn1 button{
+  .btn1 #button{
     border: 1px solid white;
     background-color: blue;
     color: white;
@@ -249,7 +249,7 @@ export default {
   }
 
   .done button:hover{
-    transform: scale(1.1);
+    transform: scale(1);
     cursor: pointer;
     background-color:green;
     color: white;

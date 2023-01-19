@@ -11,6 +11,9 @@
     </div>
     <div class="rightcontainer">
       <div class="rightcontent">
+        <div class="back_login-button">
+            <li  @click="goToAcceuil()">Go Back</li>
+          </div>
         <img class="image" src="../assets/icon/logo.webp" />
         <h1 class="welcom">Bienvenue dans H-Realm !</h1>
 
@@ -50,6 +53,9 @@ export default {
     };
   },
   methods: {
+    goToAcceuil() {
+      this.$router.push("/");
+    },
     login() {
       let connect = {
         email: this.User.email,
@@ -93,6 +99,39 @@ export default {
   width: 70%;
   background-color: #000000d2;
 }
+
+.back_login-button{
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: start;
+  position: absolute;
+  right: 260px;
+  top: 20px;
+  margin-top: -20px;
+  padding: 30px;
+}
+
+.back_login-button > li {
+  font-size: 2rem;
+  color: red;
+  background-color: black;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-color: white;
+  transition: all 0.5s ease;
+}
+
+.back_login-button > li:hover{
+    transform: scale(0.75);
+    cursor: pointer;
+    background-color:red;
+    border-color: #790e06;
+    color: black;
+    font-weight: bold;
+    box-shadow: -3px -3px 7px #790e06, 3px 3px 5px red;
+  }
 
 .image img {
   width: 100%;

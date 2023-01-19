@@ -2,6 +2,9 @@
     <div class="globalcontainer2" style="flex-direction: row">
       <div class="forgetcontainer">
         <div class="forget">
+          <div class="back-button">
+            <button type="submit" @click="goToLogin()">Go Back</button>
+          </div>
             <div class="forget_content">
             <img class="image" src="../assets/icon/logo.webp" />
             <h1 class="forget_text">Rentrez votre adresse mail, pour reçevoir un nouveau mot de passe</h1>
@@ -18,7 +21,7 @@
           </form>
   
           <div class="forget_yes">
-        <button type="submit" @click="goToLogin()">Receive</button>
+        <button type="submit" @click="goToLogin()">Envoyer</button>
       </div>
         </div>
         </div>
@@ -90,6 +93,37 @@
     width: 30%;
     height: 70%;
   }
+
+
+  .back-button button   {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: start;
+  padding: 30px;
+  height: 30px;
+  }
+
+  .back-button button {
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-color: white;
+  transition: all 0.5s ease;
+}
+
+.back-button button:hover{
+    transform: scale(0.75);
+    cursor: pointer;
+    background-color:red;
+    border-color: #790e06;
+    color: black;
+    font-weight: bold;
+    box-shadow: -3px -3px 7px #790e06, 3px 3px 5px red;
+  }
   
   .forget img {
     position: relative;
@@ -136,6 +170,10 @@
     font-size: 108%;
     color : #790e06;
   }
+
+  .forget_label label{
+    color: white;
+  }
   
   .forget_input {
     font-family: "Titillium Web", sans-serif;
@@ -148,22 +186,15 @@
     outline: none;
     box-shadow: #000000 -1px 1px 0px 0px;
   }
+
+  .forget_input #email.input{
+    color: white;
+    font-style: italic;
+    letter-spacing: 0.2em;
+  }
   
   
-  .click {
-    border-radius: 3px;
-    padding: 5px 2em;
-    box-shadow: 0px 0px 0px 2px black;
-    text-decoration: none;
-    color: black;
-    outline: none;
-    background: none;
-    border: none;
-  }
-  .click:hover {
-    color: #979394;
-    box-shadow: 0px 0px 0px 2px #979394;
-  }
+
   
   .forget_yes button  {
     background-color: #790e06;
@@ -174,6 +205,7 @@
     margin-top: 10%;
     border-radius: 10em;
     margin-left: 25%;
+    transition: all 0.5s ease;
   }
 
   .forget_yes button:hover{

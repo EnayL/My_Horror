@@ -2,10 +2,15 @@
     <div class="globalcontainer" style="flex-direction: row">
       <div class="container">
         <div class="profile-box">
-            <ul class="centre-text bold-text">
+            <div class="edit-profil">
               <li @click="goToEdit()">Edit</li>
-            </ul>
-            
+            </div>
+            <div class="back-button">
+            <li  @click="goToHome()">Go Back</li>
+          </div>
+          <div class="reset-pass">
+            <li  @click="goToReset()">Reset</li>
+          </div>
           <img src="\src\assets\img_wallpaper\anonymous.jpg" class="profile-pic">
           <h3>NAME</h3>
           <p>Description</p>
@@ -14,7 +19,7 @@
             <img src="\src\assets\img_wallpaper\instagram.png">
             <img src="\src\assets\img_wallpaper\tiktok.png">
           </div>
-          <button type="button">Mes favoris</button>
+          <button type="list">Mes favoris</button>
           <div class="profile-bottom">
             <p>Mes favoris</p>
           </div>
@@ -31,6 +36,12 @@ export default {
   methods: {
     goToEdit() {
       this.$router.push("/profil/edit");
+    },
+    goToHome() {
+      this.$router.push("/home");
+    },
+    goToReset() {
+      this.$router.push("/profil/reset");
     },
   },
 };
@@ -79,46 +90,119 @@ export default {
 }
 
   .profile-box {
-    background: #64110b;
+    background: black;
     height: 90%;
     text-align: center;
     padding: 150px 150px;
     color: white;
+    border: 2px solid #790e06;
     position: relative;
-    border-radius: 50px;
   }
 
-  .profile-box > ul {
+  .edit-profil {
+    display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: start;
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  margin-top: -20px;
+  padding: 30px;
+  height: 5%;
+}
+
+.edit-profil > li {
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-color: white;
+  transition: all 0.5s ease;
+}
+
+.edit-profil > li:hover{
+  transform: scale(0.75);
+    cursor: pointer;
+    background-color: white;
+    border-color: grey;
+    color: black;
+    font-weight: bold;
+    box-shadow: -3px -3px 7px grey, 3px 3px 5px white;
+}
+
+
+
+
+.profile-box .back-button   {
   display: flex;
   align-items: flex-start;
   flex-flow: column;
   justify-content: start;
-  margin-top: -20px;
-  padding: 20px;
-  height: 5%;
-}
-
-.profile-box > ul > li {
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
   position: absolute;
-  left: 40px;
-  top: 40px;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  color: black;
+  left: 10px;
+  top: 70px;
+  margin-top: -20px;
+  padding: 30px;
+  height: 5%;
+  }
+
+  .profile-box .back-button > li {
+  font-size: 2rem;
+  color: red;
+  background-color: black;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-color: white;
+  transition: all 0.5s ease;
 }
 
-#profile-.profile-box + label {
-  background-color: transparent;
-  border-color: rgb(0, 0, 0);
-}
-#profile-box:checked ~ div.profile-box {
-  transform: translate(0px);
-  visibility: visible;
+.profile-box .back-button > li:hover{
+    transform: scale(0.75);
+    cursor: pointer;
+    background-color:red;
+    border-color: #790e06;
+    color: black;
+    font-weight: bold;
+    box-shadow: -3px -3px 7px #790e06, 3px 3px 5px red;
+  }
+
+  .profile-box .reset-pass   {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  justify-content: start;
+  position: absolute;
+  left: 10px;
+  top: 115px;
+  margin-top: -20px;
+  padding: 30px;
+  height: 5%;
+  }
+
+  .profile-box .reset-pass > li {
+  font-size: 2rem;
+  color: blue;
+  background-color: black;
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-color: white;
+  transition: all 0.5s ease;
 }
 
+.profile-box .reset-pass > li:hover{
+    transform: scale(0.75);
+    cursor: pointer;
+    background-color: blue;
+    border-color: darkblue;
+    color: black;
+    font-weight: bold;
+    box-shadow: -3px -3px 7px darkblue, 3px 3px 5px blue;
+  }
   .menu-icon{
     width: 70px;
     height: 70px;
@@ -174,8 +258,6 @@ export default {
     height: 100px;
     margin-right: -150px;
     margin-left: -150px;
-    border-radius: 20px;
-    margin-top: -20px;
   }
 
   .profile-box button{
@@ -197,6 +279,8 @@ export default {
     background-color: black;
     transform: translateY(4px);
   }
+
+
   .profile-box h3{
     font-size: 22px;
     margin-top: 20px;
