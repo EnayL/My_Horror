@@ -32,7 +32,11 @@
             </p>
           </div>
           <p class="p2">
-            <textarea type="string" v-model="Post.contenu" placeholder="Racontez nous votre histoire"></textarea>
+            <textarea
+              type="string"
+              v-model="Post.contenu"
+              placeholder="Racontez nous votre histoire"
+            ></textarea>
           </p>
         </div>
       </div>
@@ -51,9 +55,16 @@
       </div>
     </div>
   </form>
-  <button class="button" style="cursor: pointer" type="submit" @click="addToAPI">
-    Poster !
-  </button>
+  <div class="btn3">
+    <button
+      class="click2"
+      style="cursor: pointer"
+      type="submit"
+      @click="addToAPI"
+    >
+      Poster !
+    </button>
+  </div>
 </template>
 
 <script>
@@ -62,7 +73,18 @@ export default {
   name: "CreatePostPage",
   data() {
     return {
+<<<<<<< HEAD
       Post: { titre: "", contenu: "", genre: "", owner:"", select:"", likes: "", linklike: ""},
+=======
+      Post: {
+        titre: "",
+        contenu: "",
+        genre: "",
+        owner: "",
+        select: "",
+        likes: "",
+      },
+>>>>>>> dda3954c66b098b42f8af4095504900ebebafc14
     };
   },
   methods: {
@@ -86,7 +108,6 @@ export default {
           console.log(response);
           window.location.reload(true);
           this.$router.push("/post");
-
         })
         .catch((error) => {
           console.log(error);
@@ -223,7 +244,7 @@ input {
   margin-right: 10%;
   border: none;
   background-color: rgba(0, 0, 0, 0.3);
-  width: 30%;
+  width: 80%;
   height: 40px;
   color: white;
   padding: 3%;
@@ -237,5 +258,10 @@ input {
   top: 0;
   color: white;
   font-size: 15px;
+}
+
+.btn3 {
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>

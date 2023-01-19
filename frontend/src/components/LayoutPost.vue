@@ -1,5 +1,4 @@
 <template>
-  <button id="select">Change selection</button>
   <div v-for="(post, index) in posts">
   <div id="containerpost" >
     <div id="post">
@@ -23,11 +22,12 @@ import axios from "axios";
 import LayoutHeader from "./LayoutHeader.vue";
 
 export default {
-  data(){
-        return {
-            posts: [],
-        };
-    },
+  data() {
+    return {
+      posts: [],
+      user: {},
+    };
+  },
   methods: {
     async like(titre){
       const like = document.getElementById("like"+titre);
@@ -95,8 +95,9 @@ export default {
       }
     },
     async suppr(titre, owner) {
-      const user = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
+      let resUser = await axios.get(
+        `http://localhost:3000/user/?username=${owner}`
+      );
 
       if (owner === user) {
 
@@ -123,7 +124,6 @@ export default {
       }
     },
     async getPosts() {
-      
       //récupération des données
       const token = localStorage.getItem("token");
       let res = await axios.get("http://localhost:3000/posts/", {
@@ -132,15 +132,12 @@ export default {
         },
       });
 
-
-      for (let i = 0; i < res.data.length; i++){        
-
-        // res.data[i].contenu = res.data[i].contenu.replace(/\n/g, "<br>");
-        if (res.data[i].photo === undefined || res.data[i].photo == ""){
-          res.data[i].photo = "/src/assets/icon/no_pic.webp"
+      for (let i = 0; i < res.data.length; i++) {
+        res.data[i].contenu = res.data[i].contenu.replace(/\n/g, "<br>");
+        if (res.data[i].photo === undefined) {
+          res.data[i].photo = "/src/assets/icon/no_pic.webp";
         }
       }
-      console.log(res.data);
 
       this.posts = res.data;
       const user = localStorage.getItem("user");
@@ -179,9 +176,6 @@ export default {
   margin-right: 20%;
 }
 
-p {
-  white-space: pre-line;
-}
 .post-avatar__img {
   height: 50px;
   width: 50px;
@@ -194,7 +188,6 @@ p {
 .main {
   max-width: 1095px;
   width: 100%;
-  height: 100vh;
   border: 1px solid rgb(0, 0, 0);
   margin-left: auto;
   margin-right: auto;
@@ -225,16 +218,12 @@ p {
   display: flex;
   flex-direction: row;
 }
-#post{
-  background-color: rgba(9,9,9, 0.5); 
-  min-height: 150px; 
-  max-height: 500px;
-  margin: 20px; 
-  display:flex; 
+#post {
+  background-color: rgba(9, 9, 9, 0.5);
+  min-height: 150px;
+  margin: 20px;
+  display: flex;
   flex-direction: column;
-  overflow:scroll;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.9) rgba(0,0,0,0.3);
 }
 #supprimer {
   color: white;
